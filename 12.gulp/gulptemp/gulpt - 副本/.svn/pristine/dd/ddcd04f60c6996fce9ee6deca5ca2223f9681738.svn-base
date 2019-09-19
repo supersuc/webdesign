@@ -1,0 +1,21 @@
+项目可用技术：
+gulp流程：
+1.创建项目的基本目录结构，增加了src，dist目录
+2.npm init 生成package.json文件
+3.全局安装:gulp:npm install gulp -g，可以以任何的目录下，执行gulp任务名
+4.本地安装gulp：npm install gulp --save-dev生成开发的依赖
+5.在项目根目录下面创建gulpfile.js文件
+6.gulp.task("gulpHtml",function () {
+      // 构建一个文件到目标目录下面
+      return gulp.src("./src/public/index.html")
+            //pipe()管道，可以连接执行gulps输出的指令
+             .pipe(gulp.dest("./dist/public"));
+  });
+7.操作task
+8.插件使用
+
+task()任务
+src()被发布的源文件
+dest()发布的目标
+run()执行，运行
+watch()监听

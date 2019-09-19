@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+<button onclick="moving(600)">move</button>
+<div id="box"></div>
+
+<script type="text/javascript">
+    var oBox = document.getElementById("box");
+    var timer = null;
+
+    console.log(oBox.style.height)
+    function moving(target) {
+        var speed = 0;
+        if (oBox.offsetLeft<target){
+            speed = 7;
+        }else{
+            speed = -7;
+        }
+        timer = setInterval(function () {
+
+            // if (oBox.offsetLeft>=target){
+            //     clearInterval(timer);
+            // }else {
+            //     oBox.style.left = oBox.offsetLeft + speed +"px";
+            // }
+            if (Math.abs(target-oBox.offsetLeft<=7)){
+                oBox.style.left = target +"px";
+                clearInterval(timer);
+            }else {
+                oBox.style.left = oBox.offsetLeft + speed +"px";
+            }
+        },30)
+    }
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        #div1,#div2,#div3{
+            width: 100px;
+            height: 100px;
+            float: left;
+            background-color: red;
+            margin-left: 10px;
+        }
+        #div2{
+            /*ie*/
+            filter: alpha(opacity:30);
+            /*非ie*/
+            opacity: 0.3;
+        }
+    </style>
+</head>
+<body>
+<div id="div1">展开</div>
+<div id="div2"></div>
+<div id="div3">收起</div>
+
+<script type="text/javascript">
+    var oDiv1 = document.getElementById("div1");
+    var oDiv2 = document.getElementById("div2");
+    var oDiv3 = document.getElementById("div3");
+
+    oDiv1.onclick = function () {
+        moving(oDiv2,{'width':400,'height':400,'opacity':100},function () {
+            alert("回调函数")
+        })
+    };
+    oDiv3.onclick = function () {
+        moving(oDiv2,{'width':100,'height':100,'opacity':30})
+    };
+    //封装获取样式函数
+    function getStyleValue(obj,attr) {
+        if (obj.currentStyle){
+            return obj.currentStyle[attr];
+        }else {
+            return getComputedStyle(obj,false)[attr];
+        }
+    }
+    console.log(getStyleValue(oDiv1,'width'));
+
+
+    function moving(obj,json,call) {
+        clearInterval(obj.timer);
+        obj.timer = setInterval(function () {
+            var beclear = true;
+            for (var attr in json){
+                var  currvalue = 0;
+                if (attr == 'opacity'){
+                    currvalue = Math.round(getStyleValue(obj,attr)*100);
+                }else {
+                    currvalue = parseInt(getStyleValue(obj,attr));
+                }
+
+                var speed = (json[attr]-currvalue)/8;
+                speed = speed>0?Math.ceil(speed):Math.floor(speed);
+                if (currvalue !== json[attr]){
+                    beclear = false;
+                    if (attr == 'opacity'){
+                        obj.style.filter = 'alpha(opacity:'+(currvalue+speed)+')';
+                        obj.style.opacity = (currvalue+speed)/100;
+                    }else {
+                        obj.style[attr] = currvalue + speed +"px";
+                    }
+                }
+            }
+            if (beclear){
+                clearInterval(obj.timer);
+                if (call){
+                    call();
+                }
+            }
+        },30)
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--document.write(); 不常用，因为容易覆盖原来的页面。
+比较随意，想创建就创建，可以直接在write里写属性都行。但是会把原来的标签给覆盖掉。所以不建议。-->
+<!--innerHTML = (); 用的比较多。绑定属性和内容比较方便。(节点套节点)
+是用符号+=，不是=，前者是在原来的基础之上增加，后者是替换。-->
+<!--document.createElement(); 用得也比较多，指定数量的时候一般用它。
+利用DOM的api创建节点，有很多种：
+比如：
+createElement()
+appendChild()
+removeChild()
+insertBefore()
+replaceChild()-->
+<ul>
+    smyhvae
+</ul>
+
+<script>
+    var ul = document.getElementsByTagName("ul")[0];
+
+    //第二种：直接利用元素的innerHTNL方法。（innerText方法不识别标签）
+    ul.innerHTML += "<li id='li1'>我是innerHTML创建的</li>"  //注意，是用符号“+=”，不是“=”
+</script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ajax</title>
+</head>
+<body>
+<input type="button" id="jsonbtn" value="获取数据"/>
+
+<script type="text/javascript" src="jquery.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $("#jsonbtn").click(function () {
+            $.ajax({
+                url:"package.json",
+                dataType:"text",
+                type:"post",
+                success:function (data) {
+                    console.log(data);
+                    var  aData = JSON.parse(data);
+                    console.log(aData);
+                    console.log(aData.name);
+                },
+                error:function (e) {
+                    console.log(e);
+                }
+            });
+        });
+    })
+
+
+</script>
+<!--post和get的区别-->
+<!--（1）post更安全（不会作为url的一部分，不会被缓存、保存在服务器日志、以及浏览器浏览记录中）-->
+<!--（2）post发送的数据更大（get有url长度限制）-->
+<!--（3）post能发送更多的数据类型（get只能发送ASCII字符）-->
+<!--（4）post比get慢-->
+<!--（5）post用于修改和写入数据，get一般用于搜索排序和筛选之类的操作-->
+<!--（淘宝，支付宝的搜索查询都是get提交），目的是资源的获取，读取数据-->
+</body>
+</html>

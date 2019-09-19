@@ -1,0 +1,136 @@
+<!--&lt;!&ndash;<!DOCTYPE html>&ndash;&gt;-->
+<!--&lt;!&ndash;<html lang="en">&ndash;&gt;-->
+<!--&lt;!&ndash;<head>&ndash;&gt;-->
+<!--&lt;!&ndash;    <meta charset="UTF-8">&ndash;&gt;-->
+<!--&lt;!&ndash;    <title>Title</title>&ndash;&gt;-->
+<!--&lt;!&ndash;    <style>&ndash;&gt;-->
+
+<!--&lt;!&ndash;        @font-face {&ndash;&gt;-->
+<!--&lt;!&ndash;            font-family: 'webfont';&ndash;&gt;-->
+<!--&lt;!&ndash;            font-display: swap;&ndash;&gt;-->
+<!--&lt;!&ndash;            src: url('font/webfont.eot'); /* IE9 */&ndash;&gt;-->
+<!--&lt;!&ndash;            src: url('font/webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */&ndash;&gt;-->
+<!--&lt;!&ndash;            url('font/webfont.woff2') format('woff2'),&ndash;&gt;-->
+<!--&lt;!&ndash;            url('font/webfont.woff') format('woff'), /* chrome、firefox */&ndash;&gt;-->
+<!--&lt;!&ndash;            url('font/webfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/&ndash;&gt;-->
+<!--&lt;!&ndash;            url('font/webfont.svg#webfont') format('svg'); /* iOS 4.1- */&ndash;&gt;-->
+<!--&lt;!&ndash;        }&ndash;&gt;-->
+<!--&lt;!&ndash;        .web-font {&ndash;&gt;-->
+<!--&lt;!&ndash;            font-family: "webfont" !important;&ndash;&gt;-->
+<!--&lt;!&ndash;            font-size: 16px;&ndash;&gt;-->
+<!--&lt;!&ndash;            font-style: normal;&ndash;&gt;-->
+<!--&lt;!&ndash;            -webkit-font-smoothing: antialiased;&ndash;&gt;-->
+<!--&lt;!&ndash;            -moz-osx-font-smoothing: grayscale;&ndash;&gt;-->
+<!--&lt;!&ndash;        }&ndash;&gt;-->
+<!--&lt;!&ndash;    </style>&ndash;&gt;-->
+<!--&lt;!&ndash;</head>&ndash;&gt;-->
+<!--&lt;!&ndash;<body>&ndash;&gt;-->
+<!--&lt;!&ndash;<div>&ndash;&gt;-->
+<!--&lt;!&ndash;    <p class="web-font">这是一段文字这是一段文字这是一段文字这是一段文字这是一段文字这是一段文字这是一段文字这是一段文</p>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--&lt;!&ndash;</body>&ndash;&gt;-->
+<!--&lt;!&ndash;</html>&ndash;&gt;-->
+
+
+<!--&lt;!&ndash;把图片放置成字体引入&ndash;&gt;-->
+<!--&lt;!&ndash;将所有图标打包成字体库，减少请求；&ndash;&gt;-->
+<!--&lt;!&ndash;具有矢量性，可保证清晰度；&ndash;&gt;-->
+<!--&lt;!&ndash;使用灵活，便于维护。&ndash;&gt;-->
+<!--<!doctype html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport"-->
+<!--          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">-->
+<!--    <meta http-equiv="X-UA-Compatible" content="ie=edge">-->
+<!--    <title>Document</title>-->
+<!--    <style>-->
+<!--        @font-face {-->
+<!--            font-family: 'iconfont';-->
+<!--            src: url('unicode/iconfont.eot');-->
+<!--            src: url('unicode/iconfont.eot?#iefix') format('embedded-opentype'),-->
+<!--            url('unicode/iconfont.woff2') format('woff2'),-->
+<!--            url('unicode/iconfont.woff') format('woff'),-->
+<!--            url('unicode/iconfont.ttf') format('truetype'),-->
+<!--            url('unicode/iconfont.svg#iconfont') format('svg');-->
+<!--        }-->
+<!--        .iconfont {-->
+<!--            font-family: "iconfont" !important;-->
+<!--            font-size: 46px;-->
+<!--            font-style: normal;-->
+<!--            -webkit-font-smoothing: antialiased;-->
+<!--            -moz-osx-font-smoothing: grayscale;-->
+<!--        }-->
+<!--        p{-->
+<!--            width: 200px;-->
+<!--            border: 1px solid #000;-->
+<!--            line-height: 60px;-->
+<!--            font-size:30px;-->
+<!--            margin:100px auto;-->
+<!--            text-align: center;-->
+<!--        }-->
+<!--        span{-->
+<!--            color: blue;-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+
+<!--<p><span class="iconfont">&#xe609;</span>扫码付款</p>-->
+<!--</body>-->
+<!--</html>-->
+
+
+
+<!--伪元素的方式使用图标字体-->
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        /*申明字体*/
+        @font-face {-->
+             font-family: 'iconfont';-->
+             src: url('unicode/iconfont.eot');-->
+            src: url('unicode/iconfont.eot?#iefix') format('embedded-opentype'),
+                url('unicode/iconfont.woff2') format('woff2'),
+                url('unicode/iconfont.woff') format('woff'),
+                url('unicode/iconfont.ttf') format('truetype'),
+                url('unicode/iconfont.svg#iconfont') format('svg');
+                }
+
+        p{
+            width: 200px;
+            border: 1px solid #000;
+            line-height: 60px;
+            font-size:30px;
+            margin:100px auto;
+            text-align: center;
+            position: relative;
+        }
+
+        .icon::before{
+            /*&#xe628;*/
+            content:"\e609";
+            /*position: absolute;*/
+            /*left:10px;*/
+            /*top:0px;*/
+            font-family: iconfont;
+            color:red;
+        }
+
+        span{
+            position: relative;
+
+        }
+
+
+    </style>
+</head>
+<body>
+<p class="icon">扫码付款</p>
+<span class="icon" >我是span</span>
+<div class="icon">divvvvvvvvvvv</div>
+</body>
+</html>

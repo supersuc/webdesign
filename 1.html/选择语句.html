@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+<!--    <script type="text/javascript" src="jquery.min.js"></script>-->
+<!--    <link type="text/css" rel="stylesheet" href="选择语句.html">-->
+    <style type="text/css">
+        body {
+            width: 2000px;
+        }
+
+        span {
+            display: inline-block;
+            width: 80px;
+        }
+    </style>
+</head>
+<body>
+
+<div>sss</div>
+<script type="text/javascript">
+    // var height = parseFloat(prompt("请输入身高，单位是米"));
+    // var weight = parseFloat(prompt("请输入体重，单位是公斤"));
+    // var BMI = weight / Math.pow(height, 2);
+    //     if (BMI < 18.5) {
+    //         alert("偏瘦");
+    //     } else if (BMI < 25) {
+    //         alert("正常");
+    //     } else if (BMI < 28) {
+    //         alert("过重");
+    //     } else if (BMI <= 32) {
+    //         alert("肥胖");
+    //     } else {
+    //     alert("非常肥胖");
+    //     }
+
+
+    // var bianhao = parseInt(prompt("您想加什么油？填写92或者97"));
+    //
+    // //第二步，判断
+    // if(bianhao != 92 && bianhao != 97){
+    //     alert("无此油！")
+    // }else {
+    //     var sheng = parseFloat(prompt("您想加多少升？"));
+    //     if (bianhao == 92) {
+    //         //编号是92的时候做的事情
+    //         if (sheng >= 20) {
+    //             var price = sheng * 5.9;
+    //         } else {
+    //             var price = sheng * 6;
+    //         }
+    //     } else if (bianhao == 97) {
+    //         //编号是97的时候做的事情
+    //         if (sheng >= 30) {
+    //             var price = sheng * 6.95;
+    //         } else {
+    //             var price = sheng * 7;
+    //         }
+    //     }
+    //
+    //     alert("价格是" + price);
+    // }
+
+
+    // var m =2;
+    // var n =3;
+    // for(i=0;i<=9;i++) {
+    //     if (m != i) {
+    //         alert(1)
+    //         // break;
+    //     } else {
+    //         alert("m不等于n！")
+    //     }
+    // }
+
+
+
+    // var num = 1;
+    //
+    // //switch判断语句
+    // switch (num) {
+    //     case 1:
+    //         console.log("星期一");
+    //         break;
+    //
+    //     case 2:
+    //         console.log("星期二");
+    //         break;
+    //
+    //     case 3:
+    //         console.log("星期三");
+    //         break;
+    //     case 4:
+    //         console.log("星期四");
+    //         break;
+    //     case 5:
+    //         console.log("星期五");
+    //         break;
+    //     case 6:
+    //         console.log("星期六");
+    //         break;
+    //     case 7:
+    //         console.log("星期日");
+    //         break;
+    //     default:
+    //         console.log("你输入的数据有误");
+    //         break;
+    // }
+
+
+    //定义一个变量，表示当前的钱数
+    // var money = 1000;
+    //
+    // //定义一个计数器
+    // var count = 0;
+    //
+    // //定义一个while循环来计算每年的钱数
+    // while (money < 5000) {
+    //     money *= 1.05;
+    //
+    //     //使count自增
+    //     count++;
+    // }
+    //
+    // console.log(money);
+    // console.log("一共需要" + count + "年");
+
+
+
+    // var num = prompt("请输入一个大于1的整数:");
+    // //判断这个值是否合法
+    // if (num <= 1) {
+    //     alert("该值不合法！");
+    // } else {
+    //     //先用flag标志位，来保存当前的数的状态
+    //     //默认当前num是质数
+    //     var flag = true;
+    //
+    //     //判断num是否是质数
+    //     //获取2-num之间的数
+    //     for (var i = 2; i < num; i++) {
+    //          console.log(i);
+    //         //判断num是否能被i整除
+    //         if (num % i == 0) {
+    //             //如果num能被i整除，则说明num一定不是质数
+    //             //设置flag为false
+    //             flag = false;
+    //         }
+    //     }
+    //
+    //     //如果num是质数则输出
+    //     if (flag) {
+    //         alert(num + "是质数！！！");
+    //     } else {
+    //         alert("这个不是质数")
+    //     }
+    // }
+// for(i=0;i<9;i++){
+//    //    i++;
+//     if(i<8){
+//         console.log(i)
+//         // break;
+//         continue;
+//     }
+// }
+
+
+
+
+    /*
+     * 1.打印99乘法表
+     *   1*1=1
+     *   1*2=2 2*2=4
+     *   1*3=3 2*3=6 3*3=9
+     *   1*4=4 2*4=8 3*4=12 4*4=16
+     *                      ....9*9=81
+     *
+     * 2.打印出1-100之间所有的质数
+     */
+
+    //创建外层循环，用来控制乘法表的高度
+    // for (var i = 1; i <= 9; i++) {
+    //     //创建一个内层循环来控制图形的宽度
+    //     for (var j = 1; j <= i; j++) {
+    //         document.write("<span>" + j + "*" + i + "=" + i * j + "</span>");
+    //     }
+    //
+    //     //输出一个换行
+    //     document.write("<br />");
+    // }
+
+
+    //     var a = 1;//提前声明
+    // function foo() {
+    //     console.log(a);//1
+    //     a = 2;     // 此处的a相当于window.a 全局变量
+    // }
+    // foo();
+    // console.log(a);   //打印结果是2
+    // console.log(window.a)//2
+
+
+
+    // var myJson = {
+    //     "name": "smyhvae",
+    //     "aaa": 111,
+    //     "bbb": 222,
+    //     "sex": "男"
+    // };
+    //
+    // //json遍历的方法：for...in...
+    // for (var key in myJson) {
+    //     console.log(key);   //获取 键
+    //     console.log(myJson[key]); //获取 值（第二种属性绑定和获取值的方法）
+    //     console.log("------");
+    // }
+
+
+
+    // function Person(name, age, gender) {
+    //     this.name = name;
+    //     this.age = age;
+    //     this.gender = gender;
+    // }
+
+    //方式一：重写 Person 原型的toString方法。针对 Person 的所有实例生效
+    // Person.prototype.toString = function() {
+    //     return (
+    //         "Person[name=" +
+    //         this.name +
+    //         ",age=" +
+    //         this.age +
+    //         ",gender=" +
+    //         this.gender +
+    //         "]"
+    //     );
+    // };
+    // var per1 = new Person("smyh", 26, "男");
+    //
+    // var per2 = new Person("vae", 30, "男");
+    //
+    // // 方式二：仅重写实例 per1 的 toString方法。但是这种写法，只对 per1 生效， 对 per2 无效
+    //
+    // per1.toString = function() {
+    //     return (
+    //         "Person[name=" +
+    //         this.name +
+    //         ",age=" +
+    //         this.age +
+    //         ",gender=" +
+    //         this.gender +
+    //         "]"
+    //     );
+    // };
+    //
+    // console.log("per1 = " + per1);
+    // console.log("per2 = " + per2.toString());
+
+    // var arr1 = [11, 12, 13];
+    //
+    // // 方式二
+    // var arr2 = new Array(); // 参数为空
+    // var arr3 = new Array(10); // 参数为一个数值
+    // var arr4 = new Array(15, 16, 17); // 参数为多个数值
+    //  arr1[3] = 2;
+    //  arr1[4] = 3;
+    // console.log(typeof arr1);  // 打印结果：object
+    //
+    // console.log("arr1 = " + JSON.stringify(arr1));
+    // console.log("arr2 = " + JSON.stringify(arr2));
+    // console.log("arr3 = " + JSON.stringify(arr3));
+    // console.log("arr4 = " + JSON.stringify(arr4));
+
+//for循环遍历
+//     var arr = ["生命壹号","许嵩","永不止步"];
+//     for(var i = 0;i<arr.length;i++){
+//         console.log(arr[i]);  // arr[i]代表的是数组中的每一个元素i
+//     }
+//
+//     console.log(arr);
+
+
+    //foreach遍历
+    // var arr = ["王一", "王二", "王三"];
+    //
+    // arr.forEach(function(item, index, obj) {
+    //     console.log("item:" + item);
+    //     console.log("index:" + index);
+    //     console.log("obj:" + obj);
+    //     console.log("----------");
+    // });
+
+
+    //filter遍历
+    // var arr1 = ["千古", "宿敌", "南山忆", "素颜"];
+    //
+    // var arr2 = arr1.filter(function (element, index, array) {
+    //     if (element.length > 2) { //arr1中的元素，如果是长度超过2个字符的，我就把它放到arr2中去
+    //         return true;
+    //     }
+    //     return false;
+    // });
+    // console.log(arr1);
+    // for(i=0;i<arr1.length;i++){
+    //     console.log(arr1[i])
+    //
+    // }
+    // console.log(arr2);
+    // var arr1 = [1, 3, 6, 2, 5, 6];
+    //
+    // var arr2 = arr1.filter(function (item, index) {
+    //     return item > 4; //将arr1中大于4的元素返回
+    // })
+    // console.log(arr2);
+    // for(i=0;i<arr2.length;i++){
+    //     console.log(arr2[i])
+    // }
+
+    //map遍历
+    // var arr1 = [1, 3, 6, 2, 5, 6];
+    //
+    // var arr2 = arr1.map(function (item, index) {
+    //     return item + 10;  //让arr1中的每个元素加10
+    //
+    // })
+    // console.log(arr2);
+
+    //every遍历 检查的意思
+    // var arr1 = ["千古", "宿敌", "南山忆", "素颜"];
+    // var bool1 = arr1.every(function (element, index, array) {
+    //     if (element.length > 2) {
+    //         return false;
+    //     }
+    //     return true;
+    // });
+    // console.log(bool1);  //输出结果：false。只要有一个元素的长度是超过两个字符的，就返回false
+    //
+    // var arr2 = ["千古", "宿敌", "南山", "素颜"];
+    // var bool2 = arr2.every(function (element, index, array) {
+    //     if (element.length > 2) {
+    //         return false;
+    //         console.log(arr2.indexOf(1))
+    //     }
+    //     return true;
+    // });
+    // console.log(bool2);  //输出结果：true。因为每个元素的长度都是两个字符。
+
+    //some()方法
+    //解释：对数组中每一项运行回调函数，只要有一项返回true，则停止遍历，此方法返回true。
+
+
+//slice()
+//     var arr = ["a", "b", "c", "d", "e", "f"];
+//
+//     var result1 = arr.slice(2); //从第二个值开始提取
+//     var result2 = arr.slice(-2); //提取最后两个元素
+//     var result3 = arr.slice(2, 4); //提取从第二个到第四个之间的值（不包括第四个值）
+//     var result4 = arr.slice(4, 2); //空
+//
+//     console.log("arr:" + JSON.stringify(arr));
+//     console.log("result1:" + JSON.stringify(result1));
+//     console.log("result2:" + JSON.stringify(result2));
+//     console.log("result3:" + JSON.stringify(result3));
+//     console.log("result4:" + JSON.stringify(result4));
+//     很多前端开发人员会用 slice()将伪数组，转化为真数组。写法如下：
+//
+//      array = Array.prototye.slice.call(arrayLike)
+//     或者
+//     array = [].slice.call(arrayLike)
+//     ES6 看不下去这种蹩脚的转化方法，于是出了一个新的 API：（专门用来将伪数组转化成真数组）
+//         array = Array.from(arrayLike)
+
+//     var arr1 = ["a", "b", "c", "d", "e", "f"];
+//     var result1 = arr1.splice(1); //从第index为1的位置开始，删除元素
+//
+//     console.log("arr1：" + JSON.stringify(arr1));
+//     console.log("result1：" + JSON.stringify(result1));
+//
+//     console.log("-----------------------");
+//
+//     var arr2 = ["a", "b", "c", "d", "e", "f"];
+//     var result2 = arr2.splice(-2); //从第一个位置开始，删除元素
+//
+//     console.log("arr2：" + JSON.stringify(arr2));
+//     console.log("result2：" + JSON.stringify(result2));
+//
+//     console.log("-----------------------");
+//
+//     var arr3 = ["a", "b", "c", "d", "e", "f"];
+//     var result3 = arr3.splice(1, 3); //从第index为1的位置开始删除元素,一共删除三个元素
+//
+//     console.log("arr3：" + JSON.stringify(arr3));
+//     console.log("result3：" + JSON.stringify(result3));
+//
+//     console.log("-----------------------");
+//
+// //例子2
+//
+//     var arr4 = ["a", "b", "c", "d", "e", "f"];
+//
+//     //从第index为1的位置开始删除元素,一共删除三个元素。并且在 index=1 的前面追加两个元素
+//     var result4 = arr4.splice(1, 3, "千古壹号", "vae");
+//
+//     console.log("arr4：" + JSON.stringify(arr4));
+//     console.log("result4：" + JSON.stringify(result4));
+
+    //concat()
+    // var arr1 = [1, 2, 3];
+    // var arr2 = ["a", "b", "c"];
+    // var arr3 = ["千古壹号", "vae"];
+    //
+    // var result1 = arr1.concat(arr2);
+    //
+    // var result2 = arr2.concat(arr1, arr3);
+    //
+    // console.log("arr1 =" + JSON.stringify(arr1));
+    // console.log("arr2 =" + JSON.stringify(arr2));
+    // console.log("arr3 =" + JSON.stringify(arr3));
+    //
+    // console.log("result1 =" + JSON.stringify(result1));
+    // console.log("result2 =" + JSON.stringify(result2));
+
+    //join()
+    // var arr = ["a", "b", "c"];
+    //
+    // var result1 = arr.join(); // 这里没有指定连接符，所以默认使用 , 作为连接符
+    //
+    // var result2 = arr.join("-"); // 使用指定的字符串作为连接符
+    //
+    // console.log(typeof arr); // 打印结果：object
+    // console.log(typeof result1); // 打印结果：string
+    //
+    // console.log("arr =" + JSON.stringify(arr));
+    // console.log("result1 =" + JSON.stringify(result1));
+    // console.log("result2 =" + JSON.stringify(result2));
+
+
+    //reverse()
+    // var arr = ["a", "b", "c", "d", "e", "f"];
+    // console.log("arr =" + JSON.stringify(arr));//"a", "b", "c", "d", "e", "f"
+    // var result = arr.reverse(); // 将数组 arr 进行反转
+    //
+    // console.log("arr =" + JSON.stringify(arr));
+    // console.log("result =" + JSON.stringify(result));
+
+    //sort()
+    //无参， sort() 方法时不带参，则默认按照Unicode编码，从小到大进行排序
+    // var arr2 = [5, 2, 11, 3, 4, 1];
+    //
+    // var result = arr2s.sort(); // 将数组 arr2 进行排序
+    //
+    // console.log("arr2 =" + JSON.stringify(arr2));
+    // console.log("result =" + JSON.stringify(result));
+
+    //有参
+    //     浏览器根据回调函数的返回值来决定元素的排序：（重要）
+    //     如果返回一个大于0的值，则元素会交换位置
+    //     如果返回一个小于0的值，则元素位置不变
+    //     如果返回一个0，则认为两个元素相等，则不交换位置
+    // var arr3 = [5, 2, 11, 3, 4, 1];
+    //
+    // // 自定义排序规则
+    // var result = arr3.sort(function(a, b) {
+    //     if (a > b) { // 如果 a 大于 b，则交换 a 和 b 的位置
+    //         return 1;
+    //     } else if (a < b) { // 如果 a 小于 b，则位置不变
+    //         return -1;
+    //     } else { // 如果 a 等于 b，则位置不变
+    //         return 0;
+    //     }
+    // });
+    //
+    // console.log("arr3 =" + JSON.stringify(arr3));
+    // console.log("result =" + JSON.stringify(result));
+    // 代码优化：（冒泡排序）
+
+	// var arr3 = [5, 2, 11, 3, 4, 1];
+    //
+    // // 自定义排序规则
+    // var result = arr3.sort(function(a, b) {
+    //     // return a - b; // 升序排列
+    //     return b - a; // 降序排列
+    // });
+    //
+    // console.log("arr3 =" + JSON.stringify(arr3));
+    // console.log("result =" + JSON.stringify(result));
+
+
+    // splice()练习：数组去重
+    // 代码实现：
+
+    //创建一个数组
+    // var arr = [1, 2, 3, 2, 2, 1, 3, 4, 2, 5];
+    //
+    // //去除数组中重复的数字
+    // //获取数组中的每一个元素
+    // for (var i = 0; i < arr.length; i++) {
+    //     //console.log(arr[i]);
+    //     /*获取当前元素后的所有元素*/
+    //     for (var j = i + 1; j < arr.length; j++) {
+    //         //console.log("---->"+arr[j]);
+    //         //判断两个元素的值是否相等
+    //         if (arr[i] == arr[j]) {
+    //             //如果相等则证明出现了重复的元素，则删除j对应的元素
+    //             arr.splice(j, 1);
+    //             //当删除了当前j所在的元素以后，后边的元素会自动补位
+    //             //此时将不会在比较这个元素吧，我需要在比较一次j所在位置的元素
+    //             //使j自减
+    //             j--;
+    //         }
+    //     }
+    // }
+    //
+    // console.log(arr);
+
+
+    //indexOf("value")，lastIndexOf("value")
+    // var arr = ["a","b","c","d","e","d","c"];
+    //
+    // console.log(arr.indexOf("c"));       //从前往后，找第一个"c"在哪个位置
+    // console.log(arr.lastIndexOf("d"));   //从后往前，找第一个"d"在哪个位置
+
+    // var arr = ["29926392220", "29965620629", "28003663436", " ", "28818504366"];
+    //
+    // var str = [
+    //     {name:"smyh", id: "12334"},
+    //
+    //     {name:"vae", id: "28818504366"}
+    // ];
+    //
+    // str.filter(item => {
+    //     console.log(arr.indexOf(item.name));
+    // })
+
+
+    //find()
+    // let arr = [2, 3, 2, 5, 7, 6];
+    //
+    // let result = arr.find(function (item, index) {
+    //     return item > 4; //遍历数组arr，一旦发现有第一个元素大于4，就把这个元素返回
+    // });
+    //
+    // console.log(result);  //打印结果：5//item值
+    //
+    //findIndex
+    // let arr = [2, 3, 2, 5, 7, 6];
+    //
+    // let result = arr.findIndex(function (item, index) {
+    //     return item > 4; //遍历数组arr，一旦发现有第一个元素大于4，就把这个元素的index返回
+    // });
+    //
+    // console.log(result); //打印结果：3//index值
+
+   // Array.from
+   //  let arrayLike = {
+   //      '0': 'a',
+   //      '1': 'b',
+   //      '2': 'c',
+   //      length: 3
+   //  }
+   //  // es5的写法
+   //  // var arr1 = [].slice.call(arrayLike)
+   //  // es6的写法
+   //  let arr2 = Array.from(arrayLike)
+   //  console.log(arr2)
+   //  console.log(arrayLike)
+
+    //array.of
+    // //Array.of(value1, value2, value3) : 将一系列值转换成数组
+    // let arr = Array.of(1, 'abc', true);
+    // console.log(arr);
+
+
+//     isArray()：判断是否为数组
+//     布尔值 = Array.isArray(被检测的值) ;
+//
+//      toString()：转换数组
+//     字符串 = 数组.toString();
+//     解释：把数组转换成字符串，每一项用,分割。
+//
+//      valueOf()：返回数组本身
+//     数组本身 = 数组.valueOf();
+
+    //
+    // 清空数组，有以下几种方式：
+    //
+	// var array = [1,2,3,4,5,6];
+    //
+    // array.splice(0);      //方式1：删除数组中所有项目
+    // array.length = 0;     //方式2：length属性可以赋值，在其它语言中length是只读
+    // array = [];           //方式3：推荐
+
+//练习反转 reverse（）
+    //  将一个字符串数组的元素的顺序进行反转，使用两种种方式实现。提示：第i个和第length-i-1个进行交换。
+    // function reverse(array){
+    //     for(var i=0;i<array.length/2;i++){
+    //         var temp = array[i];
+    //         array[i] = array[array.length-1-i];
+    //         array[array.length-1-i] = temp;
+    //     }
+    //     return array;
+    // }
+
+    //内置对象
+
+    //date
+    // var date1 = new Date();
+    // console.log(date1);
+    //
+    // // 我在执行这行代码时，当前时间为 2019年2月4日，周一，13:23:52
+    // var myDate = new Date();
+    //
+    // console.log(myDate); // 打印结果：Mon Feb 04 2019 13:23:52 GMT+0800 (中国标准时间)
+    // console.log(myDate.getDate()); // 打印结果：4
+    // console.log(myDate.getDay()); // 打印结果：1
+    // console.log(myDate.getMonth()); // 打印结果：1
+    // console.log(myDate.getFullYear()); // 打印结果：2019
+    // console.log(myDate.getHours()); // 打印结果：13
+    // console.log(myDate.getMinutes()); // 打印结果：23
+    // console.log(myDate.getSeconds()); // 打印结果：52
+    // console.log(myDate.getMilliseconds()); // 打印结果：393
+    //
+    // console.log(myDate.getTime()); // 获取时间戳。打印结果：1549257832393
+    // //时间戳：指的是从格林威治标准时间的1970年1月1日，0时0分0秒到当前日期所花费的毫秒数（1秒 = 1000毫秒）。
+    //
+    //
+    // var myDate = new Date("1970/01/01 0:0:0");
+    //
+    // console.log(myDate.getTime()); // 获取时间戳
+    // 利用时间戳检测代码的执行时间：应用
+    //我们可以在业务代码的前面定义 时间戳1，在业务代码的后面定义 时间戳2。把这两个时间戳相减，就能得出业务代码的执行时间。
+
+
+    //format()
+    // 将时间对象转换为指定格式。
+
+
+//日历
+    // var date = new Date();
+    // //2.然后获取其中的年、月、日和星期
+    // var year = date.getFullYear();
+    // var month = date.getMonth();
+    // var hao = date.getDate();
+    // var week = date.getDay();
+    // console.log(year+" "+(month+1)+" "+hao+" "+week);
+    // console.log(date)
+
+    //倒计时
+//     var timer = setInterval(fn, 1);//时隔一秒就会刷新一次函数
+//
+//     function fn() {
+//         var nowtime = new Date();
+//         var future = new Date("2020/02/03 11:20:00");
+//         var timeSum = future.getTime() - nowtime.getTime();  //获取时间差：发布会时间减去此刻的毫秒值
+//         var day = parseInt(timeSum / 1000 / 60 / 60 / 24);
+//         var hour = parseInt(timeSum / 1000 / 60 / 60 % 24);
+//         var minu = parseInt(timeSum / 1000 / 60 % 60);
+//         var sec = parseInt(timeSum / 1000 % 60);
+//         var millsec = parseInt(timeSum % 1000);
+//
+//         //问题处理：所有的时间小于10的时候，在前面自动补0，毫秒值要补双0（比如如，把 8 秒改成 08 秒）
+//         day = day < 10 ? "0" + day : day;  //day小于10吗？如果小于，就补0；如果不小于，就是day本身
+//         hour = hour < 10 ? "0" + hour : hour;
+//         minu = minu < 10 ? "0" + minu : minu;
+//         sec = sec < 10 ? "0" + sec : sec;
+//         if (millsec < 10) {
+//             millsec = "00" + millsec;
+//         } else if (millsec < 100) {
+//             millsec = "0" + millsec;
+//         }
+// //        console.log(day);
+// //        console.log(parseInt(timeSum/1000/60/60/24));
+//         if (timeSum < 0) {
+//             console.log("距离苹果发布会还有00天00小时00分00秒000毫秒")
+//             clearInterval(timer);
+//             return;
+//         }
+//         console.log("距离苹果发布会还有" + day + "天" + hour + "小时" + minu + "分" + sec + "秒" + millsec + "毫秒")
+//     }
+    //math
+    // var num = -0.6;
+    //
+    // console.log(Math.abs(num));        //取绝对值
+    //
+    // console.log(Math.floor(num));      //向下取整，向小取
+    //
+    // console.log(Math.ceil(num));       //向上取整，向大取
+    //
+    // console.log(Math.round(num));      //四舍五入取整（正数四舍五入，负数五舍六入）
+    //
+    // console.log(Math.random());        //生成0-1之间的随机数
+    //
+    // // 生成 0-x 之间的随机数：10
+    //
+    // Math.round(Math.random()*10)
+    // 生成 x-y 之间的随机数：1-5
+
+    // Math.round(Math.random()*(5-1)+1)
+
+    //encodeURIComponent();   //把字符串作为 URI 组件进行编码
+    //decodeURIComponent();   //把字符串作为 URI 组件进行解码
+
+    // var url = "http://www.cnblogs.com/smyhvae/";
+    //
+    // var str = encodeURIComponent(url);
+    // console.log(str);                           //打印url的编码
+    // console.log(decodeURIComponent(str));       //对url进行编码后，再解码，还原为url
+
+    //包装类
+    //基本数据类型
+//     var str = 123;
+//
+//     str = str.toString(); // 将 number 类型转换为 string 类型 包装类
+//     str.hello = "千古壹号"; // 添加属性
+//
+//     console.log(typeof str); // 打印结果：string
+//     console.log(str.hello); // 打印结果：undefined
+//
+// //引用数据类型
+//     var strObj = new String("smyhvae");
+//     strObj.aaa = 123;
+//     console.log(strObj);
+//     console.log(typeof strObj);  //打印结果：Object
+//     console.log(strObj.aaa);
+
+
+    //String对象方法
+    //    sort();   底层用到了charCodeAt();
+
+    // var str = "I love my country!我你爱中国！";
+    //
+    // //需求：求一个字符串占有几个字符位。
+    // //思路；如果是英文，站一个字符位，如果不是英文占两个字符位。
+    // //技术点：判断该字符是否在0-127之间。（在的话是英文，不在是非英文）
+    // alert(getZFWlength(str));
+    // alert(str.length);
+    //
+    // //定义方法：字符位
+    // function getZFWlength(string) {
+    //     //定义一个计数器
+    //     var count = 0;
+    //     for (var i = 0; i < string.length; i++) {
+    //         //对每一位字符串进行判断，如果Unicode编码在0-127，计数器+1；否则+2
+    //         if (string.charCodeAt(i) < 128 && string.charCodeAt(i) >= 0) {
+    //             count++;
+    //         } else {
+    //             count += 2;
+    //         }
+    //     }
+    //     return count;
+    // }
+
+    // var str = 'qianguyihao';//0-x
+    // result = str.indexOf('h', 2); // 从第三个位置开始查找 'a'这个字符 【重要】
+    //
+    // console.log(result); // 打印结果：9
+
+
+    // //split()方法：字符串变数组
+    // var str3 = "生命壹号|许嵩|smyhvae";
+    //
+    // console.log(str3);
+    //
+    // console.log(str3.split());   // 无参数，表示：把字符串作为一个元素添加到数组中。
+    //
+    // console.log(str3.split(""));  //参数为空字符串，则表示：分隔字符串中每一个字符，分别添加到数组中
+    //
+    // console.log(str3.split("|")); //参数为指定字符，表示：此字符将不会出现在数组的任意一个元素中
+    //
+    // console.log(str3.split("许")); //同理
+    //
+    // //去除前后的空格，trim();
+    // var str1 = "   a   b   c   ";
+    // console.log(str1);
+    // console.log(str1.trim());
+
+    // //replace()方法：替换
+    // var str2 = "Today is fine day,today is fine day !!!"
+    // console.log(str2);
+    // console.log(str2.replace("today","tomorrow"));  //只能替换第一个today
+    // console.log(str2.replace(/today/gi,"tomorrow")); //这里用到了正则，才能替换所有的today
+
+
+    // var str = "abcdEFG";
+    //
+    // //转换成小写
+    // console.log(str.toLowerCase());
+    //
+    // //转换成大写
+    // console.log(str.toUpperCase());
+
+
+    //html方法
+
+    // var str = "你好";
+    //
+    // console.log(str.anchor("http://www.baidu.com"))
+    // console.log(str.big())
+    // console.log(str.sub())
+    // console.log(str.sup())
+    // console.log(str.link("http://www.baidu.com"));
+    // console.log(str.bold())
+
+
+    // var str2 = "sssseeeedddd";
+    //
+    // //定义一个json，然后判断json中是够有该属性，如果有该属性，那么值+1;否则创建一个该属性，并赋值为1；
+    // var json = {};
+    // for (var i = 0; i < str2.length; i++) {
+    //     //判断：如果有该属性，那么值+1;否则创建一个该属性，并赋值为1；
+    //     var key = str2.charAt(i);
+    //     if (json[key] === undefined) {
+    //         json[key] = 1;
+    //     } else {
+    //         json[key] += 1;
+    //     }
+    // }
+    // console.log(json[key]);
+    // console.log(json);
+    //
+    //
+    // console.log("----------------");
+    // //获取json中属性值最大的选项
+    // var maxKey = "";
+    // var maxValue = 0;
+    // for (var key in json) {
+    //     //        if(maxKey == ""){
+    //     //            maxKey = k;
+    //     //            maxValue = json[k];
+    //     //        }else{
+    //     if (json[key] > maxValue) {
+    //         maxKey = k;
+    //         maxValue = json[key];
+    //     }
+    //     //        }
+    // }
+    // console.log(maxKey);
+    // console.log(maxValue);
+
+
+    // var reg = new RegExp("a"); // 定义一个正则表达式：检查一个字符串中是否含有 a
+    //
+    // var str1 = "qianguyihao";
+    // var str2 = "smyh";
+    //
+    // // 通过 test()方法，判断字符串是否符合 上面定义的 reg 规则
+    // console.log(reg.test(str1)); // 打印结果：true
+    // console.log(reg.test(str2)); // 打印结果：false
+    //
+    //
+    // var reg = /A/i; // 定义正则表达式的规则：检查一个字符串中是否含有 a。忽略大小写。
+    // var str = "qiangu";
+    //
+    // console.log(typeof reg);  // 打印结果：object
+    // console.log(reg.test(str)); // 打印结果：true
+
+
+    //正则表达式规则
+    // 1.
+    // /[ab]/ 等价于 /a|b/：检查一个字符串中是否包含 a或b
+    // /[a-z]/：检查一个字符串那种是否包含任意小写字母
+    // /[A-Z]/：任意大写字母
+    // /[A-z]/：任意字母
+    // /[0-9]/：任意数字
+    // /a[bde]c/：检查一个字符串中是否包含 abc 或 adc 或 aec
+// 2.[^ ] 表示：除了
+
+    // 支持正则表达式的 String 对象的方法
+    //split
+    // var str = "1a2b3c4d5e6f7g";
+    //
+    // var result = str.split(/[A-z]/); // 参数是一个正则表达式：表示所有字符
+    // console.log(result);
+    //
+
+    //search
+    // var str = "hello abc hello aec afc";
+    // // /*
+    // // * 搜索字符串中是否含有abc 或 aec 或 afc
+    // // */
+    // result = str.search(/e[bef]c/);
+    // console.log(result); // 打印结果：6 空字符
+
+
+    //match
+    // var str = "1a2a3a4a5e6f7A8B9C";
+    //
+    // var result1 = str.match(/[a-z]/);   // 找到符合要求的第一个内容，然后返回
+    // var result2 = str.match(/[a-z]/g);  // 设置为“全局匹配”模式，匹配字符串中所有的内容
+    // var result3 = str.match(/[a-z]/gi); // 设置多个匹配模式，且顺序无所谓
+    //
+    // console.log(result1); // 打印结果：["a"]
+    // console.log(result2); // 打印结果：["a", "a", "a", "a", "e", "f"]
+    // console.log(result3); // 打印结果：["a", "a", "a", "a", "e", "f", "A", "B", "C"]
+    //
+    //
+    //
+    // //replace()方法：替换
+    // var str2 = "Today is fine day,today is fine day !!!"
+    //
+    // console.log(str2);
+    // console.log(str2.replace("today","tomorrow"));  //只能替换第一个today
+    // console.log(str2.replace(/today/gi,"tomorrow")); //这里用到了正则，且为“全局匹配”模式，才能替换所有的today
+
+
+    //方式一：直接绑定匿名函数
+    // <div id="box1" ></div>
+    //     <script type="text/javascript">
+    // var div1 = document.getElementById("box1");
+    // //绑定事件的第一种方式
+    // div1.onclick = function () {
+    //     alert("我是弹出的内容");
+    // }
+
+    //方式二：先单独定义函数，再绑定
+    // <div id="box1" ></div>
+    //     <script type="text/javascript">
+    // var div1 = document.getElementById("box1");
+    // //绑定事件的第二种方式
+    // div1.onclick = fn;   //注意，这里是fn，不是fn()。fn()指的是返回值。
+    // //单独定义函数
+    // function fn() {
+    //     alert("我是弹出的内容");
+    // }
+
+    //方式三：行内绑定
+    // <div id="box1" onclick="fn()"></div>//绑定时，是写的"fn()"，不是写的"fn"。因为绑定的这段代码不是写在js代码里的，而是被识别成了字符串。。
+    //     <script type="text/javascript">
+    //     function fn() {
+    //         alert("我是弹出的内容");
+    //     }
+
+//节点操作
+//     var myNode = document.getElementsByTagName("img")[0];
+//     console.log(myNode.src);
+//     console.log(myNode.className);    //注意，是className，不是class
+//     console.log(myNode.title);
+//     console.log(myNode.alt)
+//     console.log("------------");
+//     console.log(myNode["src"]);
+//     console.log(myNode["className"]); //注意，是className，不是class
+//     console.log(myNode["title"]);
+//     console.log(myNode.getAttribute("src"));
+//     console.log(myNode.getAttribute("class"));   //注意是class，不是className
+//     console.log(myNode.getAttribute("title"));
+//
+
+//事件的绑定
+//     element.addEventListener('click', function () {
+//     //     }, false);不会被层叠，false表示冒泡
+    //事件对象
+//     document.onclick = function (event) {
+//             // event = event || window.event; ////兼容性写法ie678
+//              console.log(event);}
+//     var aDiv = document.getElementsByTagName("div")[0];
+//     aDiv.onclick = function(ev){
+//         console.log(ev)
+//     }
+
+
+
+
+</script>
+
+</body>
+</html>

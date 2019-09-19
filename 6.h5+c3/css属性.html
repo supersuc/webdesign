@@ -1,0 +1,459 @@
+<!--主要内容-->
+<!--颜色 ,文本 ,盒模型中的 box-sizing 属性 ,处理兼容性问题：私有前缀 ,边框 ,背景属性 ,渐变-->
+
+<!--颜色RGBA和HSLA-->
+<!--H 色调，取值范围 0~360。0或360表示红色、120表示绿色、240表示蓝色。-->
+<!--S 饱和度，取值范围 0%~100%。值越大，越鲜艳。-->
+<!--L 亮度，取值范围 0%~100%。亮度最大时为白色，最小时为黑色。-->
+<!--A 透明度，取值范围 0~1。
+opacity: 0.3; 会将整个盒子及子盒子设置透明度。也就是说，当盒子设置半透明的时候，会影响里面的子盒子。
+background: transparent; 可以单独设置透明度，但设置的是完全透明（不可调节透明度）。
+-->
+<!--background-color: hsla(240,50%,50%,0.4);-->
+
+
+<!--文本-->
+<!--text-shadow: 20px 27px 22px pink;-->
+<!--参数解释：水平位移 垂直位移 模糊程度 阴影颜色。-->
+
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head lang="en">-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title></title>-->
+<!--    <style>-->
+<!--        body {-->
+<!--            background-color: #666;-->
+<!--        }-->
+
+<!--        div {-->
+<!--            font-size: 100px;-->
+<!--            text-align: center;-->
+<!--            font-weight: bold;-->
+<!--            font-family: "Microsoft Yahei";-->
+<!--            color: #666;-->
+<!--        }-->
+
+<!--        /* text-shadow 可以设置多个阴影，每个阴影之间使用逗号隔开*/-->
+<!--        .tu {-->
+<!--            text-shadow: -1px -1px 1px #fff, 1px 1px 1px #000;-->
+<!--        }-->
+
+<!--        .ao {-->
+<!--            text-shadow: -1px -1px 1px #000, 1px 1px 1px #fff;-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div class="ao">生命壹号</div>-->
+<!--<div class="tu">生命壹号</div>-->
+<!--</body>-->
+<!--</html>-->
+
+
+
+<!--盒模型中的 box-sizing 属性-->
+<!--外加模式：（css的默认方式）-->
+<!--box-sizing: content-box;-->
+<!--解释：此时设置的 width 和 height 是内容区域的宽高。-->
+<!--盒子的实际宽度 = 设置的 width + padding + border。-->
+<!--此时改变 padding 和 border 的大小，也不会改变内容的宽高，-->
+<!--而是盒子的总宽高发生变化。-->
+
+<!--内减模式：【需要注意】-->
+<!--box-sizing: border-box;-->
+<!--解释：此时设置的 width 和 height 是盒子的总宽高。-->
+<!--盒子的实际宽度 = 设置的 width。-->
+<!--此时改变 padding 和 border 的大小，-->
+<!--会改变内容的宽高，盒子的总宽高不变。-->
+
+
+
+
+<!--处理兼容性问题：私有前缀-->
+<!--处理兼容性问题的常见方法：为属性添加私有前缀。-->
+<!--background: -webkit-linear-gradient(left, green, yellow);-->
+<!--background: -moz-linear-gradient(left, green, yellow);-->
+<!--background: -ms-linear-gradient(left, green, yellow);-->
+<!--background: -o-linear-gradient(left, green, yellow);-->
+<!--background: linear-gradient(left, green, yellow);-->
+
+
+<!--边框-->
+<!--border-radius-->
+
+
+<!--边框阴影：box-shadow 属性-->
+<!--box-shadow: 水平偏移 垂直偏移 模糊程度 阴影大小 阴影颜色
+水平偏移：正值向右 负值向左。
+垂直偏移：正值向下 负值向上。
+模糊程度：不能为负值。-->
+
+<!--边框图片属性-->
+<!--/* 边框图片的路径*/-->
+<!--border-image-source: url("images/border.png");-->
+<!--/* 图片边框的裁剪*/-->
+<!--border-image-slice: 27;-->
+<!--/*图片边框的宽度*/-->
+<!--border-image-width: 27px;-->
+<!--/*边框图片的平铺*/-->
+<!--/* repeat :正常平铺 但是可能会显示不完整*/-->
+<!--/*round: 平铺 但是保证 图片完整*/-->
+<!--/*stretch: 拉伸显示*/-->
+<!--border-image-repeat: stretch;-->
+<!--box-shadow: 15px 21px 48px -2px #666;-->
+<!--border-image: url("images/border.png") 27/27px round;-->
+
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head lang="en">-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title></title>-->
+<!--    <style>-->
+
+<!--        .parent {-->
+<!--            width: 400px;-->
+<!--        }-->
+<!--        .box {-->
+<!--            width: 100px;-->
+<!--            height: 100px;-->
+<!--            float: left;-->
+<!--            border: 1px solid rgb(144, 12, 63);-->
+<!--            margin: 20px;-->
+<!--            text-align: center;-->
+<!--            line-height: 100px;-->
+<!--            color: #fff;-->
+<!--            font-size: 50px;-->
+<!--            background-color: rgb(255, 141, 26);-->
+
+<!--        }-->
+
+<!--        /*画圆形的方式一*/-->
+<!--        .box:nth-child(1) {-->
+<!--            border-radius: 50px;-->
+<!--        }-->
+
+<!--        /*画圆形的方式二*/-->
+<!--        .box:nth-child(2) {-->
+<!--            border-radius: 50%;-->
+<!--        }-->
+
+<!--        .box:nth-child(3) {-->
+<!--            border-radius: 100px 0 0 0;-->
+<!--            /*存在象限一说,从第一象限出发,顺时针*/-->
+<!--        }-->
+
+<!--        .box:nth-child(4) {-->
+<!--            border-radius: 10px/50px;-->
+<!--            /*水平半径和垂直半径*/-->
+<!--        }-->
+
+<!--        .box:nth-child(5) {-->
+<!--            border-radius: 10%;-->
+<!--        }-->
+
+<!--        .box:nth-child(6) {-->
+<!--            border-radius: 10px 10px;-->
+<!--            /*水平半径和垂直半径*/-->
+<!--        }-->
+
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+
+<!--<div class="parent">-->
+<!--    <div class="box">1</div>-->
+<!--    <div class="box">2</div>-->
+<!--    <div class="box">3</div>-->
+<!--    <div class="box">4</div>-->
+<!--    <div class="box">5</div>-->
+<!--    <div class="box">6</div>-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
+
+
+
+
+<!--背景属性-->
+
+<!--background-size-->
+<!--/* 宽、高的具体数值 */-->
+<!--background-size: 500px 500px;-->
+
+<!--/* 宽高的百分比 */-->
+<!--background-size: 50% 50%;   // 如果两个属性值相同，可以简写成：background-size: 50%;-->
+
+<!--background-size: 100% auto;  //这个属性可以自己试验一下。-->
+
+<!--/* cover：会自动调整缩放比例，保证图片始终填充满背景区域，如有溢出部分则会被隐藏。 */-->
+<!--background-size: cover;-->
+
+<!--cover：会自动调整缩放比例，保证图片始终填充满背景区域，
+如有溢出部分则会被隐藏。也就是说，保证背景图片完全覆盖盒子，
+但不能保证完整显示。-->
+
+<!--contain：会自动调整缩放比例，保证图片始终完整显示在背景区域。
+也就是说，保证背景图片最大化地在盒子里，
+等比例显示，但不保证能铺满盒子。-->
+
+<!--/* contain：会自动调整缩放比例，保证图片始终完整显示在背景区域。  */-->
+<!--background-size: contain;-->
+
+
+<!--background-origin 属性：控制背景从什么地方开始显示。padding-box; border-box;content-box;-->
+<!--background-clip: content-box; 超出的部分，将裁剪掉。属性值可以是：padding-box; border-box;content-box;-->
+<!--<!doctype html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport"-->
+<!--          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">-->
+<!--    <meta http-equiv="X-UA-Compatible" content="ie=edge">-->
+<!--    <title>Document</title>-->
+<!--    <style>-->
+<!--        .div1{-->
+<!--            width: 1000px;-->
+<!--            height: 500px;-->
+<!--            border: 10px solid red;-->
+<!--            padding: 100px 100px;-->
+<!--            margin: 10px auto;-->
+<!--            background: url("1.png") no-repeat;-->
+<!--            background-origin: content-box;-->
+<!--            background-size: contain;-->
+<!--            background-clip: border-box;-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!-- <div class="div1">-->
+
+<!-- </div>-->
+
+<!--</body>-->
+<!--</html>-->
+
+
+<!--同时设置多个背景-->
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head lang="en">-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title></title>-->
+<!--    <style>-->
+<!--        .box {-->
+<!--            height: 416px;-->
+<!--            border: 1px solid #000;-->
+<!--            margin: 100px auto;-->
+<!--            /* 给盒子加多个背景，按照背景语法格式书写，多个背景使用逗号隔开 */-->
+<!--            background:url(4.jpg) no-repeat center,-->
+<!--            url(1.jpg) no-repeat left,-->
+<!--            /*url(1.jpg) no-repeat right top,*/-->
+<!--            url(2.jpg) no-repeat right;-->
+<!--            /*url(1.jpg) no-repeat left bottom;*/-->
+
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div class="box"></div>-->
+<!--</body>-->
+<!--</html>-->
+
+
+
+
+<!--渐变-->
+
+<!--线性渐变：沿着某条直线朝一个方向产生渐变效果。-->
+<!--径向渐变：从一个中心点开始沿着四周产生渐变效果。-->
+<!--重复渐变-->
+<!--渐变属于背景图片属性background-image的属性值
+background-image: linear-gradient(方向, 起始颜色, 终止颜色);
+background-image: linear-gradient(to right, yellow, green);方向可以是：to left、to right、to top、to bottom、角度30deg（指的是顺时针方向30°）。-->
+
+<!--径向渐变-->
+<!--background-image: radial-gradient(辐射的半径大小, 中心的位置, 起始颜色, 终止颜色);-->
+<!--background-image: radial-gradient(100px at center,yellow ,green);-->
+
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head lang="en">-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title></title>-->
+<!--    <style>-->
+<!--        div {-->
+<!--            width: 500px;-->
+<!--            height: 100px;-->
+<!--            margin: 10px auto;-->
+<!--            border: 1px solid #000;-->
+<!--        }-->
+
+<!--        /* 语法：-->
+<!--            linear-gradient(方向，起始颜色，终止颜色);-->
+<!--            方向：to left   to right  to top   to bottom 　角度　30deg-->
+<!--            起始颜色-->
+<!--            终止颜色-->
+<!--        */-->
+<!--        div:nth-child(1) {-->
+<!--            background-image: linear-gradient(to right, yellow, green);-->
+<!--        }-->
+
+<!--        /* 不写方向，表示默认的方向是：从上往下 */-->
+<!--        div:nth-child(2) {-->
+<!--            background-image: linear-gradient(yellow, green);-->
+<!--        }-->
+
+<!--        /* 方向可以指定角度 */-->
+<!--        div:nth-child(3) {-->
+<!--            width: 100px;-->
+<!--            height: 100px;-->
+<!--            background-image: linear-gradient(135deg, yellow, green);-->
+<!--        }-->
+
+<!--        /* 0%的位置开始出现黄色，40%的位置开始出现红色的过度。70%的位置开始出现绿色的过度，100%的位置开始出现蓝色 */-->
+<!--        div:nth-child(4) {-->
+<!--            background-image: linear-gradient(to right,-->
+<!--            yellow 0%,-->
+<!--            red 40%,-->
+<!--            green 70%,-->
+<!--            blue 100%);-->
+
+<!--        }-->
+
+<!--        /* 颜色之间，出现突变 */-->
+<!--        div:nth-child(5) {-->
+<!--            background-image: linear-gradient(45deg,-->
+<!--            yellow 0%,-->
+<!--            yellow 25%,-->
+<!--            blue 25%,-->
+<!--            blue 50%,-->
+<!--            red 50%,-->
+<!--            red 75%,-->
+<!--            green 75%,-->
+<!--            green 100%-->
+<!--            );-->
+<!--        }-->
+
+<!--        div:nth-child(6) {-->
+<!--            background-image: linear-gradient(to right,-->
+<!--            #000 0%,-->
+<!--            #000 25%,-->
+<!--            #fff 25%,-->
+<!--            #fff 50%,-->
+<!--            #000 50%,-->
+<!--            #000 75%,-->
+<!--            #fff 75%,-->
+<!--            #fff 100%-->
+<!--            );-->
+
+<!--        }-->
+
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div></div>-->
+<!--<div></div>-->
+<!--<div></div>-->
+<!--<div></div>-->
+<!--<div></div>-->
+<!--<div></div>-->
+<!--</body>-->
+<!--</html>-->
+
+<!--径向渐变-->
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head lang="en">-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title></title>-->
+<!--    <style>-->
+<!--        div {-->
+<!--            width: 250px;-->
+<!--            height: 250px;-->
+<!--            border: 1px solid #000;-->
+<!--            margin: 20px;-->
+<!--            float: left;-->
+<!--        }-->
+
+<!--        /*-->
+<!--            径向渐变：-->
+<!--            radial-gradient（辐射的半径大小, 中心的位置，起始颜色，终止颜色）;-->
+<!--            中心点位置：at  left  right  center bottom  top-->
+<!--        */-->
+
+<!--        /*辐射半径为100px，中心点在中间*/-->
+<!--        div:nth-child(1) {-->
+<!--            background-image: radial-gradient(100px at center, yellow, green);-->
+<!--        }-->
+
+<!--        /*中心点在左上角*/-->
+<!--        div:nth-child(3) {-->
+<!--            background-image: radial-gradient(at left top, yellow, green);-->
+<!--        }-->
+
+<!--        div:nth-child(2) {-->
+<!--            background-image: radial-gradient(at 50px 50px, yellow, green);-->
+<!--        }-->
+
+<!--        /*设置不同的颜色渐变*/-->
+<!--        div:nth-child(4) {-->
+<!--            background-image: radial-gradient(100px at center,-->
+<!--            yellow 0%,-->
+<!--            green 30%,-->
+<!--            blue 60%,-->
+<!--            red 100%);-->
+<!--        }-->
+
+<!--        /*如果辐射半径的宽高不同，那就是椭圆*/-->
+<!--        div:nth-child(5) {-->
+<!--            background-image: radial-gradient(100px 50px at center, yellow, green);-->
+<!--        }-->
+
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div class="box"></div>-->
+<!--<div class="box"></div>-->
+<!--<div class="box"></div>-->
+<!--<div class="box"></div>-->
+<!--<div class="box"></div>-->
+<!--</body>-->
+<!--</html>-->
+
+
+<!--生成按钮-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS3 渐变</title>
+    <style>
+
+        button:nth-child(1) {
+            width: 200px;
+            height: 200px;
+            margin: 40px auto;
+            border-radius: 100px;
+            background-color: yellowgreen;
+        }
+
+        button:nth-child(2) {
+            width: 200px;
+            height: 200px;
+            margin: 40px auto;
+            border-radius: 100px;
+            background-color: yellowgreen;
+            background-image: radial-gradient(
+                    200px at 100px 100px,
+                    rgba(0, 0, 0, 0),
+                    rgba(0, 0, 0, 0.5)
+            );
+        }
+    </style>
+</head>
+<body>
+<button></button>
+<button></button>
+</body>
+</html>

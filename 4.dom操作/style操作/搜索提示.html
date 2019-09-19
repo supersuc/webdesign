@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding:0;
+    }
+    .box{
+        width: 500px;
+        margin: 50px auto;
+    }
+    input{
+        width: 400px;
+    }
+    button{
+        width: 70px;
+    }
+    ul {
+        width: 392px;
+        padding: 5px;
+        list-style: none;
+        border: 1px solid red;
+    }
+
+    li:hover {
+        background-color: red;
+    }
+</style>
+<body>
+<div class="box">
+    <input type="text"/>
+    <button>搜索</button>
+</div>
+
+<script>
+    var arr = ["a", "ab", "abc", "abcd", "aa", "aaa"];
+    var box = document.getElementsByTagName("div")[0];
+    var inp = box.children[0];
+        inp.onkeyup = function () {
+            var newArr = [];
+            for (i=0;i<arr.length;i++){
+                if(arr[i].indexOf(this.value)===0){
+                    newArr.push("<li>" + arr[i] + "</li>");
+                }
+            }
+            var str = newArr.join("");
+            if (box.getElementsByTagName("ul")[0]){
+                box.removeChild(box.children[2]);
+            }
+            if (this.value.length === 0 || newArr.length === 0) {  //fix bug2、fix bug3
+                //切断函数，直接return
+                return;
+            }
+            var ul = document.createElement("ul");
+            //把创建好的内容添加到ul中。
+            ul.innerHTML = str;
+            box.appendChild(ul);
+        }
+
+//动态操作表格
+//     createElement()
+// rows (只读，table和textarea能用)
+//     insertRow() (只有table能调用)
+//     deleteRow() (只有table能调用)
+//     cells (只读，table和textarea能用)
+//     insertCell() (只有tr能调用)
+//     deleteCell() (只有tr能调用
+//     PS：括号里可以带index。用的不多。
+//
+</script>
+</body>
+</html>

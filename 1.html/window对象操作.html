@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div>aaa</div>
+<a href="javascript:window.location.reload();">点击我打开一个新的页面</a>
+<!--//location.reload()强迫浏览器积分-->
+<!--//javascript:是表示在触发默认动作时，执行一段JavaScript代码，而 javascript:; 表示什么都不执行，-->
+<!--这样点击时就没有任何反应。-->
+<a href="javascript:;">点击我关闭本页面</a>
+<script>
+    console.log(navigator.userAgent);//系统，浏览器)
+    console.log(navigator.platform);//浏览器支持的系统，win/mac/linux
+    //新窗口 = window.open(地址,是否开新窗口,新窗口的各种参数);
+    var a1 = document.getElementsByTagName("a")[0];
+    var a2 = document.getElementsByTagName("a")[1];
+    a1.onclick = function () {
+// //举例1： window.open("http://www.jx.com","_blank");
+        var json = {
+            "name": "helloworld",
+            "fullscreen": "no",
+            "location": "no",
+            "width": "100px",
+            "height": "100px",
+            "top": "100px",
+            "left": "100px"
+        };
+        var newWin = window.open("http://www.baidu.com", "_blank", json); //举例2
+            //      newWin.moveTo(1000, 1000);坐标属性
+            //      newWin.moveBy(0, 1000);坐标属性
+            //      newWin.resizeTo(100, 500);//x,y尺寸大小<指定一个新高度>
+                    newWin.window.resizeBy(-100,2000);//窗口宽度和高度的《变化量》，
+
+    }
+
+    //关闭本页面
+    a2.onclick = function () {
+        window.close();
+    }
+
+//location对象
+    var div = document.getElementsByTagName("div")[0];
+    div.onclick = function () {
+
+        location.assign("http://www.baidu.com");//地址有记录
+        // location.href = "http://www.baidu.com";   //点击div时，跳转到指定链接
+        //     window.open("http://www.baidu.com","_blank");  //方式二
+        // location.replace("http://www.baidu.com");
+        // 该方法通过指定URL替换当前缓存在历史里（客户端）的项目，
+        // 因此当使用replace方法之后，你不能通过“前进”和“后退”来访问已经被替换的URL。
+    }
+    // div.onclick = setTimeout(function () {
+    //     location.href = "http://www.baidu.com";
+    // }, 1000);
+//     location.assign()：改变浏览器地址栏的地址，并记录到历史中
+//     设置location.href 就会调用assign()。一般使用location.href 进行页面之间的跳转。
+//     location.replace()：替换浏览器地址栏的地址，不会记录到历史中
+//     location.reload()：重新加载
+</script>
+</body>
+</html>

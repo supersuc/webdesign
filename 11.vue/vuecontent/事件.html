@@ -1,0 +1,281 @@
+<!--&lt;!&ndash; click事件 &ndash;&gt;-->
+<!--<button v-on:click="doThis" xmlns:v-on="http://www.w3.org/1999/xhtml"></button>-->
+
+<!--&lt;!&ndash; 缩写 &ndash;&gt;-->
+<!--<button @click="doThis"></button>-->
+
+<!--&lt;!&ndash; 内联语句 &ndash;&gt;-->
+<!--<button v-on:click="doThat('hello', $event)"></button>-->
+
+<!--&lt;!&ndash; 阻止冒泡 &ndash;&gt;-->
+<!--<button @click.stop="doThis"></button>-->
+
+<!--&lt;!&ndash; 阻止默认行为 &ndash;&gt;-->
+<!--<button @click.prevent="doThis"></button>-->
+
+<!--&lt;!&ndash; 阻止默认行为，没有表达式 &ndash;&gt;-->
+<!--<form @submit.prevent></form>-->
+
+<!--&lt;!&ndash;  串联修饰符 &ndash;&gt;-->
+<!--<button @click.stop.prevent="doThis"></button>-->
+
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <meta http-equiv="X-UA-Compatible" content="ie=edge">-->
+<!--    <title>Document</title>-->
+<!--    <script src="node_modules/vue/dist/vue.js"></script>-->
+<!--    <style>-->
+<!--        .father {-->
+<!--            height: 300px;-->
+<!--            width: 300px;-->
+<!--            background: pink;-->
+<!--        }-->
+
+<!--        .child {-->
+<!--            width: 200px;-->
+<!--            height: 200px;-->
+<!--            background: green;-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+
+<!--<body>-->
+<!--<div id="app">-->
+<!--&lt;!&ndash;    只有点击事件本身的时候才会被触发&ndash;&gt;-->
+<!--    <div class="father" @click.self="fatherClick">-->
+<!--&lt;!&ndash;    <div class="father" @click="fatherClick">&ndash;&gt;-->
+<!--&lt;!&ndash;    <div class="father" @click.capture="fatherClick">&ndash;&gt;-->
+<!--        <div class="child" @click="childClick">-->
+<!--&lt;!&ndash;            <div class="child" @click:stop="childClick">&ndash;&gt;-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <a href="http://www.baidu.com" @click.prevent="linkClick">百度一下</a>-->
+<!--</div>-->
+<!--<script>-->
+
+<!--    var vm = new Vue({-->
+<!--        el: '#app',-->
+<!--        data: {},-->
+<!--        methods: {-->
+<!--            fatherClick: function () {-->
+<!--                console.log('father 被点击了');-->
+<!--            },-->
+<!--            childClick: function () {-->
+<!--                console.log('child 被点击了');-->
+<!--            },-->
+<!--            linkClick:function () {-->
+<!--                console.log("超链接被点击了");-->
+<!--            }-->
+<!--        }-->
+<!--    })-->
+
+<!--</script>-->
+<!--</body>-->
+
+<!--</html>-->
+
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Document</title>-->
+<!--    <script src="node_modules/vue/dist/vue.js"></script>-->
+<!--</head>-->
+
+<!--<body>-->
+<!--<div id="app">-->
+<!--    &lt;!&ndash; 阻止表单中submit的默认事件 submit失效 &ndash;&gt;-->
+<!--    <form @submit.prevent action="http://www.baidu.com">-->
+<!--        &lt;!&ndash; 执行自定义的click事件 &ndash;&gt;-->
+<!--        <input type="submit" @click="mySubmit" value="表单提交">-->
+<!--    </form>-->
+
+<!--</div>-->
+<!--</body>-->
+
+<!--<script>-->
+<!--    new Vue({-->
+<!--        el: '#app',-->
+<!--        data: {-->
+<!--        },-->
+<!--        methods: {-->
+<!--            mySubmit: function() {-->
+<!--                alert('ok');-->
+<!--            }-->
+<!--        }-->
+<!--    });-->
+<!--</script>-->
+
+<!--</html>-->
+
+
+
+
+<!--Vue内置的按键修饰符：-->
+<!--.enter-->
+<!--.tab-->
+<!--.delete (捕获 “删除” 和 “退格” 键)-->
+<!--.esc-->
+<!--.space-->
+<!--.up-->
+<!--.down-->
+<!--.left-->
+<!--.right-->
+<!--1.0.8+版本：支持单字母的按键别名。-->
+
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <meta http-equiv="X-UA-Compatible" content="ie=edge">-->
+<!--    <title>Document</title>-->
+<!--    <script src="node_modules/vue/dist/vue.js"></script>-->
+<!--</head>-->
+
+<!--<body>-->
+
+<!--<div id="app">-->
+<!--    搜索框：-->
+<!--    <input type="text" id="search" v-model="name" v-focus>-->
+<!--</div>-->
+
+<!--<script>-->
+<!--    // js原生-->
+<!--    // document.getElementById("search").focus();-->
+
+<!--    //自定义全局指令 v-focus，让文本框自动获取焦点-->
+<!--    //参数1：指令的名称。注意，在定义的时候，指令的名称前面，不需要加 v- 前缀；但是：在`调用`的时候，必须在指令名称前 加上 v- 前缀-->
+<!--    //参数2：是一个对象，这个对象身上，有一些指令相关的函数，这些函数可以在特定的阶段，执行相关的操作-->
+<!--    Vue.directive('focus', {-->
+<!--        //在每个函数中，第一个参数，永远是 el ，表示 被绑定了指令的那个元素，这个 el 参数，是一个原生的JS对象（DOM对象）-->
+<!--        bind: function (el) { // 每当指令绑定到元素上的时候，会立即执行这个 bind 函数，【只执行一次】-->
+<!--            // 在元素 刚绑定了指令的时候，还没有 插入到 DOM中去，这时候，调用 focus 方法没有作用-->
+<!--            //  因为，一个元素，只有插入DOM之后，才能获取焦点-->
+<!--            // el.focus()-->
+<!--        },-->
+<!--        inserted: function (el) {  // inserted 表示元素 插入到DOM中的时候，会执行 inserted 函数【触发1次】-->
+<!--            el.focus()-->
+<!--            // 和JS行为有关的操作，最好在 inserted 中去执行，防止 JS行为不生效-->
+<!--        },-->
+<!--        updated: function (el) {  // 当VNode更新的时候，会执行 updated， 【可能会触发多次】-->
+<!--        }-->
+<!--    })-->
+
+<!--    new Vue({-->
+<!--        el: '#app',-->
+<!--        data: {-->
+<!--            name: 'smyhvae'-->
+<!--        }-->
+<!--    })-->
+<!--</script>-->
+<!--</body>-->
+
+<!--</html>-->
+
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <meta http-equiv="X-UA-Compatible" content="ie=edge">-->
+<!--    <title>Document</title>-->
+<!--    <script src="node_modules/vue/dist/vue.js"></script>-->
+<!--</head>-->
+
+<!--<body>-->
+
+<!--<div id="app">-->
+<!--    搜索框1：-->
+<!--    <input type="text" id="search" v-model="name" v-color="'red'">&lt;!&ndash;//字符串常量&ndash;&gt;-->
+<!--</div>-->
+
+<!--<script>-->
+
+<!--    //自定义全局指令 v-color：设置DOM元素的color属性-->
+<!--    Vue.directive('color', {-->
+<!--        // 样式，只要通过指令绑定给了元素，不管这个元素有没有被插入到页面中去，这个元素肯定有了一个内联的样式-->
+<!--        // 将来元素肯定会显示到页面中，这时候，浏览器的渲染引擎必然会解析样式，应用给这个元素-->
+<!--        // 意思是说，我们可以把样式的代码写到bind中去（即使这个时候，dom元素还没有被创建）-->
+<!--        bind: function (el, binding) { // 每当指令绑定到元素上的时候，会立即执行这个 bind 函数，【只执行一次】-->
+
+<!--            console.log(binding.name); //打印结果：color-->
+<!--            console.log(binding.value); //打印结果：red-->
+<!--            console.log(binding.expression);  //'red'-->
+
+<!--            el.style.color = binding.value// 通过bining拿到v-color中传递过来的值-->
+
+
+<!--        },-->
+<!--        inserted: function (el) {  // inserted 表示元素 插入到DOM中的时候，会执行 inserted 函数【触发1次】-->
+<!--            // 和JS行为有关的操作，最好在 inserted 中去执行，防止 JS行为不生效-->
+<!--            el.focus();-->
+<!--        },-->
+<!--        updated: function (el) {  // 当VNode更新的时候，会执行 updated， 【可能会触发多次】-->
+<!--        }-->
+<!--    })-->
+
+<!--    new Vue({-->
+<!--        el: '#app',-->
+<!--        data: {-->
+<!--            name: 'smyhvae'-->
+<!--        }-->
+<!--    })-->
+<!--</script>-->
+<!--</body>-->
+
+<!--</html>-->
+
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+    <span v-fontweight="300">苏超加油</span>
+</div>
+
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            name:"suchao"
+        },
+        directives:{
+            'fontweight':{
+                bind:function (el,binding) {
+                    el.style.fontWeight = binding.value;
+                }
+            }
+        }
+    })
+</script>
+</body>
+</html>
+<!--在很多时候，你可能想在 bind 和 update 时触发相同行为，而不关心其它的钩子。比如上面的代码中，我们可以写成简写形式：-->
+
+<!--//自定义私有指令（简写形式）-->
+<!--directives: {-->
+<!--'fontweight': function (el, binding) { //注意，这个function等同于把代码写到了 bind 和 update 中去-->
+<!--el.style.fontWeight = binding.value;-->
+<!--}-->
+<!--}-->

@@ -1,0 +1,23 @@
+table{
+    background-color: #eee;
+    border-collapse:collapse;
+    width: 400px;
+}
+tr{
+    background-color:#eee;
+}
+th, td
+{
+    border: 1px solid black;
+    text-align: center;
+}
+th,td{
+    padding:10px 20px;
+}
+thead>tr{
+    background-color: #40D2B1;
+    height: 20px;
+}
+thead{
+    color: #ede635;
+}

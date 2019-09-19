@@ -1,0 +1,614 @@
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head lang="en">-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>样式操作和类操作</title>-->
+<!--    <style>-->
+<!--        div {-->
+<!--            width: 100px;-->
+<!--            height: 100px;-->
+<!--            background-color: pink;-->
+<!--        }-->
+
+<!--        .current {-->
+<!--            background-color: red;-->
+<!--        }-->
+<!--    </style>-->
+<!--    <script src="jquery.min.js"></script>-->
+<!--    <script>-->
+<!--        $(function () {-->
+<!--            $("button").eq(0).click(function () {-->
+<!--                //添加类-->
+<!--                $("div").addClass("current");-->
+<!--                //判断类-->
+<!--                alert($("div").hasClass("current"));-->
+<!--            });-->
+
+<!--            $("button").eq(1).click(function () {-->
+<!--                //删除类-->
+<!--                $("div").removeClass("current");-->
+<!--                //判断类-->
+<!--                alert($("div").hasClass("current"));-->
+<!--            });-->
+<!--            //alert($("div").hasClass("current"));//jquery对s象中只要有一个带有类名的就是true，所有都不带才是false。-->
+<!--        })-->
+<!--    </script>-->
+<!--</head>-->
+<!--<body>-->
+<!--<button>添加</button>-->
+<!--<button>删除</button>-->
+<!--<div></div>-->
+<!--<div></div>-->
+<!--<div></div>-->
+<!--<div class="current"></div>-->
+<!--</body>-->
+<!--</html>-->
+
+<!--切换类样式toggleClass-->
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head lang="en">-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title></title>-->
+<!--    <style>-->
+<!--        div {-->
+<!--            width: 100px;-->
+<!--            height: 100px;-->
+<!--            background-color: green;-->
+<!--        }-->
+<!--        .current {-->
+<!--            background-color: red;-->
+<!--        }-->
+<!--    </style>-->
+<!--    <script src="jquery.min.js"></script>-->
+<!--    <script>-->
+<!--        $(function () {-->
+<!--            $("button").click(function () {-->
+<!--                //需求：点击按钮 ，切换背景-->
+<!--                //切换类（toggleCLass）-->
+<!--                $("div").toggleClass("current");-->
+<!--            });-->
+<!--        })-->
+<!--    </script>-->
+<!--</head>-->
+<!--<body>-->
+<!--<button>切换背景</button>-->
+<!--<div></div>-->
+<!--</body>-->
+<!--</html>-->
+
+
+
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head lang="en">-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title></title>-->
+<!--    <style type="text/css">-->
+<!--        * {-->
+<!--            margin: 0;-->
+<!--            padding: 0;-->
+<!--        }-->
+
+<!--        ul {-->
+<!--            list-style: none;-->
+<!--        }-->
+
+<!--        .wrapper {-->
+<!--            width: 1000px;-->
+<!--            height: 475px;-->
+<!--            margin: 0 auto;-->
+<!--            margin-top: 100px;-->
+<!--        }-->
+
+<!--        .tab {-->
+<!--            border: 1px solid #ddd;-->
+<!--            border-bottom: 0;-->
+<!--            height: 36px;-->
+<!--            width: 320px;-->
+<!--        }-->
+
+<!--        .tab li {-->
+<!--            position: relative;-->
+<!--            float: left;-->
+<!--            width: 80px;-->
+<!--            height: 34px;-->
+<!--            line-height: 34px;-->
+<!--            text-align: center;-->
+<!--            cursor: pointer;-->
+<!--            border-top: 4px solid #fff;-->
+<!--        }-->
+
+<!--        .tab span {-->
+<!--            position: absolute;-->
+<!--            right: 0;-->
+<!--            top: 10px;-->
+<!--            background: #ddd;-->
+<!--            width: 1px;-->
+<!--            height: 14px;-->
+<!--            overflow: hidden;-->
+<!--        }-->
+
+<!--        .products {-->
+<!--            width: 1002px;-->
+<!--            border: 1px solid #ddd;-->
+<!--            height: 476px;-->
+<!--        }-->
+
+<!--        .products .main {-->
+<!--            float: left;-->
+<!--            display: none;-->
+<!--        }-->
+
+<!--        .products .main.selected {-->
+<!--            display: block;-->
+<!--        }-->
+
+<!--        .tab li.active {-->
+<!--            border-color: red;-->
+<!--            border-bottom: 0;-->
+<!--        }-->
+
+<!--    </style>-->
+<!--    <script src="jquery.min.js"></script>-->
+<!--    <script>-->
+<!--        jQuery(window).ready(function () {-->
+<!--            //需求:鼠标放到那个li上，让该li添加active类，下面的对应的.main的div添加selected-->
+<!--            $(".tab>li").mouseenter(function () {-->
+<!--                //不用判断，当前的li添加active类，其他的删除active类-->
+<!--                $(this).addClass("active").siblings("li").removeClass("active");-->
+<!--                //对应索引值的div添加selected类，其他的删除selected类-->
+<!--                //【重要】根据tab的索引值获取下方图片div的索引值-->
+<!--                $(".products>div").eq($(this).index()).addClass("selected").siblings("div").removeClass("selected");-->
+<!--            });-->
+<!--        });-->
+<!--    </script>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div class="wrapper">-->
+<!--    <ul class="tab">-->
+<!--        <li class="tab-item active">国际大牌<span>◆</span></li>-->
+<!--        <li class="tab-item">国妆名牌<span>◆</span></li>-->
+<!--        <li class="tab-item">清洁用品<span>◆</span></li>-->
+<!--        <li class="tab-item">男士精品</li>-->
+<!--    </ul>-->
+<!--    <div class="products">-->
+<!--        <div class="main selected">-->
+<!--            <a href="###"><img src="timg.jpg" alt=""/></a>-->
+<!--        </div>-->
+<!--        <div class="main">-->
+<!--            <a href="###"><img src="timg%20(1).jpg" alt=""/></a>-->
+<!--        </div>-->
+<!--        <div class="main">-->
+<!--            <a href="###"><img src="timg.jpg" alt=""/></a>-->
+<!--        </div>-->
+<!--        <div class="main">-->
+<!--            <a href="###"><img src="timg%20(1).jpg" alt=""/></a>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--</body>-->
+<!--</html>-->
+
+
+
+<!--jq节点操作-->
+<!--jq创建元素对象-->
+<!--//方式一：      $("标签")             :类比于js中的document.createElement("li");-->
+<!--$("<li class='aaa'>我是li标签</li>"))-->
+<!--//方式二：      $("ul").html("");     :类比innerHTML属性。因为此属性，识别标签。-->
+<!--$("ul").html("<li>我是html方法创建出来的li标签</li>")-->
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head lang="en">-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title></title>-->
+<!--    <script src="jquery.min.js"></script>-->
+<!--    <script>-->
+<!--        jQuery(document).ready(function () {-->
+<!--            $("button").click(function () {-->
+<!--                //创建一个新的jquery对象li-->
+<!--                var jqNewLi = $("<li>我是jquery创建出来的li。用的是append方法添加</li>");-->
+
+<!--                //append();  在盒子里的最末尾添加与严肃-->
+<!--                $("ul").append(jqNewLi);    //把新创建的 li 塞进已知的 ul 中-->
+<!--                //jqNewLi.appendTo($("ul")); //方式二：把新创建的li塞进ul中。作用同上-->
+<!--                //方式三 $(selector).prepend(node);四$(selector).after(node);五$(selector).before(node);-->
+<!--            })-->
+<!--        });-->
+<!--    </script>-->
+<!--</head>-->
+<!--<body>-->
+<!--<button>添加li</button>-->
+
+<!--<ul>-->
+<!--    <li>我是土著li</li>-->
+<!--</ul>-->
+
+<!--</body>-->
+<!--</html>-->
+
+
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head lang="en">-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title></title>-->
+<!--    <style>-->
+<!--        select {-->
+<!--            width: 170px;-->
+<!--            height: 240px;-->
+<!--            font-size: 18px;-->
+<!--            background-color: #a4ff34;-->
+<!--        }-->
+<!--    </style>-->
+<!--    <script src="jquery.min.js  "></script>-->
+<!--    <script>-->
+<!--        $(function () {-->
+
+<!--            //步骤：-->
+<!--            //1.将左侧的子标签全部移动到右侧。-->
+<!--            $("button").eq(0).click(function () {-->
+<!--                //右侧标签.append(左侧标签);-->
+<!--                $("#sel2").append($("#sel1 option"));-->
+<!--            });-->
+
+<!--            //2.将右侧的子标签全部移动到左侧。-->
+<!--            $("button").eq(1).click(function () {-->
+<!--                //左侧标签.append(右侧标签);-->
+<!--                $("#sel1").append($("#sel2 option"));-->
+<!--            });-->
+
+<!--            //第二步：获取子元素的时候要注意，获取的必须是，被选中的元素。-->
+<!--            //技术点：怎么获取被选中的子元素呢？？？答案：option:selected;-->
+<!--            //1.将左侧被选中的子标签移动到右侧-->
+<!--            $("button").eq(2).click(function () {-->
+<!--                //右侧标签.append(左侧标签);-->
+<!--                $("#sel2").append($("#sel1 option:selected"));-->
+<!--            });-->
+
+<!--            //2.将右侧被选中的子标签移动到左侧-->
+<!--            $("button").eq(3).click(function () {-->
+<!--                //右侧标签.append(左侧标签);-->
+<!--                $("#sel1").append($("#sel2 option:selected"));-->
+<!--            });-->
+
+<!--        })-->
+<!--    </script>-->
+<!--</head>-->
+<!--<body>-->
+<!--<select id="sel1" size="10" multiple>-->
+<!--    <option value="0">香蕉</option>-->
+<!--    <option value="1">苹果</option>-->
+<!--    <option value="2">鸭梨</option>-->
+<!--    <option value="3">葡萄</option>-->
+<!--</select>-->
+<!--<button>>>></button>-->
+<!--<button><<<</button>-->
+<!--<button>></button>-->
+<!--<button><</button>-->
+<!--<select id="sel2" size="10" multiple>-->
+
+<!--</select>-->
+<!--</body>-->
+<!--</html>-->
+
+
+<!--动态获取数据-->
+<!--<!doctype html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport"-->
+<!--          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">-->
+<!--    <meta http-equiv="X-UA-Compatible" content="ie=edge">-->
+<!--    <title>Document</title>-->
+
+<!--    <style>-->
+<!--        table{-->
+<!--            border: 1px solid #eee;-->
+<!--            border-spacing: 0;-->
+<!--            border-collapse: collapse;-->
+<!--        }-->
+<!--        th,td{-->
+<!--            border: 1px solid #d0d0d0;-->
+<!--            color: #404060;-->
+<!--            padding: 10px;-->
+<!--        }-->
+<!--        th{-->
+<!--            background-color: #09c;-->
+<!--            font: bold 16px "微软雅黑";-->
+<!--            color: #fff;-->
+<!--        }-->
+<!--        td {-->
+<!--            font: 14px "微软雅黑";-->
+<!--        }-->
+<!--        tbody tr {-->
+<!--            background-color: #f0f0f0;-->
+<!--        }-->
+<!--        tbody tr:hover {-->
+<!--            cursor: pointer;-->
+<!--            background-color: #fafafa;-->
+<!--        }-->
+<!--    </style>-->
+
+<!--    <script src="jquery.min.js"></script>-->
+<!--    <script>-->
+<!--        $(function () {-->
+<!--            var json = [{-->
+<!--                name: "博客园",-->
+<!--                url: "http://www.cnblogs.com/smyhvae/",-->
+<!--                type: "程序员的精神家园"-->
+<!--            }, {-->
+<!--                name: "简书",-->
+<!--                url: "https://www.jianshu.com/u/4d2e6b4bf117",-->
+<!--                type: "写作平台"-->
+<!--            }, {-->
+<!--                name: "百度",-->
+<!--                url: "https://www.baidu.com/",-->
+<!--                type: "你就知道"-->
+<!--            }];-->
+
+<!--            $("input").click(function () {-->
+<!--                console.log(11);-->
+<!--                var str = "";-->
+<!--                for (i=0;i<json.length;i++){-->
+<!--                        str += "<tr><td>"+json[i].name+"</td><td>"+json[i].url+"</td><td>"+json[i].type+"</td></tr>";-->
+<!--                console.log(str);-->
+<!--                }-->
+<!--                $("#tbjson").html(str);-->
+
+<!--            })-->
+<!--        })-->
+
+
+
+<!--    </script>-->
+<!--</head>-->
+<!--<body>-->
+<!--<input type="button" value="获取数据" id="json">-->
+<!--<table>-->
+<!--    <thead>-->
+<!--        <tr>-->
+<!--            <th>标题</th>-->
+<!--            <th>地址</th>-->
+<!--            <th>说明</th>-->
+<!--        </tr>-->
+<!--    </thead>-->
+<!--    <tbody id="tbjson">-->
+
+<!--    </tbody>-->
+<!--</table>-->
+<!--</body>-->
+<!--</html>-->
+
+
+<!--jq设置和获取属性-->
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head lang="en">-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title></title>-->
+<!--    <style>-->
+<!--        .aaa {-->
+<!--            border: 1px solid red;-->
+<!--        }-->
+<!--    </style>-->
+<!--    <script src="jquery.min.js"></script>-->
+<!--    <script>-->
+<!--        $(function () {-->
+<!--            //获取元素，绑定属性-->
+<!--            var jqinp = $("input").eq(0);-->
+<!--            var jqinp2 = $("input:checkbox");-->
+<!--            var jqbtn = $("button");-->
+
+<!--            jqbtn.click(function () {-->
+<!--                //是绑定到jquery的衣服上，而不是标签上。所以没达到效果-->
+<!--//                jqinp.title = 111;-->
+<!--//                console.log(jqinp.title);-->
+
+<!--                //绑定到标签上-->
+<!--                jqinp.attr("title", 111);-->
+<!--                console.log(jqinp.attr("title"));-->
+
+<!--                jqinp.attr("aaa", 111);-->
+<!--                console.log(jqinp.attr("aaa"));-->
+
+<!--                //两个参数是给属性赋值，单个参数是获取属性值。-->
+<!--                jqinp.attr("class", "aaa");-->
+<!--                console.log(jqinp.attr("class"));-->
+
+<!--                jqinp.removeAttr("class");-->
+<!--                console.log(jqinp.attr("class"));-->
+
+<!--                //form中的特殊属性，用prop-->
+<!--                jqinp2.prop("checked", true);-->
+<!--                // console.log(jqinp2)-->
+<!--//                jqinp2.attr("checked",true);//一次性的。鼠标多点击几次，就失效了。-->
+<!--//                 针对checked、selected、disabled属性，要使用 prop()方法，而不是其他的方法。-->
+<!--// prop方法通常用来影响DOM元素的动态状态，而不是改变的HTML属性。例如：input和button的disabled特性，-->
+<!--// 以及checkbox的checked特性。-->
+<!--            });-->
+<!--        })-->
+<!--    </script>-->
+<!--</head>-->
+<!--<body>-->
+<!--<button>绑定</button>-->
+<!--<input type="text"/>-->
+<!--<input type="checkbox"/>-->
+
+<!--</body>-->
+<!--</html>-->
+
+
+
+<!--全选和反选-->
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+
+<!--<head lang="en">-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title></title>-->
+<!--    <style>-->
+<!--        * {-->
+<!--            padding: 0;-->
+<!--            margin: 0;-->
+<!--        }-->
+
+<!--        .wrap {-->
+<!--            width: 300px;-->
+<!--            margin: 100px auto 0;-->
+<!--        }-->
+
+<!--        table {-->
+<!--            border-collapse: collapse;-->
+<!--            border-spacing: 0;-->
+<!--            border: 1px solid #c0c0c0;-->
+<!--        }-->
+
+<!--        th,-->
+<!--        td {-->
+<!--            border: 1px solid #d0d0d0;-->
+<!--            color: #404060;-->
+<!--            padding: 10px;-->
+<!--        }-->
+
+<!--        th {-->
+<!--            background-color: #09c;-->
+<!--            font: bold 16px "微软雅黑";-->
+<!--            color: #fff;-->
+<!--        }-->
+
+<!--        td {-->
+<!--            font: 14px "微软雅黑";-->
+<!--        }-->
+
+<!--        tbody tr {-->
+<!--            background-color: #f0f0f0;-->
+<!--        }-->
+
+<!--        tbody tr:hover {-->
+<!--            cursor: pointer;-->
+<!--            background-color: #fafafa;-->
+<!--        }-->
+<!--    </style>-->
+<!--    <script src="jquery.min.js"></script>-->
+<!--    <script>-->
+<!--        $(function () {-->
+<!--            //需求1：点击上面的多选按钮，下面的所有多选按钮都和上面的一致-->
+<!--            //需求2：点击下面的多选按钮，判断下面的所有多选按钮都是否全部被选定只有全部被选定上面的才被选定-->
+
+
+<!--            //需求1：点击上面的多选按钮，下面的所有多选按钮都和上面的一致-->
+<!--            //步骤：绑定事件，直接让下面的所有按钮和上面的按钮属性值一模一样-->
+<!--            $("#j_cbAll input:checkbox").click(function () {-->
+<!--                //直接让下面的所有按钮和上面的按钮属性值一模一样-->
+<!--                $("#j_tb input:checkbox").prop("checked", $(this).prop("checked"));-->
+<!--            });-->
+
+<!--            //需求2：点击下面的多选按钮，判断下面的所有多选按钮都是否全部被选定只有全部被选定上面的才被选定-->
+<!--            //需求2：点击下面的多选按钮，判断下面的所有多选按钮都是否全部被选定只有全部被选定上面的才被选定-->
+<!--            $("#j_tb input:checkbox").click(function () {-->
+<!--                //判断，只有所有都背选定，上面的才被选定-->
+<!--                //技术点：带有checked属性的标签和checkbox个数一样多的时候-->
+<!--                if ($("#j_tb input:checkbox").length === $("#j_tb input:checked").length) {-->
+<!--                    //只有所有的都有checked属性，上面的才被选定-->
+<!--                    $("#j_cbAll input:checkbox").prop("checked", true);-->
+<!--                } else {-->
+<!--                    $("#j_cbAll input:checkbox").prop("checked", false);-->
+<!--                }-->
+<!--            });-->
+
+
+<!--        })-->
+<!--    </script>-->
+<!--</head>-->
+
+<!--<body>-->
+<!--<div class="wrap">-->
+<!--    <table>-->
+<!--        <thead  id="j_cbAll">-->
+<!--        <tr>-->
+<!--            <th>-->
+<!--                <input type="checkbox"/>-->
+<!--            </th>-->
+<!--            <th>课程名称</th>-->
+<!--            <th>所属团队</th>-->
+<!--        </tr>-->
+<!--        </thead>-->
+<!--        <tbody id="j_tb">-->
+<!--        <tr>-->
+<!--            <td>-->
+<!--                <input type="checkbox"/>-->
+<!--            </td>-->
+<!--            <td>JavaScript</td>-->
+<!--            <td>千古壹号</td>-->
+<!--        </tr>-->
+<!--        <tr>-->
+<!--            <td>-->
+<!--                <input type="checkbox"/>-->
+<!--            </td>-->
+<!--            <td>css</td>-->
+<!--            <td>千古壹号</td>-->
+<!--        </tr>-->
+<!--        <tr>-->
+<!--            <td>-->
+<!--                <input type="checkbox"/>-->
+<!--            </td>-->
+<!--            <td>html</td>-->
+<!--            <td>千古壹号</td>-->
+<!--        </tr>-->
+<!--        <tr>-->
+<!--            <td>-->
+<!--                <input type="checkbox"/>-->
+<!--            </td>-->
+<!--            <td>jQuery</td>-->
+<!--            <td>千古壹号</td>-->
+<!--        </tr>-->
+<!--        </tbody>-->
+<!--    </table>-->
+<!--</div>-->
+<!--</body>-->
+
+<!--</html>-->
+
+
+<!--val()和text()-->
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="jquery.min.js"></script>
+    <script>
+        jQuery(document).ready(function () {
+            //val();   获取标签中的value属性的值。带有参数是赋值(类比js中的value属性)
+            console.log($("input").val());
+
+            $("input").val("我是value()赋值的input内容");
+            console.log($("input").val());
+
+            console.log("-----------------");
+
+            //text();  获取双闭合标签中的文本值。（不识别标签）(类比js中的innerText)
+            console.log($("div").text());
+            $("div").text("<li>我是text()赋值的</li>")
+            console.log($("div").text());
+
+            console.log("-----------------");
+
+            //html();  获取双闭合标签中的文本值。（识别标签）(类比js中的innerHTML)
+            console.log($("div").html());
+            $("div").html("<li>我是html()赋值的</li>");
+            console.log($("div").html());
+        })
+    </script>
+</head>
+<body>
+<input type="text" value="我是input中已存在的 value内容"/>
+<div>
+    <li>你好</li>
+</div>
+</body>
+</html>

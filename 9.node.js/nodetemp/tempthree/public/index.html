@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>邮箱首页</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+<h1>同步上传</h1>
+<div>
+<!--    //文件上传只能post-->
+    <form action="uploadFile.do" method="post" enctype="multipart/form-data">
+        <input type="file" name="myfile" id="myfile"/>
+        <button type="submit">上传</button>
+    </form>
+</div>
+<hr>
+<h1>异步上传</h1>
+<div>
+    上传头像：
+    <form id="formPhoto" method="post" enctype="multipart/form-data">
+        <input type="file" name="myPhoto" id="myPhoto"/>
+        <button type="button" onclick="uploadPhoto()">上传</button>
+    </form>
+</div>
+<div>
+    预览：<img id="imgarr" src="" alt="" >
+</div>
+<h1>文件的下载</h1>
+<div>
+<!--    //音频，视频，图片-->
+    <a href="">点击下载</a>
+</div>
+<div>
+    <a href="downfile.do">
+        <button>点击下载</button>
+    </a>
+</div>
+<!--短信验证-->
+<div>
+    <h1>短信验证</h1>
+<!--    在服务器中，下载model：npm install leanengine --save-dev;-->
+    <form id="msgForm">
+        手机号: <input type="text" name="phone" id="phone"/>
+        <button type="button" onclick="sendMsg();">发送验证码</button>
+        <br>
+        输入验证码： <input type="text" name="smscode" id="smscode"/>
+        <button type="button" onclick="checkCode();">注册</button>
+    </form>
+</div>
+<!--邮件发送-->
+<div>
+    <h1>邮件发送</h1>
+    <form id="sendEmail">
+        收件人地址: <input type="email" name="mail" id="mail"/><br>
+        标题: <input type="text" name="emailtitle" id="emailtitle"><br>
+        邮件内容: <textarea name="mailcontent" id="mailcontent" cols="30" rows="10"></textarea><br>
+        <button type="button" onclick="sendMail()">send mail</button>
+    </form>
+</div>
+<script src="js/jquery.min.js"></script>
+<script type="text/javascript">
+    function sendMail() {
+        $.ajax({
+            type:"post",
+            url:"sendMail.do",
+            data:{
+                touser:$("#mail").val(),
+                title:$("#eailtitle").val(),
+                content:$("#mailcontent").val()
+            },
+            success:function (data) {
+                //做业务处理
+                console.log(data);
+                // location.href = ""
+            }
+        });
+    }
+    function sendMsg() {
+        $.ajax({
+            type:"post",
+            url:"sendMsg.do",
+            data:{phone:$("#phone").val()},
+            success:function (data) {
+                console.log(data);
+            }
+        });
+    }
+    function checkCode() {
+        $.ajax({
+            type:"post",
+            url:"sendVerifyCode.do",
+            data:{phone:$("#phone").val(),smscode:$("#smscode").val()},
+            success:function (data) {
+                //做业务处理
+                console.log(data);
+                // location.href = ""
+            }
+        });
+    }
+    function uploadPhoto() {
+        $.ajax({
+            type:"post",
+            url:"uploadPhoto.do",
+            // formData对象自动把表单所有数据获取到，并且返回一个json格式的对象
+            data: new FormData($("#formPhoto")[0]),
+            success:function (data) {
+                console.log(data);
+                $("#imgarr").attr("src",data);
+            },
+            processData: false,//不把上传的data值转换成字符串；
+            contentType:false//不改变数据的content-type的值；
+        });
+    }
+</script>
+</body>
+</html>

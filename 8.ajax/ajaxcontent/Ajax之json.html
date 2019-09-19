@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajax的json请求</title>
+
+
+</head>
+<body>
+<h1>Ajax的json请求</h1>
+<input type="button" id="btn-ajax" value="json数据"/>
+
+<script type="text/javascript">
+    document.querySelector("#btn-ajax").onclick = function () {
+        var ajax = new XMLHttpRequest();
+        ajax.open('get','json.php',true);
+        ajax.send();
+        ajax.onreadystatechange = function () {
+            if (ajax.readyState == 4 && ajax.status == 200){
+                console.log(ajax.responseText);
+                var getJson = Json.parse(ajax.responseText);
+                console.log(getJson);
+                var str = "";
+
+                str +='<ul>';
+                str +='<li>'+getJson.name+'</li>';
+                str +='<li>'+getJson.age+'</li>';
+                str +='<li>'+getJson.version+'</li>';
+                str +='</ul>';
+
+                document.querySelector("h1").innerHTML = str;
+            }
+        }
+
+        }
+
+
+</script>
+<style>
+    ul{
+        width: 300px;
+        height: 150px;
+        background: #eee;
+        border: 1px solid red;
+    }
+    ul li{
+        list-style: none;
+
+    }
+</style>
+</body>
+</html>

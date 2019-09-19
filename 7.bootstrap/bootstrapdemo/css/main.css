@@ -1,0 +1,7 @@
+.container-fluid{
+    border: 1px solid red;
+}
+
+/*布局容器：container 类*/
+/*栅格参数:利用 css 的响应式去做一套行列布局的预置样式*/
+/*组件*/

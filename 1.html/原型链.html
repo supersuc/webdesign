@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //1.如何准确判断一个变量时数组类型
+    // var arr1 = [];
+    // console.log(arr1 instanceof Array); //打印结果：true。
+    // console.log(typeof arr1);           //打印结果：object。提示：typeof 方法无法判断是否为数组
+
+    //2. 写一个原型链继承的例子
+
+    // 3.描述 new 一个对象的过程
+//     （1）创建一个新对象
+//     （2）this 指向这个新对象
+//     （3）执行代码（对this 赋值）
+//     （4）返回this
+
+    // 4.zepto(或其他框架)源码中如何使用原型链
+
+
+    //prototype是用new来创建一个实例化对象时构造__proto__用的
+    // __proto__主要时放置在一个实例化对象中，一个原型链接，用来寻找属性和方法的
+
+    function foo(y) {
+       this.y = y;
+    }
+    foo.prototype.x = 100;
+
+    foo.prototype.calculate = function (z) {
+            return this.x + this.y + z;//调用属性值
+    }
+
+    var b = new foo(20);
+    var c = new foo(30);//通过new实例化创建__proto__
+//调用方法 通过b.__proto__ === foo.prototype 找到foo中绑定的函数calculata;通过链接__proto__寻找方法；
+    console.log(b.calculate(80),c.calculate(70));
+</script>
+
+</body>
+</html>

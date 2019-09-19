@@ -1,0 +1,725 @@
+<!--动画-->
+<!--过渡：transition-->
+<!--2D 转换 transform-->
+<!--3D 转换 transform-->
+<!--动画：animation-->
+
+<!--过渡-->
+<!--transition 包括以下属性：-->
+<!--transition-property: all; 如果希望所有的属性都发生过渡，就使用all。-->
+<!--transition-duration: 1s; 过渡的持续时间。-->
+<!--transition-timing-function: linear; 运动曲线。属性值可以是：-->
+<!--linear 线性-->
+<!--ease 减速-->
+<!--ease-in 加速-->
+<!--ease-out 减速-->
+<!--ease-in-out 先加速后减速-->
+<!--transition-delay: 1s; 过渡延迟。多长时间后再执行这个过渡动画。-->
+<!--上面的四个属性也可以写成综合属性：-->
+<!--transition: 让哪些属性进行过度 过渡的持续时间 运动曲线 延迟时间;-->
+<!--transition: all 3s linear 0s;-->
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>CSS 过渡</title>-->
+<!--    <style>-->
+<!--        body {-->
+<!--            margin: 0;-->
+<!--            padding: 0;-->
+<!--            background-color: #eeeeee;-->
+<!--        }-->
+
+<!--        .content {-->
+<!--            width: 800px;-->
+<!--            height: 320px;-->
+<!--            padding-left: 20px;-->
+<!--            margin: 80px auto;-->
+<!--        }-->
+
+<!--        .item {-->
+<!--            width: 230px;-->
+<!--            height: 300px;-->
+<!--            text-align: center;-->
+<!--            margin-right: 20px;-->
+<!--            background-color: #FFF;-->
+<!--            float: left;-->
+<!--            position: relative;-->
+<!--            top: 0;-->
+<!--            overflow: hidden; /* 让溢出的内容隐藏起来。意思是让下方的橙色方形先躲起来 */-->
+<!--            transition: all .5s; /* 从最初到鼠标悬停时的过渡 */-->
+<!--        }-->
+
+<!--        .item img {-->
+<!--            margin-top: 30px;-->
+<!--        }-->
+
+<!--        .item .desc {-->
+<!--            position: absolute;-->
+<!--            left: 0;-->
+<!--            bottom: -80px;-->
+<!--            width: 100%;-->
+<!--            height: 80px;-->
+<!--            background-color: #ff6700;-->
+<!--            transition: all .5s;-->
+<!--        }-->
+
+<!--        /* 鼠标悬停时，让 item 整体往上移动5px，且加一点阴影 */-->
+<!--        .item:hover {-->
+<!--            top: -5px;-->
+<!--            box-shadow: 0 0 15px #AAA;-->
+<!--        }-->
+
+<!--        /* 鼠标悬停时，让下方的橙色方形现身 */-->
+<!--        .item:hover .desc {-->
+<!--            bottom: 0;-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div class="content">-->
+<!--    <div class="item">-->
+<!--        <img src="images.png" alt="">-->
+<!--    </div>-->
+
+<!--    <div class="item">-->
+<!--        <img src="5.jpg" alt="">-->
+<!--        <span class="desc"></span>-->
+<!--    </div>-->
+<!--    <div class="item">-->
+<!--        <img src="images.png" alt="">-->
+<!--        <span class="desc"></span>-->
+<!--    </div>-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
+
+
+<!--转换是 CSS3 中具有颠覆性的一个特征，可以实现元素的位移、旋转、变形、缩放，甚至支持矩阵方式。-->
+<!--2D转换包括：缩放、移动、旋转。-->
+
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head lang="en">-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title></title>-->
+<!--    <style>-->
+<!--        .box {-->
+<!--            width: 1000px;-->
+<!--            margin: 100px auto;-->
+<!--        }-->
+
+<!--        .box div {-->
+<!--            width: 300px;-->
+<!--            height: 150px;-->
+<!--            background-color: pink;-->
+<!--            float: left;-->
+<!--            margin-right: 15px;-->
+<!--            color: white;-->
+<!--            text-align: center;-->
+<!--            font: 400 30px/150px “宋体”;-->
+
+<!--        }-->
+
+<!--        .box .box2 {-->
+<!--            background-color: blue;-->
+<!--            transition: all 1s;-->
+<!--        }-->
+
+<!--        .box .box2:hover {-->
+<!--            /*width: 500px;*/-->
+<!--            /*height: 400px;*/-->
+<!--            background-color: yellowgreen;-->
+
+<!--            /* transform:  css3中用于做变换的属性-->
+<!--                scale(x,y)：缩放 */-->
+<!--            /*transform: scale(2, 0.5);*/-->
+<!--            /* translate:(水平位移，垂直位移)*/-->
+<!--            /*transform: translate(-50%, -50%);*/-->
+<!--            transform: rotate(720deg); /* 鼠标悬停时，让盒子进行旋转 */-->
+<!--        }-->
+
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div class="box">-->
+<!--    <div class="box1">1</div>-->
+<!--    <div class="box2">2</div>-->
+<!--    <div class="box3">3</div>-->
+<!--</div>-->
+
+<!--</body>-->
+<!--</html>-->
+
+<!--例子-->
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head lang="en">-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title></title>-->
+<!--    <style>-->
+<!--        html,body{-->
+<!--            height:100%;-->
+<!--        }-->
+
+<!--        body{-->
+<!--            background-color: #DE8910;-->
+<!--        }-->
+<!--        .rocket{-->
+<!--            position: absolute;-->
+<!--            left:100px;-->
+<!--            top:600px;-->
+<!--            height: 120px;-->
+<!--            transform:translate(-200px ,200px) rotate(45deg);-->
+<!--            transition:all 1s ease-in;-->
+<!--        }-->
+
+<!--        body:hover .rocket{-->
+<!--            transform:translate(500px,-500px) rotate(45deg);-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<img  class="rocket" src="images.png" alt=""/>-->
+<!--</body>-->
+<!--</html>-->
+
+
+<!--例子-->
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head lang="en">-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title></title>-->
+<!--    <style>-->
+<!--        body {-->
+<!--            /*background-color: #eee;*/-->
+<!--        }-->
+
+<!--        .box {-->
+
+<!--            width: 300px;-->
+<!--            height: 440px;-->
+<!--            margin: 100px auto;-->
+<!--            position: relative;-->
+<!--        }-->
+
+<!--        img {-->
+<!--            width: 100%;-->
+<!--            transition: all 1.5s;-->
+<!--            position: absolute;     /* 既然扑克牌是叠在一起的，那就都用绝对定位 */-->
+<!--            left: 0;-->
+<!--            top: 0;-->
+
+<!--            transform-origin: center bottom; /*旋转时，以盒子底部的中心为坐标原点*/-->
+<!--            box-shadow: 0 0 3px 0 #666;-->
+<!--        }-->
+
+<!--        .box:hover img:nth-child(6) {-->
+<!--            transform: rotate(-10deg);-->
+<!--        }-->
+
+<!--        .box:hover img:nth-child(5) {-->
+<!--            transform: rotate(-20deg);-->
+<!--        }-->
+
+<!--        .box:hover img:nth-child(4) {-->
+<!--            transform: rotate(-30deg);-->
+<!--        }-->
+
+<!--        .box:hover img:nth-child(3) {-->
+<!--            transform: rotate(-40deg);-->
+<!--        }-->
+
+<!--        .box:hover img:nth-child(2) {-->
+<!--            transform: rotate(-50deg);-->
+<!--        }-->
+
+<!--        .box:hover img:nth-child(1) {-->
+<!--            transform: rotate(-60deg);-->
+<!--        }-->
+
+<!--        .box:hover img:nth-child(8) {-->
+<!--            transform: rotate(10deg);-->
+<!--        }-->
+
+<!--        .box:hover img:nth-child(9) {-->
+<!--            transform: rotate(20deg);-->
+<!--        }-->
+
+<!--        .box:hover img:nth-child(10) {-->
+<!--            transform: rotate(30deg);-->
+<!--        }-->
+
+<!--        .box:hover img:nth-child(11) {-->
+<!--            transform: rotate(40deg);-->
+<!--        }-->
+
+<!--        .box:hover img:nth-child(12) {-->
+<!--            transform: rotate(50deg);-->
+<!--        }-->
+
+<!--        .box:hover img:nth-child(13) {-->
+<!--            transform: rotate(60deg);-->
+<!--        }-->
+
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div class="box">-->
+<!--    <img src="images.png"/>-->
+<!--    <img src="images.png"/>-->
+<!--    <img src="images.png"/>-->
+<!--    <img src="images.png"/>-->
+<!--    <img src="images.png"/>-->
+<!--    <img src="images.png"/>-->
+<!--    <img src="images.png"/>-->
+<!--    <img src="images.png"/>-->
+<!--    <img src="images.png"/>-->
+<!--    <img src="images.png"/>-->
+<!--    <img src="images.png"/>-->
+<!--    <img src="images.png"/>-->
+<!--    <img src="images.png"/>-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
+
+
+<!--3D 转换-->
+<!--旋转：rotateX、rotateY、rotateZ-->
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head lang="en">-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title></title>-->
+<!--    <style>-->
+<!--        .rotateX {-->
+<!--            width: 300px;-->
+<!--            height: 226px;-->
+<!--            margin: 200px auto;-->
+
+<!--            /* 透视 :加给变换的父盒子*/-->
+<!--            /* 设置的是用户的眼睛距离 平面的距离*/-->
+<!--            /* 透视效果只是视觉上的呈现，并不是正真的3d*/-->
+<!--            perspective: 110px; -->
+<!--        }-->
+
+<!--        img {-->
+<!--            /* 过渡*/-->
+<!--            transition: transform 2s;-->
+<!--        }-->
+
+<!--        /* 所有的3d旋转，对着正方向去看，都是顺时针旋转*/-->
+<!--        .rotateX:hover img {-->
+<!--            /*transform: rotateX(360deg);*/-->
+<!--            transform: rotateZ(360deg);-->
+<!--            /*transform: rotateY(360deg);*/-->
+<!--        }-->
+
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div class="rotateX">-->
+<!--    <img src="4.jpg" alt=""/>-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
+
+<!--例子-->
+<!--<!DOCTYPE html>&ndash;&gt;-->
+<!--<html>-->
+<!--<head lang="en">-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title></title>-->
+<!--    <style>-->
+<!--        body {-->
+<!--            background-color: cornflowerblue;-->
+<!--        }-->
+
+<!--        .box {-->
+<!--            width: 300px;-->
+<!--            height: 300px;-->
+<!--            /*border: 1px solid #000;*/-->
+<!--            margin: 50px auto;-->
+<!--            position: relative;-->
+<!--        }-->
+
+<!--        .box > div {-->
+<!--            width: 100%;-->
+<!--            height: 100%;-->
+<!--            position: absolute;-->
+<!--            /*border: 1px solid #000;*/-->
+<!--            border-radius: 50%;-->
+<!--            transition: all 2s;-->
+<!--            backface-visibility: hidden;-->
+<!--        }-->
+
+<!--        .box1 {-->
+<!--            background: url(w.png) left 0 no-repeat; /*默认显示图片的左半边*/-->
+<!--        }-->
+
+<!--        .box2 {-->
+<!--            background: url(w.png) right 0 no-repeat;-->
+<!--            transform: rotateY(180deg); /*让图片的右半边默认时，旋转180度，就可以暂时隐藏起来*/-->
+
+<!--        }-->
+
+<!--        .box:hover .box1 {-->
+<!--            transform: rotateY(180deg); /*让图片的左半边转消失*/-->
+<!--        }-->
+
+<!--        .box:hover .box2 {-->
+<!--            transform: rotateY(0deg); /*让图片的左半边转出现*/-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div class="box">-->
+<!--    <div class="box1"></div>-->
+<!--    <div class="box2"></div>-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
+
+
+<!--移动-->
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head lang="en">-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title></title>-->
+<!--    <style>-->
+<!--        body{-->
+<!--            perspective: 2000px;-->
+<!--        }-->
+<!--        .box {-->
+<!--            width: 200px;-->
+<!--            height: 200px;-->
+<!--            background: green;-->
+<!--            transition: all 1s;-->
+<!--            margin: 10px auto;-->
+<!--        }-->
+
+<!--        .box:hover {-->
+<!--            /*transform: translateX(100px);*/-->
+<!--            /*transform: translateY(200px);*/-->
+<!--            transform: translateZ(400px);-->
+<!--            /* translateZ必须配合透视来使用*/-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div class="box">-->
+
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
+
+
+<!--3D呈现（transform-style）-->
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head lang="en">-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title></title>-->
+<!--    <style>-->
+<!--        .box {-->
+<!--            width: 250px;-->
+<!--            height: 250px;-->
+<!--            border: 1px dashed red;-->
+<!--            margin: 100px auto;-->
+<!--            position: relative;-->
+<!--            border-radius: 50%;-->
+
+<!--            /* 让子盒子保持3d效果*/-->
+
+<!--/*transform-style: preserve-3d;     //让 子盒子 位于三维空间里*/-->
+<!--/*transform-style: flat;            //让子盒子位于此元素所在的平面内（子盒子被扁平化）*/-->
+<!--            transform-style: preserve-3d;-->
+
+<!--            /*transform:rotateX(30deg) rotateY(-30deg);*/-->
+
+<!--            animation: gun 8s linear infinite;-->
+<!--        }-->
+
+<!--        .box > div {-->
+<!--            width: 100%;-->
+<!--            height: 100%;-->
+<!--            position: absolute;-->
+<!--            text-align: center;-->
+<!--            line-height: 250px;-->
+<!--            font-size: 60px;-->
+<!--            color: #daa520;-->
+<!--        }-->
+
+<!--        .left {-->
+<!--            background-color: rgba(255, 0, 0, 0.3);-->
+<!--            /* 变换中心*/-->
+<!--            transform-origin: left;-->
+<!--            /* 变换*/-->
+<!--            transform: rotateY(90deg) translateX(-125px);-->
+<!--        }-->
+
+<!--        .right {-->
+<!--            background: rgba(0, 0, 255, 0.3);-->
+<!--            transform-origin: right;-->
+<!--            /* 变换*/-->
+<!--            transform: rotateY(90deg) translateX(125px);-->
+<!--        }-->
+
+<!--        .forward {-->
+<!--            background: rgba(255, 255, 0, 0.3);-->
+<!--            transform: translateZ(125px);-->
+<!--        }-->
+
+<!--        .back {-->
+<!--            background: rgba(0, 255, 255, 0.3);-->
+<!--            transform: translateZ(-125px);-->
+<!--        }-->
+
+<!--        .up {-->
+<!--            background: rgba(255, 0, 255, 0.3);-->
+<!--            transform: rotateX(90deg) translateZ(125px);-->
+<!--        }-->
+
+<!--        .down {-->
+<!--            background: rgba(99, 66, 33, 0.3);-->
+<!--            transform: rotateX(-90deg) translateZ(125px);-->
+<!--        }-->
+<!--/*自定义动画*/-->
+<!--        @keyframes gun {-->
+<!--            0% {-->
+<!--                transform: rotateX(0deg) rotateY(0deg);-->
+<!--            }-->
+
+<!--            100% {-->
+<!--                transform: rotateX(360deg) rotateY(360deg);-->
+<!--            }-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div class="box">-->
+<!--    <div class="up">上</div>-->
+<!--    <div class="down">下</div>-->
+<!--    <div class="left">左</div>-->
+<!--    <div class="right">右</div>-->
+<!--    <div class="forward">前</div>-->
+<!--    <div class="back">后</div>-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
+
+
+<!--自定义动画-->
+<!--定义动画：-->
+<!--@keyframes 动画名{-->
+<!--from{ 初始状态 }-->
+<!--to{ 结束状态 }-->
+<!--}-->
+
+<!--调用：-->
+<!--animation: 动画名称 持续时间；
+ animation: 定义的动画名称 持续时间  执行次数  是否反向  运动曲线 延迟执行。(infinite 表示无限次)
+-->
+
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head lang="en">-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title></title>-->
+<!--    <style>-->
+<!--        .box {-->
+<!--            width: 100px;-->
+<!--            height: 100px;-->
+<!--            margin: 100px;-->
+<!--            background-color: red;-->
+
+<!--            /* 调用动画*/-->
+<!--            /* animation: 动画名称 持续时间  执行次数  是否反向  运动曲线 延迟执行。infinite 表示无限次*/-->
+<!--            /*animation: move 1s  alternate linear 3;*/-->
+<!--            animation: move2 4s;-->
+<!--        }-->
+
+<!--        /* 方式一：定义一组动画*/-->
+<!--        @keyframes move1 {-->
+<!--            from {-->
+<!--                transform: translateX(0px) rotate(0deg);-->
+<!--            }-->
+<!--            to {-->
+<!--                transform: translateX(500px) rotate(555deg);-->
+<!--            }-->
+<!--        }-->
+
+<!--        /* 方式二：定义多组动画*/-->
+<!--        @keyframes move2 {-->
+<!--            0% {-->
+<!--                transform: translateX(0px) translateY(0px);-->
+<!--                background-color: red;-->
+<!--                border-radius: 0;-->
+<!--            }-->
+
+<!--            25% {-->
+<!--                transform: translateX(500px) translateY(0px);-->
+
+<!--            }-->
+
+<!--            /*动画执行到 50% 的时候，背景色变成绿色，形状变成圆形*/-->
+<!--            50% {-->
+<!--                /* 虽然两个方向都有translate，但其实只是Y轴上移动了200px。-->
+<!--                因为X轴的500px是相对最开始的原点来说的。可以理解成此时的 translateX 是保存了之前的位移 */-->
+<!--                transform: translateX(500px) translateY(200px);-->
+<!--                background-color: green;-->
+<!--                border-radius: 50%;-->
+<!--            }-->
+
+<!--            75% {-->
+<!--                transform: translateX(0px) translateY(200px);-->
+<!--            }-->
+
+<!--            /*动画执行到 100% 的时候，背景色还原为红色，形状还原为正方形*/-->
+<!--            100% {-->
+<!--                /*坐标归零，表示回到原点。*/-->
+<!--                transform: translateX(0px) translateY(0px);-->
+<!--                background-color: red;-->
+<!--                border-radius: 0;-->
+<!--            }-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div class="box">-->
+
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
+
+
+
+<!--<!doctype html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport"-->
+<!--          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">-->
+<!--    <meta http-equiv="X-UA-Compatible" content="ie=edge">-->
+<!--    <title>Document</title>-->
+
+<!--    <style>-->
+<!--        img{-->
+<!--            width: 200px;-->
+<!--            height: 200px;-->
+<!--            border: 1px solid #eee;-->
+<!--            animation: movie 3s ease-in;-->
+<!--        }-->
+<!--        -->
+<!--        @keyframes movie {-->
+<!--            0%{-->
+<!--                    transform: rotateY(0deg) translateX(0px);-->
+<!--            }-->
+<!--            25%{-->
+<!--                transform: translateX(200px) rotateX(180deg);-->
+<!--            }-->
+<!--            50%{-->
+<!--                    transform: translateY(300px);-->
+<!--                    border-radius: 50%;-->
+<!--            }-->
+<!--            75%{-->
+<!--                transform: translateX(100px) rotateY(180deg);-->
+<!--            }-->
+<!--            100%{-->
+<!--                    transform: translateY(20px);-->
+<!--            }-->
+<!--            -->
+<!--        }-->
+<!--    </style>-->
+
+<!--</head>-->
+
+<!--<body>-->
+<!--<img src="4.jpg" alt="">-->
+<!--</body>-->
+<!--</html>-->
+
+
+<!--step-->
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head lang="en">-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title></title>-->
+<!--    <style>-->
+<!--        div {-->
+<!--            width: 3px;-->
+<!--            height: 200px;-->
+<!--            background-color: #000;-->
+<!--            margin: 100px auto;-->
+<!--            transform-origin: center bottom;    /* 旋转的中心点是底部 */-->
+<!--            animation: myClock 60s steps(60) infinite;-->
+<!--        }-->
+
+<!--        @keyframes myClock {-->
+<!--            0% {-->
+<!--                transform: rotate(0deg);-->
+<!--            }-->
+
+<!--            100% {-->
+<!--                transform: rotate(360deg);-->
+<!--            }-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div></div>-->
+<!--</body>-->
+<!--</html>-->
+
+
+<!--例子-->
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .shark {
+            width: 509px;
+            height: 270px; /*盒子的宽高是一帧的宽高*/
+            margin: 100px auto;
+            background: url(images/7.png) left top; /* 让图片一开始位于 0 px的位置 */
+            animation: sharkRun 1s steps(8) infinite; /* 一秒之内，从顶部移动到底部，分八帧， */
+        }
+        .sharkBox{
+            width: 509px;
+            height: 270px;
+            animation: runbox 25s;
+        }
+
+        @keyframes sharkRun {
+            0% {
+            }
+
+            /* 270 * 8 = 2160 */
+            100% {
+                background-position: left -2160px; /* 动画结束时，让图片位于最底部 */
+            }
+        }
+        @keyframes runbox {
+            0%{
+                transform: translateX(-600px);
+            }
+            100%{
+                transform: translateX(3000px);
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="sharkBox">
+    <div class="shark"></div>
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,545 @@
+.nav{
+    height: 30px;
+    line-height: 30px;
+    background-color: #f1f1f1;
+}
+.navleft{
+    float: left;
+    margin-left: 300px;
+    clear:both;
+}
+.navright{
+    float: right;
+    margin-right: 300px;
+}
+.dt{
+    padding: 0 20px 0 10px;
+    position: relative;
+}
+.dt p{
+    font: 400 15px/15px "宋体";
+    position: absolute;
+    top: 8px;
+    left: 75px;
+    height: 7px;
+    width: 15px;
+    transform: rotate(-90deg);
+}
+.foer p{
+    font: 400 15px/15px "宋体";
+    position: absolute;
+    transform: rotate(-90deg);
+    top:8px;
+    margin-left: 42px;
+    width: 15px;
+    height:7px;
+}
+.navright li{
+    float: left;
+    padding: 0 8px;
+    right: 0;
+    top: 0;
+    color:#999999;
+}
+.colred{
+    color: red;
+}
+.navright li a{
+    padding-left: 5px;
+}
+.navright .line{
+    margin-left: 5px;
+    color: #aaa;
+}
+.tel{
+    position: absolute;
+    width: 15px;
+    height: 20px;
+    background: url("官网小手机.png") no-repeat;
+    top:6px;
+    margin-left: -20px;
+}
+.navright .tel-jd{
+    padding: 0 15px 0 25px;
+}
+.topbanner {
+    background-color: #FD6500;
+    position: relative;
+}
+.banner{
+    margin: 0 auto;
+    position: relative;
+    width: 1300px;
+}
+.close-banner {
+    position: absolute;
+    right:0;
+    top:5px;
+    width: 19px;
+    height: 19px;
+    background: url("close-banner.png") no-repeat;
+}
+.close-banner:hover {
+    background-position:bottom;
+}
+.tp{
+    position: relative;
+}
+.searchcontent{
+    padding-left: 350px;
+    margin: 0 auto;
+
+}
+.search-logo{
+    float: left;
+    width: 362px;
+    height: 60px;
+    padding: 20px 0;
+}
+.search-logo a{
+    width: 270px;
+    height: 60px;
+    background: url("images/logo.png");
+    display: block;
+    text-indent: -9999px;
+}
+.search-input{
+    float: left;
+    height: 36px;
+    padding-top: 25px;
+}
+.search-input input{
+    float: left;
+    width: 450px;
+    height: 36px;
+    border: 2px solid #B61D1D;
+    color: rgb(153, 153, 153);
+    padding-left: 4px;
+    font:400 14px/32px "microsoft yahei";
+    border-right: 0;
+}
+.search-input button{
+    width: 82px;
+    height: 36px;
+    background-color:#B61D1D;
+    color: #fff;
+    font: 400 16px/36px "微软雅黑";
+    cursor:pointer;
+}
+.search-car{
+    float: left;
+    width: 96px;
+    height: 34px;
+    line-height: 34px;
+    position: relative;
+    padding-left: 43px;
+    margin: 25px 65px 0 100px;
+    background-color:#F9F9F9;
+    border: 1px solid #DFDFDF;
+}
+.iconone{
+    position: absolute;
+    width: 18px;
+    height: 16px;
+    top: 8px;
+    left: 16px;
+    background: url("images/tel.png") no-repeat 0 -58px;
+}
+.icontwo{
+    position: absolute;
+    right: 10px;
+    font: 13px/34px "SimSun";
+    color: #999
+}
+.iconthree{
+    position: absolute;
+    width: 16px;
+    height: 14px;
+    top: -5px;
+    line-height: 14px;
+    text-align: center;
+    background-color: #C81623;
+    color: #fff;
+    border-radius: 7px 7px 7px 0;
+}
+.search-moreA{
+    position: absolute;
+    float: left;
+    width: 530px;
+    height: 28px;
+    line-height: 28px;
+    margin-top: 60px;
+    margin-left: 360px;
+}
+.search-moreA a{
+    margin-right: 10px;
+
+}
+
+.contentline{
+    border-bottom: 2px solid #C81623;
+    height: 10px;
+    width: 1901px;
+    position: absolute;
+    top: 244px;
+
+}
+.content{
+    width:1901px;
+    height: 720px;
+    background-color: #F4F4F4;
+    margin-top: 100px;
+}
+
+.menu{
+    position: relative;
+    text-align: center;
+
+}
+.menuall{
+    position: absolute;
+    float: left;
+    margin-left: 350px;
+    z-index: 1;
+    width: 210px;
+    height: 44px;
+}
+.menuall1 a{
+    display: block;
+    width: 190px;
+    height: 44px;
+    color: white;
+    padding: 0 10px;
+    background-color: #B1191A;
+    font: 400 15px/44px "microsoft yahei";
+}
+.menuall2{
+    height: 465px;
+    margin-top: 2px;
+    background-color: #C81623;
+}
+
+.menunav{
+    position: absolute;
+    width: 730px;
+    height: 44px;
+    line-height: 30px;
+    left: 570px;
+}
+.menunav a:hover{
+    color: #C81623;
+}
+.menunav li{
+    float: left;
+}
+.menunav a{
+    display: inline-block;
+    height: 44px;
+    padding: 0 20px;
+    color: #333;
+    font: 400 16px/44px "microsoft yahei";
+}
+.menuimg{
+    position: absolute;
+    left: 1350px;
+    top: -15px;
+}
+
+.menuall2item ul{
+    font: 400 14px/31px "microsoft yahei";
+}
+.menuall2item li{
+    position: relative;
+    padding-left: 10px;
+}
+.menuall2item a{
+    color: #fff;
+}
+.menuall2item li:hover{
+    background-color: #fff;
+}
+.menuall2item li:hover a,span,li{
+    color: #C81623;
+}
+
+.main{
+    width: 1000px;
+    height: 454px;
+    margin-left: 575px;
+    margin-top: 62px;
+    position: absolute;
+}
+.mainslider{
+    width: 728px;
+    height: 454px;
+    float: left;
+    position: absolute;
+    margin-left: 0px;
+    margin-top: 0px;
+}
+.mainslider ul{
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    margin-left: -66px;
+}
+.mainslider ul li{
+    float: left;
+    width: 18px;
+    height: 18px;
+    color: #fff;
+    background-color: #3E3E3E;
+    border-radius: 50%;   /*圆角矩形*/
+    text-align: center;
+    line-height: 18px;
+    margin: 0 2px;
+    cursor: pointer;
+}
+.mainslider .arrow-left{
+    position: absolute;
+    top: 50%;
+    left: 0px;
+    width: 28px;
+    height: 62px;
+    margin-top: -31px;
+    text-align: center;
+    background-color: rgba(0,0,0,0.3);
+    border-radius: 10px 0 0 10px;
+    font: 400 22px/62px "sumsun";
+    color:#fff ;
+}
+.mainslider .arrow-left:hover{
+    background-color: rgba(0,0,0,0.7);
+}
+.mainslider .arrow-right{
+    position: absolute;
+    top: 50%;
+    right: 0px;
+    width: 28px;
+    height: 62px;
+    margin-top: -31px;
+    text-align: center;
+    background-color: rgba(0,0,0,0.3);
+    border-radius: 10px 0 0 10px;
+    font: 400 22px/62px "sumsun";
+    color:#fff ;
+}
+.mainslider .arrow-right:hover{
+    background-color: rgba(0,0,0,0.7);
+}
+
+.mainnews{
+    width: 250px;
+    height: 443px;
+    position: absolute;
+    margin-left: 745px;
+}
+.top{
+    height: 163px;
+    border-bottom: 1px dashed #E4E4E4;    /*虚线*/
+}
+.mainnewstit{
+    height: 32px;
+    line-height: 32px;
+    border-bottom: 1px dotted #E8E8E8;   /*点线*/
+    padding: 0 15px;
+}
+.mainnewstit h2{
+    float: left;
+    font: 400 16px/32px "microsoft yahei";
+}
+.mainnewstit a{
+    float: right;
+}
+.mainnewscon{
+    padding: 5px 0 0 15px;
+}
+.mainnewscon li{
+    line-height: 24px;
+}
+.mainnewscon span{
+    font-weight: 700;
+    margin-right: 5px;
+    color: #666;
+}
+.lastcontent ul{
+    width: 260px;
+}
+.lastcontent li{
+    width: 62px;
+    height: 70px;
+    border: 1px solid #E8E8E8;
+    float: left;
+    border-top: 0;  /* 将每个单元格的上边框去掉，因为跟单元格的下边框重合了。*/
+    margin-top: -1px;  /* 整体向上移动一个单位，因为边框重合了*/
+    margin-left: -1px ;/* 整体向左移动一个单位，因为边框重合了*/
+}
+.lastcontent li a{
+    display: block;
+    width: 62px;
+    height: 30px;
+    text-align: center;
+    padding-top: 40px;
+    line-height: 30px;
+    position: relative;
+}
+.lastcontent li a i{
+    width: 25px;
+    height: 25px;
+    top: 13px;
+    left: 18px;
+    position: absolute;
+    background: url("images/飞机 (1).png") right top ;
+}
+.lastcontent .content2{
+    background: url("images/手机.png") right -25px;
+}
+.lastcontent .content3{
+    background: url("images/游戏.png") right -25px;
+}.lastcontent .content4{
+     background: url("images/火车票.png") right -25px;
+ }
+
+ .lastimg{
+     width: 247px;
+     height:70px;
+     position: absolute;
+     top: 375px;
+     left: 748px;
+     margin-top: 5px;
+     background: url("images/秋装上新.jpg") no-repeat;
+ }
+.todaycontent{
+    width: 1215px;
+    height: 150px;
+    position: relative;
+    top: 535px;
+    left: 350px;
+}
+.todayleft a{
+    display: block;
+    width: 210px;
+    height: 150px;
+    background: url("images/today.jpg");
+}
+.todayright{
+    float: right;
+    width: 1000px;
+    overflow: hidden;  /*隐藏掉右侧超出的几个像素*/
+    position: relative;
+    top: -150px;
+}
+.todayright ul {
+    width: 410%;   /*这一点很有技巧*/
+}
+.todayright li{
+    float: left;
+    margin-right: 1px;
+}
+.todayright .arrow-left{
+    position: absolute;
+    top: 50%;
+    left: 0px;
+    width: 28px;
+    height: 62px;
+    margin-top: -31px;
+    text-align: center;
+    background-color: rgba(0,0,0,0.3);
+    border-radius: 10px 0 0 10px;
+    font: 400 22px/62px "sumsun";
+    color:#fff ;
+}
+.todayright .arrow-left:hover{
+    background-color: rgba(0,0,0,0.7);
+}
+.todayright .arrow-right{
+    position: absolute;
+    top: 50%;
+    right: 0px;
+    width: 28px;
+    height: 62px;
+    margin-top: -31px;
+    text-align: center;
+    background-color: rgba(0,0,0,0.3);
+    border-radius: 10px 0 0 10px;
+    font: 400 22px/62px "sumsun";
+    color:#fff ;
+}
+.todayright .arrow-right:hover{
+    background-color: rgba(0,0,0,0.7);
+}
+
+.slogn{
+    height: 54px;
+    padding: 20px 0;
+    width: 100%;
+    background-color: #f5f5f5;
+    position: relative;
+    margin-top: 20px;
+    margin-bottom: 15px;
+    float: left;
+    display: inline;
+    margin-left: 0px;
+}
+.log{
+    float: left;
+    display: inline;
+    margin-left: 100px;
+}
+.slogn1{
+    margin-left: 350px;
+}
+.footershop{
+    margin-top: 20px;
+    height: 300px;
+    left: 200px;
+}
+.footershop dl{
+    float: left;
+    width: 200px;
+}
+.firstdl{
+    margin-left: 400px;
+}
+.last-dl{
+    width: 100px;
+}
+.footershop dt{
+    height: 34px;
+    font: 400 16px/34px "microsoft yahei";
+}
+.last{
+    float: left;
+    width: 186px;
+    height: 169px;
+    margin-right: 60px;
+    padding-left: 20px;
+    background: url("images/china.png") no-repeat left bottom;
+}
+.last h3{
+    height: 34px;
+    font: 400 16px/34px "microsoft yahei";
+}
+.last p{
+    margin-top: 8px;
+}
+.last a{
+    margin-left: 120px;
+}
+.footercontent{
+    margin-top: 20px;
+    text-align: center;
+    padding: 20px 0 30px;
+    border-top: 1px solid #E5E5E5;
+}
+.footer-about a{
+    margin: 0 10px;
+}
+.footerbottom{
+    padding: 10px 0;
+}
+.footerimg a{
+    margin: 10px 10px;
+
+}
+

@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul li{
+            list-style: none;
+        }
+        .banner{
+            position: relative;
+            width: 750px;
+            height: 150px;
+            margin: 200px auto;
+            overflow: hidden;
+        }
+        .bannerItem{
+            position: absolute;
+            left: -1500px;
+            top: 0;
+            display: flex;
+        }
+        .bannerItem li{
+            width: 250px;
+            height: 150px;
+        }
+        .bannerItem li img{
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<div class="banner">
+    <ul class="bannerItem">
+        <li><img src="./image/1.png" alt=""></li>
+        <li><img src="./image/2.png" alt=""></li>
+        <li><img src="./image/3.png" alt=""></li>
+        <li><img src="./image/4.png" alt=""></li>
+        <li><img src="./image/5.png" alt=""></li>
+        <li><img src="./image/6.png" alt=""></li>
+    </ul>
+</div>
+
+<script type="text/javascript">
+    window.onload = function () {
+        var oDiv = document.getElementsByClassName("banner")[0];
+        var oUl = oDiv.getElementsByTagName("ul")[0];
+        var oLi = oUl.getElementsByTagName("li");
+        var timer = null;
+
+        oUl.innerHTML += oUl.innerHTML;
+        oUl.style.width = oLi[0].offsetWidth*oLi.length+"px";
+        function timeinner(){
+                if(oUl.offsetLeft>=0){
+                    oUl.style.left = "-1500px";
+                }
+                oUl.style.left = oUl.offsetLeft+5+"px";
+                // console.log(oUl.offsetLeft)
+        }
+        timer = setInterval(timeinner,40);
+
+        oDiv.onmouseover = function () {
+            clearInterval(timer);
+        }
+        oDiv.onmouseout = function () {
+            timer = setInterval(timeinner,50);
+        }
+    }
+</script>
+
+</body>
+</html>

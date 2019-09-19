@@ -1,0 +1,217 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>offset和匀速动画</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--&lt;!&ndash;js动画1、三大家族和一个事件对象：-->
+<!--大家族：offset/scroll/client。也叫三大系列。-->
+<!--offsetleft1.在父级没有定位的情况下，则是border margin padding三值确定
+              2.在父级元素有定位的情况下
+              或者子元素定位的情况下（如果子元素有style对象的值就是osssetleft，
+              如果没有。依旧为padding），只取决于父级元素的padding-->
+<!--事件对象/event（事件被触动时，鼠标和键盘的状态）（通过属性控制）。-->
+<!--2、动画(闪现/匀速/缓动)-->
+<!--3、冒泡/兼容/封装-->
+<!--4、正则主要内容-->
+<!--&ndash;&gt;-->
+<!--offsetLeft和style.left区别-->
+<!--offsetLeft 可以返回没有定位盒子的距离左侧的位置。如果父系盒子中都没有定位，以body为准。-->
+<!--style.left 只能获取行内式，如果没有，则返回""（意思是，返回空）;-->
+<!--（2）offsetTop 返回的是数字，而 style.top 返回的是字符串，而且还带有单位：px。-->
+<!--比如：-->
+<!--div.offsetLeft = 100;-->
+<!--div.style.left = "100px";-->
+<!--（3）offsetLeft 和 offsetTop 只读，而 style.left 和 style.top 可读写（只读是获取值，可写是赋值）-->
+<!--（4）如果没有给 HTML 元素指定过 top 样式，则style.top 返回的是空字符串。-->
+<!--总结：我们一般的做法是：用offsetLeft 和 offsetTop 获取值，用style.left 和 style.top 赋值（比较方便）。理由如下：-->
+<!--style.left：只能获取行内式，获取的值可能为空，容易出现NaN。-->
+<!--offsetLeft：获取值特别方便，而且是现成的number，方便计算。它是只读的，不能赋值。-->
+<!--</body>-->
+<!--</html>-->
+
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head lang="en">-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title></title>-->
+<!--    <style>-->
+<!--        *{-->
+<!--            margin: 0px;-->
+<!--            padding: 0px;-->
+<!--        }-->
+<!--        .box1 {-->
+<!--            width: 300px;-->
+<!--            height: 300px;-->
+<!--            padding: 6px;-->
+<!--            margin: 30px;-->
+<!--            position: relative;-->
+<!--            border: 30px solid #000;-->
+<!--            background-color: pink;-->
+<!--        }-->
+
+<!--        .box2 {-->
+<!--            width: 100px;-->
+<!--            height: 100px;-->
+<!--            background-color: red;-->
+<!--            position: absolute;-->
+<!--            /*left: 10px;*/-->
+<!--            /*top: 10px;*/-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div class="box1">-->
+<!--    <div class="box2"></div>-->
+<!--</div>-->
+
+<!--<script>-->
+
+<!--    var box2 = document.getElementsByClassName("box2")[0];-->
+
+<!--    //offsetTop和offsetLeft-->
+<!--    console.log(box2.offsetLeft);  //100-->
+<!--    console.log(box2.style.left);  //10px-->
+
+
+<!--</script>-->
+
+<!--</body>-->
+<!--</html>-->
+
+
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head lang="en">-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title></title>-->
+<!--    <style>-->
+<!--        div {-->
+<!--            width: 100px;-->
+<!--            height: 100px;-->
+<!--            background-color: pink;-->
+<!--            position: absolute;-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<button>动画</button>-->
+<!--<div class="box" style="left: 0px"></div>-->
+
+<!--<script>-->
+<!--    var btn = document.getElementsByTagName("button")[0];-->
+<!--    var div = document.getElementsByTagName("div")[0];-->
+
+<!--    //1、闪动-->
+<!--    //    btn.onclick = function () {-->
+<!--    //        div.style.left = "500px";-->
+<!--    //    }-->
+
+<!--    //2、匀速运动-->
+<!--    btn.onclick = function () {-->
+<!--        //定时器，每隔一定的时间向右走一些-->
+<!--        setInterval(function () {-->
+<!--            // console.log(parseInt(div.style.left));-->
+<!--            //动画原理： 盒子未来的位置 = 盒子现在的位置 + 步长；-->
+<!--            //用style.left赋值，用offsetLeft获取值。-->
+<!--            div.style.left = div.offsetLeft + 100 + "px";-->
+<!--            //div.style.left = parseInt(div.style.left)+10+"px";  //NaN不能用-->
+
+<!--        }, 500);-->
+<!--    }-->
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->
+
+
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .box1 {
+            margin: 0;
+            padding: 5px;
+            height: 300px;
+            background-color: #ddd;
+            position: relative;
+        }
+
+        button {
+            margin: 5px;
+        }
+
+        .box2 {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            left: 195px;
+            top: 40px;
+        }
+
+        .box3 {
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+            position: absolute;
+            left: 0;
+            top: 150px;
+        }
+    </style>
+</head>
+<body>
+<div class="box1">
+    <button>运动到 left = 200px</button>
+    <button>运动到 left = 400px</button>
+    <div class="box2"></div>
+    <div class="box3"></div>
+</div>
+
+<script>
+    var btnArr = document.getElementsByTagName("button");
+    var box2 = document.getElementsByClassName("box2")[0];
+    var box3 = document.getElementsByClassName("box3")[0];
+
+    //绑定事件
+    btnArr[0].onclick = function () {
+        //如果有一天我们要传递另外一个盒子，那么我们的方法就不好用了
+        //所以我们要增加第二个参数，被移动的盒子本身。
+        animate(box2, 200);
+        animate(box3, 200);
+    }
+
+    btnArr[1].onclick = function () {
+        animate(box2, 400);
+        animate(box3, 400);
+    }
+
+    //【重要】方法的封装：每间隔30ms，将盒子向右移动10px
+    function animate(ele, target) {
+        //要用定时器，先清除定时器
+        //一个盒子只能有一个定时器，这样的话，不会和其他盒子出现定时器冲突
+        //我们可以把定时器本身，当成为盒子的一个属性
+        clearInterval(ele.timer);
+        //我们要求盒子既能向前又能向后，那么我们的步长就得有正有负
+        //目标值如果大于当前值取正，目标值如果小于当前值取负
+        var speed = target > ele.offsetLeft ? 10 : -10;  //speed指的是步长
+        ele.timer = setInterval(function () {
+            //在执行之前就获取当前值和目标值之差
+            var val = target - ele.offsetLeft;
+            ele.style.left = ele.offsetLeft + speed + "px";
+            //移动的过程中，如果目标值和当前值之差如果小于步长，那么就不能在前进了
+            //因为步长有正有负，所有转换成绝对值来比较
+            if (Math.abs(val) < Math.abs(speed)) {  //如果val小于步长，则直接到达目的地；否则，每次移动一个步长
+                ele.style.left = target + "px";
+                clearInterval(ele.timer);
+            } else {
+                ele.style.left = ele.offsetLeft + speed + "px";
+            }
+        }, 30)
+    }
+</script>
+</body>
+</html>

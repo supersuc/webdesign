@@ -1,0 +1,36 @@
+body{
+    font-family: "Microsoft YaHei UI";
+}
+/*头像宽高*/
+.wh64{
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+}
+
+.mar_t15{
+    margin-top: 15px;
+}
+.user_search{
+    padding:10px;
+    border: 1px solid #dddddd;
+    border-top: none;
+}
+
+.taglist{
+    padding-top: 15px;
+}
+.taglist .alert{
+    margin: 0 10px 10px 0;
+}
+
+.pad0{
+    padding: 0;
+}
+
+/*footer*/
+#footer{
+    font-weight: 400;
+    text-align: center;
+    padding: 20px;
+}

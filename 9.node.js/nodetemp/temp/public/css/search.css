@@ -1,0 +1,16 @@
+tr{
+    background-color:#eee;
+}
+th, td
+{
+    border: 1px solid black;
+    text-align: center;
+}
+th,td{
+    padding:20px 30px;
+}
+#mst{
+    display: none;
+    border-collapse:collapse;
+
+}

@@ -1,0 +1,377 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Title</title>-->
+<!--    <script src="node_modules/vue/dist/vue.js"></script>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div id="app">-->
+<!--    <input type="button" value="toggle" @click="flag=!flag"/>-->
+<!--    <h3 v-if="flag">这是一个H3</h3>-->
+<!--</div>-->
+
+<!--<script type="text/javascript">-->
+<!--    var vm = new Vue({-->
+<!--        el:"#app",-->
+<!--        data:{-->
+<!--            flag:false-->
+<!--        },-->
+<!--        methods:{-->
+
+<!--        }-->
+<!--    });-->
+
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->
+
+
+<!--vue动画来实现-->
+<!--<!doctype html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport"-->
+<!--          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">-->
+<!--    <meta http-equiv="X-UA-Compatible" content="ie=edge">-->
+<!--    <title>Document</title>-->
+<!--    <script src="node_modules/vue/dist/vue.js"></script>-->
+<!--</head>-->
+<!--<style>-->
+<!--    .v-enter,.v-leave-to{-->
+<!--        transform: translateX(80px);-->
+<!--        opacity: 0;-->
+<!--    }-->
+<!--    .v-enter-active,.v-leave-active{-->
+<!--        transition:all 1s linear;-->
+
+<!--    }-->
+<!--</style>-->
+<!--<body>-->
+<!--<div id="app">-->
+<!--    <input type="button" value="toggle" @click="flag=!flag">-->
+<!--    <transition>-->
+<!--        <h3 v-if="flag">这是一个H3</h3>-->
+<!--    </transition>-->
+<!--</div>-->
+
+<!--<script type="text/javascript">-->
+<!--    new Vue({-->
+<!--        el:"#app",-->
+<!--        data:{-->
+<!--            flag:false-->
+<!--        },-->
+<!--        methods:{-->
+
+<!--        }-->
+<!--    });-->
+
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->
+
+
+<!--transition有类名的局限性-->
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <meta http-equiv="X-UA-Compatible" content="ie=edge">-->
+<!--    <title>Document</title>-->
+<!--    <script src="./node_modules/vue/dist/vue.js"></script>-->
+<!--    <style>-->
+<!--        /* 自定义第一组样式，来控制 transition 内部的元素实现动画 */-->
+
+<!--        /* v-enter 【这是一个时间点】 是进入之前，元素的起始状态，此时还没有开始进入 */-->
+
+<!--        /* v-leave-to 【这是一个时间点】 是动画离开之后，离开的终止状态，此时，元素 动画已经结束了 */-->
+
+<!--        .v-enter,-->
+<!--        .v-leave-to {-->
+<!--            opacity: 0;-->
+<!--            transform: translateX(150px);-->
+<!--        }-->
+
+<!--        /* v-enter-active 【入场动画的时间段】 */-->
+
+<!--        /* v-leave-active 【离场动画的时间段】 */-->
+
+<!--        .v-enter-active,-->
+<!--        .v-leave-active {-->
+<!--            transition: all 0.8s ease;-->
+<!--        }-->
+
+
+<!--        /* 自定义第二组样式，来控制 transition 内部的元素实现动画。这次，我们通过自己起的别名`name`来作为指令 */-->
+
+<!--        .my-enter,-->
+<!--        .my-leave-to {-->
+<!--            opacity: 0;-->
+<!--            transform: translateY(70px);-->
+<!--        }-->
+
+<!--        .my-enter-active,-->
+<!--        .my-leave-active {-->
+<!--            transition: all 1s ease;-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+
+<!--<body>-->
+<!--<div id="app">-->
+<!--    &lt;!&ndash; 第一组 &ndash;&gt;-->
+<!--    <input type="button" value="toggle" @click="flag=!flag">-->
+<!--    &lt;!&ndash; 使用 transition 元素，把 需要被动画控制的元素 h3，包裹起来 &ndash;&gt;-->
+<!--    &lt;!&ndash; transition 元素，是 Vue 官方提供的 &ndash;&gt;-->
+<!--    <transition>-->
+<!--        <h3 v-if="flag">这是一个H3</h3>-->
+<!--    </transition>-->
+
+<!--    <hr>-->
+
+<!--    &lt;!&ndash; 第二组 &ndash;&gt;-->
+<!--    <input type="button" value="toggle2" @click="flag2=!flag2">-->
+<!--    &lt;!&ndash; 使用 transition 元素，把 需要被动画控制的元素 h6，包裹起来 &ndash;&gt;-->
+<!--    &lt;!&ndash; transition 元素，是 Vue 官方提供的 &ndash;&gt;-->
+<!--    &lt;!&ndash; 【重点】在这里，我们给这个transition定义一个别名，叫`name`，然后，我们就可以通过 `.my-enter`等 来定义动画的样式【重要】 &ndash;&gt;-->
+<!--    <transition name="my">-->
+<!--        <h6 v-if="flag2">这是一个H6</h6>-->
+<!--    </transition>-->
+<!--</div>-->
+
+<!--<script>-->
+<!--    // 创建 Vue 实例，得到 ViewModel-->
+<!--    var vm = new Vue({-->
+<!--        el: '#app',-->
+<!--        data: {-->
+<!--            flag: false,-->
+<!--            flag2: false-->
+<!--        },-->
+<!--        methods: {}-->
+<!--    });-->
+<!--</script>-->
+<!--</body>-->
+
+<!--</html>-->
+
+
+
+<!--用animate做动画-->
+<!--<!doctype html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport"-->
+<!--          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">-->
+<!--    <meta http-equiv="X-UA-Compatible" content="ie=edge">-->
+<!--    <title>Document</title>-->
+<!--    <script src="node_modules/vue/dist/vue.js"></script>-->
+<!--    <link rel="stylesheet" href="animate.css">-->
+<!--</head>-->
+<!--<body>-->
+<!--<div id="app">-->
+<!--    <input type="button" value="toggle" @click="flag=!flag"/>-->
+<!--&lt;!&ndash;    <transition enter-active-class="animated bounceIn" leave-active-class="animated bounceOut">&ndash;&gt;-->
+<!--&lt;!&ndash;        <h3 v-if="flag">这是一个H3</h3>&ndash;&gt;-->
+<!--&lt;!&ndash;    </transition>&ndash;&gt;-->
+<!--    -->
+<!--&lt;!&ndash;    <transition enter-active-class="animated bounceIn" leave-active-class="animated bounceOut" :duration="500">&ndash;&gt;-->
+<!--&lt;!&ndash;        <h3 v-if="flag">这是一个H3</h3>&ndash;&gt;-->
+<!--&lt;!&ndash;    </transition>&ndash;&gt;-->
+
+<!--    <transition enter-active-class="animated bounceIn" leave-active-class="animated bounceOut" :duration="{ enter: 1000, leave: 300 }">-->
+<!--        <h3 v-if="flag">这是一个H3</h3>-->
+<!--    </transition>-->
+<!--</div>-->
+
+<!--<script type="text/javascript">-->
+<!--    new Vue({-->
+<!--        el:"#app",-->
+<!--        data:{-->
+<!--            flag:false-->
+<!--        },-->
+<!--        methods:{-->
+
+<!--        }-->
+<!--    });-->
+<!--</script>-->
+
+<!--</body>-->
+<!--</html>-->
+
+
+<!--半动画设置中的钩子函数-->
+<!--🔺回调函数和钩子函数的区别:-->
+<!--根本上，他们都是为了捕获消息而生的，但是钩子函数在捕获消息的第一时间就会执行-->
+<!--，而回调函数是在整个捕获过程结束时，最后一个被执行的。-->
+
+<!--<transition-->
+<!--        v-on:before-enter="beforeEnter"-->
+<!--        v-on:enter="enter"-->
+<!--        v-on:after-enter="afterEnter"-->
+<!--        v-on:enter-cancelled="enterCancelled"-->
+
+<!--        v-on:before-leave="beforeLeave"-->
+<!--        v-on:leave="leave"-->
+<!--        v-on:after-leave="afterLeave"-->
+<!--        v-on:leave-cancelled="leaveCancelled"-->
+<!--&gt;-->
+<!--    &lt;!&ndash; DOM元素 &ndash;&gt;-->
+<!--</transition>-->
+
+
+<!--<!doctype html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport"-->
+<!--          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">-->
+<!--    <meta http-equiv="X-UA-Compatible" content="ie=edge">-->
+<!--    <title>Document</title>-->
+<!--    <script src="node_modules/vue/dist/vue.js"></script>-->
+<!--    <style type="text/css">-->
+<!--        .ball{-->
+<!--            width: 20px;-->
+<!--            height: 20px;-->
+<!--            background-color: red;-->
+<!--            border-radius: 50%;-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div id="app">-->
+<!--    <input type="button" value="加入购物车" @click="flag=!flag">-->
+<!--    <hr>-->
+<!--    <transition @before-enter="beforeEnter" @enter="enter" @after-enter="afterEnter">-->
+<!--        <div class="ball" v-show="flag"></div>-->
+<!--    </transition>-->
+<!--</div>-->
+
+
+<!--<script type="text/javascript">-->
+<!--    new Vue({-->
+<!--        el:"#app",-->
+<!--        data:{-->
+<!--            flag:false-->
+<!--        },-->
+<!--        methods:{-->
+<!--            beforeEnter(el){-->
+<!--                el.style.transform = "translate(0,0)"-->
+<!--            },-->
+<!--            enter(el,done) {-->
+<!--                // 【注意1】el.offsetWidth 这句话，没有实际的作用，但是，如果不写，出不来动画效果。可以认为 el.offsetWidth 会强制动画刷新-->
+<!--                el.offsetHeight-->
+<!--                el.style.transform = "translate(200px,200px)"-->
+<!--                el.style.transition = "all 1s ease"-->
+<!--        // done()执行回调函数-->
+<!--                done()-->
+<!--                // 放在enter函数后面会立刻执行,否则会延迟执行后面的afterEnter当只用 JavaScript 过渡的时候，在enter和leave中必须使用done进行回调。否则，它们将被同步调用，过渡会立即完成。-->
+<!--            },-->
+<!--            afterEnter(el){-->
+<!--                this.flag = !this.flag-->
+<!--            }-->
+<!--        }-->
+<!--    });-->
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->
+
+
+
+
+<!--使用transition-group元素实现列表动画-->
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <style>
+        li{
+            border: 1px dashed #999;
+            margin: 5px;
+            line-height: 35px;
+            padding-left: 5px;
+            font-size: 12px;
+            width: 100%;
+            list-style: none;
+        }
+        li:hover{
+            background-color: hotpink;
+            transition: all 0.8s ease;
+        }
+        .v-enter,.v-leave-to{
+            opacity: 0;
+            transform: translateY(80px);
+        }
+        .v-enter-active,.v-leave-active{
+            transition: all 0.6s ease;
+        }
+        /* 下面的 .v-move 和 .v-leave-active 配合使用，能够实现列表后续的元素，渐渐地漂上来的效果 */
+        .v-move {
+            transition: all 0.6s ease;
+        }
+
+        .v-leave-active {
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <div>
+        <label>
+        id:<input type="text" v-model="id"/>
+        </label>
+        <label>
+        name:<input type="text" v-model="name"/>
+        </label>
+        <input type="button" value="添加" @click="addData"/>
+    </div>
+
+<!--    <ul>-->
+    <transition-group appear tag="ul">
+        <li v-for="(item,index) in list" :key="item.id" @click="del(index)">
+            {{item.id}}-------{{item.name}}
+        </li>
+    </transition-group>
+<!--    </ul>-->
+</div>
+<script type="text/javascript">
+    new Vue({
+        el:"#app",
+        data:{
+            id:"",
+            name:"",
+            list:[
+                {id:1,name:"苏1超"},
+                {id:2,name:"苏2超"},
+                {id:3,name:"苏3超"},
+                {id:4,name:"苏4超"},
+                {id:5,name:"苏5超"}
+            ]
+        },
+        methods:{
+            addData(){
+                this.list.push({id:this.id,name:this.name})
+                this.id = ""
+                this.name = ""
+            },
+            del(index){
+                this.list.splice(index,1)
+            }
+        }
+    });
+
+
+</script>
+
+
+</body>
+</html>

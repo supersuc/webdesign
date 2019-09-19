@@ -1,0 +1,471 @@
+<!--flex-direction-->
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head lang="en">-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title></title>-->
+<!--    <style>-->
+<!--        *{-->
+<!--            margin: 0;-->
+<!--            padding: 0;-->
+<!--            list-style: none;-->
+<!--        }-->
+<!--        body{-->
+<!--            background-color: #eee;-->
+<!--            font-family: "Microsoft Yahei";-->
+<!--            font-size:22px;-->
+<!--        }-->
+
+<!--        h3{-->
+<!--            font-weight: normal;-->
+<!--        }-->
+<!--        section{-->
+<!--            width: 1000px;-->
+
+<!--            margin:40px auto;-->
+<!--        }-->
+
+<!--        ul{-->
+<!--            background-color: #fff;-->
+<!--            border: 1px solid #ccc;-->
+
+<!--        }-->
+
+<!--        ul li{-->
+<!--            width: 200px;-->
+<!--            height: 200px;-->
+<!--            background-color: pink;-->
+<!--            margin:10px;-->
+<!--        }-->
+<!--        section:nth-child(1) ul{-->
+<!--            overflow: hidden; /* 清除浮动 */-->
+<!--        }-->
+<!--        section:nth-child(1) ul li{-->
+<!--            float: left;-->
+<!--        }-->
+<!--        /* 设置伸缩盒子*/-->
+<!--        section:nth-child(2) ul{-->
+<!--            display: flex;-->
+<!--        }-->
+
+<!--        section:nth-child(3) ul{-->
+<!--            /* 设置伸缩布局*/-->
+<!--            display: flex;-->
+<!--            /* 设置主轴方向*/-->
+<!--            flex-direction: row;-->
+<!--        }-->
+
+<!--        section:nth-child(4) ul{-->
+<!--            /* 设置伸缩布局*/-->
+<!--            display: flex;-->
+<!--            /* 设置主轴方向 :水平翻转*/-->
+<!--            flex-direction: row-reverse;-->
+<!--        }-->
+
+<!--        section:nth-child(5) ul{-->
+<!--            /* 设置伸缩布局*/-->
+<!--            display: flex;-->
+<!--            /* 设置主轴方向 :垂直*/-->
+<!--            flex-direction: column;-->
+<!--        }-->
+
+<!--        section:nth-child(6) ul{-->
+<!--            /* 设置伸缩布局*/-->
+<!--            display: flex;-->
+<!--            /* 设置主轴方向 :垂直*/-->
+<!--            flex-direction: column-reverse;-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<section>-->
+<!--    <h3>传统布局</h3>-->
+<!--    <ul>-->
+<!--        <li>1</li>-->
+<!--        <li>2</li>-->
+<!--        <li>3</li>-->
+<!--    </ul>-->
+<!--</section>-->
+
+<!--<section>-->
+<!--    <h3>伸缩布局 display:flex</h3>-->
+<!--    <ul>-->
+<!--        <li>1</li>-->
+<!--        <li>2</li>-->
+<!--        <li>3</li>-->
+<!--    </ul>-->
+<!--</section>-->
+
+<!--<section>-->
+<!--    <h3>主轴方向 flex-direction:row</h3>-->
+<!--    <ul>-->
+<!--        <li>1</li>-->
+<!--        <li>2</li>-->
+<!--        <li>3</li>-->
+<!--    </ul>-->
+<!--</section>-->
+
+<!--<section>-->
+<!--    <h3>主轴方向 flex-direction:row-reverse</h3>-->
+<!--    <ul>-->
+<!--        <li>1</li>-->
+<!--        <li>2</li>-->
+<!--        <li>3</li>-->
+<!--    </ul>-->
+<!--</section>-->
+
+<!--<section>-->
+<!--    <h3>主轴方向 flex-direction:column</h3>-->
+<!--    <ul>-->
+<!--        <li>1</li>-->
+<!--        <li>2</li>-->
+<!--        <li>3</li>-->
+<!--    </ul>-->
+<!--</section>-->
+
+<!--<section>-->
+<!--    <h3>主轴方向 flex-direction:column-reverse</h3>-->
+<!--    <ul>-->
+<!--        <li>1</li>-->
+<!--        <li>2</li>-->
+<!--        <li>3</li>-->
+<!--    </ul>-->
+<!--</section>-->
+<!--</body>-->
+<!--</html>-->
+
+<!--justify-content-->
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head lang="en">-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title></title>-->
+<!--    <style>-->
+<!--        *{-->
+<!--            margin: 0;-->
+<!--            padding: 0;-->
+<!--            list-style:none;}-->
+<!--        body{-->
+<!--            background-color: #eee;-->
+<!--            font-family: "Microsoft Yahei";-->
+
+<!--        }-->
+<!--        section{-->
+<!--            width: 1000px;-->
+<!--            margin:50px auto;-->
+<!--        }-->
+<!--        section h3{-->
+<!--            font-size:22px;-->
+<!--            font-weight: normal;-->
+<!--        }-->
+
+<!--        ul{-->
+<!--            border: 1px solid #999;-->
+<!--            background-color: #fff;-->
+<!--            display: flex;-->
+
+<!--        }-->
+
+<!--        ul li{-->
+<!--            width: 200px;-->
+<!--            height: 200px;-->
+<!--            background: pink;-->
+<!--            margin:10px;-->
+
+<!--        }-->
+
+<!--        section:nth-child(1) ul{-->
+<!--            /* 主轴对齐方式：从主轴开始的方向对齐*/-->
+<!--            justify-content: flex-start;-->
+<!--        }-->
+
+<!--        section:nth-child(2) ul{-->
+<!--            /* 主轴对齐方式：从主轴结束的方向对齐*/-->
+<!--            justify-content: flex-end;-->
+<!--        }-->
+
+<!--        section:nth-child(3) ul{-->
+<!--            /* 主轴对齐方式：居中对齐*/-->
+<!--            justify-content: center;-->
+<!--        }-->
+
+<!--        section:nth-child(4) ul{-->
+<!--            /* 主轴对齐方式：在父盒子中平分*/-->
+<!--            justify-content: space-around;-->
+
+<!--        }-->
+
+<!--        section:nth-child(5) ul{-->
+<!--            /* 主轴对齐方式：两端对齐 平分*/-->
+<!--            justify-content: space-between;-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<section>-->
+<!--    <h3>主轴的对齐方式：justify-content:flex-start</h3>-->
+<!--    <ul>-->
+<!--        <li>1</li>-->
+<!--        <li>2</li>-->
+<!--        <li>3</li>-->
+<!--    </ul>-->
+<!--</section>-->
+
+<!--<section>-->
+<!--    <h3>主轴的对齐方式：justify-content:flex-end</h3>-->
+<!--    <ul>-->
+<!--        <li>1</li>-->
+<!--        <li>2</li>-->
+<!--        <li>3</li>-->
+<!--    </ul>-->
+<!--</section>-->
+
+<!--<section>-->
+<!--    <h3>主轴的对齐方式：justify-content:center</h3>-->
+<!--    <ul>-->
+<!--        <li>1</li>-->
+<!--        <li>2</li>-->
+<!--        <li>3</li>-->
+<!--    </ul>-->
+<!--</section>-->
+
+<!--<section>-->
+<!--    <h3>主轴的对齐方式：justify-content:space-round</h3>-->
+<!--    <ul>-->
+<!--        <li>1</li>-->
+<!--        <li>2</li>-->
+<!--        <li>3</li>-->
+<!--    </ul>-->
+<!--</section>-->
+
+<!--<section>-->
+<!--    <h3>主轴的对齐方式：justify-content:space-bettwen</h3>-->
+<!--    <ul>-->
+<!--        <li>1</li>-->
+<!--        <li>2</li>-->
+<!--        <li>3</li>-->
+<!--&lt;!&ndash;        <li>4</li>&ndash;&gt;-->
+<!--    </ul>-->
+<!--</section>-->
+<!--</body>-->
+<!--</html>-->
+
+
+
+<!--align-items-->
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head lang="en">-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title></title>-->
+<!--    <style>-->
+<!--        *{-->
+<!--            margin: 0;-->
+<!--            padding: 0;-->
+<!--            list-style:none;-->
+<!--        }-->
+<!--        body{-->
+<!--            background-color: #eee;-->
+<!--            font-family: "Microsoft Yahei";-->
+
+<!--        }-->
+<!--        section{-->
+<!--            width: 1000px;-->
+<!--            margin:50px auto;-->
+<!--        }-->
+<!--        section h3{-->
+<!--            font-size:22px;-->
+<!--            font-weight: normal;-->
+<!--        }-->
+
+<!--        ul{-->
+<!--            border: 1px solid #999;-->
+<!--            background-color: #fff;-->
+<!--            display: flex;-->
+<!--            height:500px;-->
+
+<!--        }-->
+
+<!--        ul li{-->
+<!--            width: 200px;-->
+<!--            height: 200px;-->
+<!--            background: pink;-->
+<!--            margin:10px;-->
+
+<!--        }-->
+
+<!--        section:nth-child(1) ul{-->
+<!--            /* 侧轴对齐方式 ：从侧轴开始的方向对齐*/-->
+<!--            align-items:flex-start;-->
+<!--        }-->
+
+<!--        section:nth-child(2) ul{-->
+<!--            /* 侧轴对齐方式 ：从侧轴结束的方向对齐*/-->
+<!--            align-items:flex-end;-->
+<!--        }-->
+
+<!--        section:nth-child(3) ul{-->
+<!--            /* 侧轴对齐方式 ：居中*/-->
+<!--            align-items:center;-->
+<!--        }-->
+
+<!--        section:nth-child(4) ul{-->
+<!--            /* 侧轴对齐方式 ：基线 默认同flex-start*/-->
+<!--            align-items:baseline;-->
+<!--        }-->
+
+<!--        section:nth-child(5) ul{-->
+<!--            /* 侧轴对齐方式 ：拉伸*/-->
+<!--            align-items:stretch;-->
+
+<!--        }-->
+
+<!--        section:nth-child(5) ul li{-->
+<!--            height:auto;-->
+<!--        }-->
+
+
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<section>-->
+<!--    <h3>侧轴的对齐方式:align-items ：flex-start</h3>-->
+<!--    <ul>-->
+<!--        <li>1</li>-->
+<!--        <li>2</li>-->
+<!--        <li>3</li>-->
+<!--    </ul>-->
+<!--</section>-->
+
+<!--<section>-->
+<!--    <h3>侧轴的对齐方式：align-items:flex-end</h3>-->
+<!--    <ul>-->
+<!--        <li>1</li>-->
+<!--        <li>2</li>-->
+<!--        <li>3</li>-->
+<!--    </ul>-->
+<!--</section>-->
+
+<!--<section>-->
+<!--    <h3>侧轴的对齐方式：align-items:center</h3>-->
+<!--    <ul>-->
+<!--        <li>1</li>-->
+<!--        <li>2</li>-->
+<!--        <li>3</li>-->
+<!--    </ul>-->
+<!--</section>-->
+
+<!--<section>-->
+<!--    <h3>侧轴的对齐方式：align-itmes:baseline</h3>-->
+<!--    <ul>-->
+<!--        <li>1</li>-->
+<!--        <li>2</li>-->
+<!--        <li>3</li>-->
+<!--    </ul>-->
+<!--</section>-->
+
+<!--<section>-->
+<!--    <h3>侧轴的对齐方式：align-itmes: stretch</h3>-->
+<!--    <ul>-->
+<!--        <li>1</li>-->
+<!--        <li>2</li>-->
+<!--        <li>3</li>-->
+<!--    </ul>-->
+<!--</section>-->
+<!--</body>-->
+<!--</html>-->
+
+
+
+<!--flex属性：设置子盒子的权重-->
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style:none;
+        }
+        body{
+            background-color: #eee;
+            font-family: "Microsoft Yahei";
+
+        }
+        section{
+            width: 1000px;
+            margin:50px auto;
+        }
+        section h3{
+            font-size:22px;
+            font-weight: normal;
+        }
+
+        ul{
+            border: 1px solid #999;
+            background-color: #fff;
+            display: flex;
+
+        }
+
+        ul li{
+            width: 200px;
+            height: 200px;
+            background: pink;
+            margin:10px;
+
+        }
+
+        section:nth-child(1) ul li:nth-child(1){
+            flex:2;
+        }
+
+        section:nth-child(1) ul li:nth-child(2){
+            flex:2;
+        }
+
+        section:nth-child(1) ul li:nth-child(3){
+            flex:6;
+        }
+
+        section:nth-child(2) ul li:nth-child(1){
+            flex: 2;
+        }
+
+        section:nth-child(2) ul li:nth-child(2){
+            flex:2;
+            /*注意他的计算*/
+            /*不加flex属性就是自身的尺寸属性,然后把剩余的尺寸按照比例计算出来*/
+        }
+
+        section:nth-child(2) ul li:nth-child(3){
+            /*flex:1;*/
+        }
+
+
+    </style>
+</head>
+<body>
+<section>
+    <h3>伸缩比例:flex</h3>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+</section>
+
+<section>
+    <h3>伸缩比例:flex</h3>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+</section>
+
+
+</body>
+</html>

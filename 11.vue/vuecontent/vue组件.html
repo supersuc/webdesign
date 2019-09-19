@@ -1,0 +1,452 @@
+<!--组件： 组件的出现，就是为了拆分Vue实例的代码量的，能够让我们以不同的组件，-->
+<!--来划分不同的功能模块，将来我们需要什么样的功能，就可以去调用对应的组件即可。-->
+
+<!--模块化和组件化-->
+<!--模块化：是从代码逻辑的角度进行划分的；方便代码分层开发，保证每个功能模块的职能单一-->
+<!--组件化：是从UI界面的角度进行划分的；前端的组件化，方便UI组件的重用-->
+
+<!--全局组件的定义和注册-->
+<!--三种方法-->
+<!--1.-->
+<!--写法一：使用Vue.extend方法定义组件，使用 Vue.component方法注册组件。-->
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <meta http-equiv="X-UA-Compatible" content="ie=edge">-->
+<!--    <title>Document</title>-->
+<!--    <script src="node_modules/vue/dist/vue.js"></script>-->
+<!--</head>-->
+
+<!--<body>-->
+<!--<div id="app">-->
+<!--    &lt;!&ndash; 如果要使用组件，直接把组件的名称，以 HTML 标签的形式，引入到页面中，即可 &ndash;&gt;-->
+<!--    <account> </account>-->
+<!--</div>-->
+
+<!--<script>-->
+<!--    //第一步：使用 Vue.extend 定义组件-->
+<!--    var myAccount = Vue.extend({-->
+<!--        template: '<div><h2>登录页面</h2> <h3>注册页面</h3></div>' // 通过 template 属性，指定了组件要展示的HTML结构。template 是 Vue 中的关键字，不能改。-->
+<!--    });-->
+<!--    //第二步：使用 Vue.component 注册组件-->
+<!--    // Vue.component('组件的名称', 创建出来的组件模板对象)-->
+<!--    Vue.component('account', myAccount); //第一个参数是组件的名称（标签名），第二个参数是模板对象-->
+
+<!--    new Vue({-->
+<!--        el: '#app'-->
+<!--    });-->
+<!--</script>-->
+<!--</body>-->
+
+<!--</html>-->
+
+<!--注意1、红框部分，要保证二者的名字是一致的。如果在注册时，组件的名称是驼峰命名，比如：-->
+
+<!--Vue.component('myComponent', myAccount); //第一个参数是组件的名称（标签名），第二个参数是模板对象-->
+<!--那么，在标签中使用组件时，需要把大写的驼峰改为小写的字母，同时两个单词之间使用-进行连接：-->
+
+<!--<my-component> </my-component>-->
+<!--所以，为了避免名字不一致的问题，我们注册组件时，组件的名称可以直接写成my-component。比如：（避免驼峰不一致的建议写法）-->
+
+<!--Vue.component('my-component', myAccount);-->
+
+
+<!--注意2、绿框部分，一定要用一个大的根元素（例如<div>）包裹起来。如果我写成下面这样，就没有预期的效果：-->
+
+<!--    template: '<h2>登录页面</h2> <h3>注册页面</h3>'-->
+
+
+
+<!--写法二-->
+<!--写法二：Vue.component方法定义、注册组件（一步到位）。-->
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <meta http-equiv="X-UA-Compatible" content="ie=edge">-->
+<!--    <title>Document</title>-->
+<!--    <script src="node_modules/vue/dist/vue.js"></script>-->
+<!--</head>-->
+
+<!--<body>-->
+<!--<div id="app">-->
+<!--    <account> </account>-->
+<!--</div>-->
+
+<!--<script>-->
+
+<!--    //定义、注册组件：第一个参数是组件的名称（标签名），第二个参数是组件的定义-->
+<!--    Vue.component('account', {-->
+<!--        template: '<div><h2>登录页面</h2> <h3>注册页面</h3></div>'   // template 是 Vue 中的关键字，不能改。-->
+<!--    });-->
+
+<!--    new Vue({-->
+<!--        el: '#app'-->
+<!--    });-->
+<!--</script>-->
+<!--</body>-->
+
+<!--</html>-->
+
+
+
+<!--写法三:方便调用-->
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <meta http-equiv="X-UA-Compatible" content="ie=edge">-->
+<!--    <title>Document</title>-->
+<!--    <script src="node_modules/vue/dist/vue.js"></script>-->
+<!--</head>-->
+
+<!--<body>-->
+<!--&lt;!&ndash; 定义模板 &ndash;&gt;-->
+<!--<template id="myAccount">-->
+<!--    <div>-->
+<!--        <h2>登录页面</h2>-->
+<!--        <h3>注册页面</h3>-->
+<!--    </div>-->
+<!--</template>-->
+
+<!--<div id="app">-->
+<!--    &lt;!&ndash; 使用组件 &ndash;&gt;-->
+<!--    <account> </account>-->
+<!--</div>-->
+
+<!--<script>-->
+
+<!--    //定义、注册组件-->
+<!--    Vue.component('account', {-->
+<!--        template: '#myAccount'    // template 是 Vue 中的关键字，不能改。-->
+<!--    });-->
+
+<!--    new Vue({-->
+<!--        el: '#app'-->
+<!--    });-->
+<!--</script>-->
+<!--</body>-->
+
+<!--</html>-->
+
+
+<!--使用components定义私有组件-->
+<!--全局组件，这样做的时候，多个Vue实例都可以使用这个组件。-->
+<!--我们还可以在一个Vue实例的内部定义私有组件，这样做的时候，只有当前这个Vue实例才可以使用这个组件。-->
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <meta http-equiv="X-UA-Compatible" content="ie=edge">-->
+<!--    <title>Document</title>-->
+<!--    <script src="node_modules/vue/dist/vue.js"></script>-->
+<!--</head>-->
+
+<!--<body>-->
+
+<!--<div id="app">-->
+<!--    &lt;!&ndash; 使用Vue实例内部的私有组件 &ndash;&gt;-->
+<!--    <my-login></my-login>-->
+<!--</div>-->
+
+<!--<script>-->
+
+<!--    new Vue({-->
+<!--        el: '#app',-->
+<!--        data: {},-->
+<!--        components: { // 定义、注册Vue实例内部的私有组件-->
+<!--            myLogin: {-->
+<!--                template: '<h3>这是私有的login组件</h3>'-->
+<!--            }-->
+<!--        }-->
+
+
+<!--    });-->
+<!--</script>-->
+<!--</body>-->
+
+<!--</html>-->
+
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <meta http-equiv="X-UA-Compatible" content="ie=edge">-->
+<!--    <title>Document</title>-->
+<!--    <script src="node_modules/vue/dist/vue.js"></script>-->
+<!--</head>-->
+
+<!--<body>-->
+
+<!--&lt;!&ndash; 定义模板 &ndash;&gt;-->
+<!--<template id="loginTmp">-->
+<!--    <h3>这是私有的login组件</h3>-->
+<!--</template>-->
+
+<!--<div id="app">-->
+<!--    &lt;!&ndash; 调用Vue实例内部的私有组件 &ndash;&gt;-->
+<!--    <my-login></my-login>-->
+<!--</div>-->
+
+<!--<script>-->
+<!--    new Vue({-->
+<!--        el: '#app',-->
+<!--        data: {},-->
+<!--        components: { // 定义、注册Vue实例内部的私有组件-->
+<!--            myLogin: {-->
+<!--                template: '#loginTmp'-->
+<!--            }-->
+<!--        }-->
+<!--    });-->
+<!--</script>-->
+<!--</body>-->
+
+<!--</html>-->
+
+
+
+<!--为组件添加 data 和 methods实现动态-->
+<!--<!doctype html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport"-->
+<!--          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">-->
+<!--    <meta http-equiv="X-UA-Compatible" content="ie=edge">-->
+<!--    <title>Document</title>-->
+<!--    <script src="node_modules/vue/dist/vue.js"></script>-->
+<!--</head>-->
+<!--<body>-->
+<!--    <template id="myAccount">-->
+<!--        <div>-->
+<!--            {{myData}}-->
+<!--            <hr>-->
+<!--            <a href="#" @click="login">登录1</a>-->
+<!--            <h2>登录界面</h2>-->
+<!--            <h3>注册界面</h3>-->
+<!--        </div>-->
+<!--    </template>-->
+<!--<div class="app">-->
+<!--    <account></account>-->
+<!--    <account></account>-->
+<!--</div>-->
+
+<!--    <script type="text/javascript">-->
+<!--        Vue.component('account',{-->
+<!--            template:"#myAccount",-->
+<!--            data:function () {-->
+<!--                return{-->
+<!--                    myData:'suchao'-->
+<!--                }-->
+<!--            },-->
+<!--            methods:{-->
+<!--                login:function () {-->
+<!--                    alert('login操作');-->
+<!--                }-->
+<!--            }-->
+<!--        });-->
+<!--         var vm = new Vue({-->
+<!--             el:".app"-->
+<!--         });-->
+
+
+<!--    </script>-->
+<!--</body>-->
+<!--</html>-->
+<!--注意，在为组件添加数据时，data不再是对象了，而是function，而且要通过 return的形式进行返回；-->
+<!--否则，页面上是无法看到效果的。通过 function返回对象的形式来定义data，作用是：-->
+
+<!--上方代码中，组件<account>被调用了两次（不像根组件那样只能调用一次）,-->
+<!--但是每个组件里的数据 myData是各自独立的，不产生冲突。-->
+
+<!--换而言之，通过函数返回对象的目的，是为了让每个组件都有自己独立的数据存储，而不应该共享一套数据。-->
+
+
+
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <meta http-equiv="X-UA-Compatible" content="ie=edge">-->
+<!--    <title>Document</title>-->
+<!--    <script src="node_modules/vue/dist/vue.js"></script>-->
+<!--</head>-->
+
+<!--<body>-->
+<!--<div id="app">-->
+<!--    <counter></counter>-->
+<!--    <hr>-->
+<!--    <counter></counter>-->
+<!--    <hr>-->
+<!--    <counter></counter>-->
+<!--</div>-->
+
+<!--<template id="tmpl">-->
+<!--    <div>-->
+<!--        <input type="button" value="让count加1" @click="increment">-->
+<!--        <h3>{{count}}</h3>-->
+<!--    </div>-->
+<!--</template>-->
+
+<!--<script>-->
+<!--    // var dataObj = { count: 0 }-->
+
+<!--    // 这是一个计数器的组件, 身上有个按钮,每当点击按钮,让 data 中的 count 值 +1-->
+<!--    Vue.component('counter', {-->
+<!--        template: '#tmpl',-->
+<!--        data: function () {-->
+<!--            // return dataObj //当我们return全局的dataObj的时候，这个dataObj是共享的-->
+<!--            return { count: 0 } // 【重要】return一个**新开辟**的对象数据-->
+<!--        },-->
+<!--        methods: {-->
+<!--            increment() {-->
+<!--                this.count++-->
+<!--            }-->
+<!--        }-->
+<!--    })-->
+
+<!--    // 创建 Vue 实例，得到 ViewModel-->
+<!--    var vm = new Vue({-->
+<!--        el: '#app',-->
+<!--        data: {},-->
+<!--        methods: {}-->
+<!--    });-->
+<!--</script>-->
+<!--</body>-->
+
+<!--</html>-->
+
+
+
+<!--v-if和v-else切换组件-->
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <meta http-equiv="X-UA-Compatible" content="ie=edge">-->
+<!--    <title>Document</title>-->
+<!--    <script src="node_modules/vue/dist/vue.js"></script>-->
+<!--</head>-->
+
+<!--<body>-->
+<!--<div id="app">-->
+<!--    &lt;!&ndash; 温馨提示：`.prevent`可以阻止超链接的默认事件 &ndash;&gt;-->
+<!--    <a href="" @click.prevent="flag=true">登录</a>-->
+<!--    <a href="" @click.prevent="flag=false">注册</a>-->
+
+<!--    &lt;!&ndash; 登录组件/注册组件，同时只显示一个 &ndash;&gt;-->
+<!--    <login v-if="flag"></login>-->
+<!--    <register v-else="flag"></register>-->
+
+<!--</div>-->
+
+<!--<script>-->
+<!--    Vue.component('login', {-->
+<!--        template: '<h3>登录组件</h3>'-->
+<!--    })-->
+
+<!--    Vue.component('register', {-->
+<!--        template: '<h3>注册</h3>'-->
+<!--    })-->
+
+<!--    // 创建 Vue 实例，得到 ViewModel-->
+<!--    var vm = new Vue({-->
+<!--        el: '#app',-->
+<!--        data: {-->
+<!--            flag: false-->
+<!--        },-->
+<!--        methods: {}-->
+<!--    });-->
+<!--</script>-->
+<!--</body>-->
+<!--只能进行两个组件的切换,要是三个或者三个以上的组件切换-->
+<!--</html>-->
+
+
+
+<!--三个或者三个以上的组件切换-->
+<!--借助<component>标签-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="node_modules/vue/dist/vue.js"></script>
+
+    <style type="text/css">
+        .v-enter,.v-leave-to{
+            opacity:0;
+            transform: translateX(150px);
+        }
+        .v-enter-active,.v-leave-active{
+            transition: all 0.5s ease;
+        }
+    </style>
+</head>
+
+<body>
+<div id="app">
+    <!-- 点击按钮后，设置变量`comName`为不同的值，代表着后面的component里显示不同的组件 -->
+    <a href="" @click.prevent="comName='login'">登录</a>
+    <a href="" @click.prevent="comName='register'">注册</a>
+    <a href="" @click.prevent="comName='love'">love</a>
+
+    <!-- Vue提供了 component ,来展示对应名称的组件 -->
+    <!-- component 是一个占位符, :is 属性,可以用来指定要展示的组件的名称 -->
+    <!-- 此处的`comName`是变量，变量值为组件名称 -->
+    <transition mode="out-in">
+        <component :is="comName"></component>
+    </transition>
+
+
+</div>
+
+<script>
+    // 组件名称是 字符串
+    Vue.component('login', {
+        template: '<h3>登录组件</h3>'
+    })
+
+    Vue.component('register', {
+        template: '<h3>注册组件</h3>'
+    })
+    Vue.component('love',{
+        template:'<h2>love</h2>'
+    })
+
+    // 创建 Vue 实例，得到 ViewModel
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            comName: '' // 当前 component 中的 :is 绑定的组件的名称
+        },
+        methods: {}
+    });
+</script>
+</body>
+
+</html>
+
+
+<!--多个组件切换时，通过mode属性添加过渡的动画 -->

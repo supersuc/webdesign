@@ -1,0 +1,8 @@
+#msg{
+    display: none;
+    background-color: #eee;
+    color: red;
+    height: 30px;
+    line-height: 30px;
+    margin-top: 15px;
+}

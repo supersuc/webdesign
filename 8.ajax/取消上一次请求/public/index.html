@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>取消上一次请求</title>
+</head>
+<body>
+<button id="btn">点击获取验证码</button>
+<script type="text/javascript">
+    let btn = document.getElementById("btn")
+    let lastxhr;
+    btn.onclick = function () {
+        if (lastxhr) {
+            lastxhr.abort()
+        }
+        lastxhr = getCode()
+    }
+    function getCode() {
+        let xhr = new XMLHttpRequest()
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status>=200){
+                console.log(xhr.response)
+            }
+        }
+        xhr.open("get","http://localhost:3000/get_code")
+        xhr.send()
+
+        return xhr
+        // xhr.abort()
+        /*
+        * abort()取消本次请求(两种情况：拦截到服务器之前；服务器请求后，被拦截)
+        * */
+    }
+</script>
+</body>
+</html>

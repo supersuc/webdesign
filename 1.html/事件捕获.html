@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        .box1{
+            background-color: black;
+            width: 300px;
+            height: 300px;
+        }
+        .box2{
+            background-color: red;
+            width: 200px;
+            height: 200px;
+        }
+        .box3{
+            background-color: blue;
+            width: 100px;
+            height: 100px;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="box1" id="box1">
+    <div class="box2">
+        <div class="box3"></div>
+    </div>
+</div>
+
+
+
+
+    <script type="text/javascript">
+
+        var box1 = document.getElementById("box1");
+        var box2 = box1.children[0];
+        var box3 = box2.children[0];
+
+        //事件捕获
+    // box3.addEventListener("click", function () {
+    //     alert("捕获 child");
+    // }, true);
+    //
+    // box2.addEventListener("click", function () {
+    //     alert("捕获 father");
+    // }, true);
+    //
+    // box1.addEventListener("click", function () {
+    //     alert("捕获 grandfather");
+    //     }, true);
+    //
+    // document.addEventListener("click", function () {
+    //     alert("捕获 body");
+    //     }, true);
+    //
+
+    //事件冒泡  顺序不同
+        box1.onclick = function () {
+            alert("grandfather");
+        }
+        box3.onclick = function () {
+            alert("child");
+        }
+        box2.onclick = function () {
+            alert("father");
+        }
+
+        document.onclick = function () {
+            alert("body");
+        }
+
+// 防止冒泡
+        box3.onclick = function (event) {
+            alert("child");
+            //阻止冒泡
+            event = event || window.event;
+            if (event && event.stopPropagation) {
+                event.stopPropagation();
+            } else {
+                event.cancelBubble = true;
+            }
+        }
+</script>
+
+</body>
+</html>

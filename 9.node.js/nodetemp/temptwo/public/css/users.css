@@ -1,0 +1,22 @@
+#msg{
+    background-color: #eee;
+    border-collapse:collapse;
+    width: 800px;
+}
+tr{
+    background-color:#eee;
+}
+th, td
+{
+    border: 1px solid black;
+    text-align: center;
+}
+th,td{
+    padding:30px 30px;
+}
+thead>tr{
+    background-color: #40D2B1;
+}
+thead{
+    color: #ede635;
+}

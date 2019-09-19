@@ -1,0 +1,259 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>选择器 - 属性</title>-->
+<!--    <style>-->
+<!--        body {-->
+<!--            margin: 0;-->
+<!--            padding: 0;-->
+<!--            font-family: '微软雅黑';-->
+<!--            background-color: #F7F7F7;-->
+<!--        }-->
+
+<!--        .wrapper {-->
+<!--            width: 1024px;-->
+<!--            margin: 0 auto;-->
+<!--        }-->
+
+<!--        .wrapper > section {-->
+<!--            min-height: 300px;-->
+<!--            margin-bottom: 30px;-->
+<!--            box-shadow: 1px 1px 4px #DDD;-->
+<!--            background-color: #FFF;-->
+<!--        }-->
+
+<!--        .wrapper > header {-->
+<!--            text-align: center;-->
+<!--            line-height: 1;-->
+<!--            padding: 20px;-->
+<!--            margin-bottom: 10px;-->
+<!--            font-size: 30px;-->
+<!--        }-->
+
+<!--        .wrapper section > header {-->
+<!--            line-height: 1;-->
+<!--            padding: 10px;-->
+<!--            font-size: 22px;-->
+<!--            color: #333;-->
+<!--            background-color: #EEE;-->
+<!--        }-->
+
+<!--        .wrapper .wrap-box {-->
+<!--            padding: 20px;-->
+<!--        }-->
+
+<!--        form {-->
+<!--            width: 300px;-->
+<!--            height: 300px;-->
+<!--            margin: 0 auto;-->
+<!--        }-->
+
+<!--        form input[type="text"] {-->
+<!--            width: 200px;-->
+<!--            height: 30px;-->
+<!--        }-->
+
+<!--        form input[type="password"] {-->
+<!--            width: 200px;-->
+<!--            height: 30px;-->
+<!--        }-->
+
+<!--        .attr1 {-->
+
+<!--        }-->
+
+<!--        .download {-->
+<!--        }-->
+
+<!--        .attr1 a[href="./a.rmvb"] {-->
+<!--            color: red;-->
+<!--        }-->
+
+<!--        .attr1 a[href="./b.rmvb"] {-->
+<!--            color: pink;-->
+<!--        }-->
+
+<!--        /*  E[attr~=val] 表示的一个单独的属性值 这个属性值是以空格分隔的*/-->
+<!--        .attr2 a[class~="download"] {-->
+<!--            color: yellow;-->
+<!--        }-->
+
+<!--        /*  E[attr|=val] 表示的要么一个单独的属性值 要么这个属性值是以"-"分隔的*/-->
+<!--        .attr3 a[class|="download"] {-->
+<!--            color: red;-->
+<!--        }-->
+
+<!--        /*  E[attr*=val] 表示的属性值里包含val字符并且在“任意”位置 */-->
+<!--        .attr4 a[class*="download"] {-->
+<!--            color: red;-->
+<!--        }-->
+
+<!--        /*  E[attr^=val] 表示的属性值里包含val字符并且在“开始”位置 */-->
+<!--        .attr5 a[class^="download"] {-->
+<!--            color: red;-->
+<!--        }-->
+
+<!--        /*  E[attr$=val] 表示的属性值里包含val字符并且在“结束”位置 */-->
+<!--        .attr6 a[class$="download"] {-->
+<!--            color: red;-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+
+<!--&lt;!&ndash;区别：优雅降级是从复杂的现状开始，并试图减少用户体验的供给，-->
+<!--而渐进增强则是从一个非常基础的、能够起作用的版本开始，并不断扩充，-->
+<!--以适应未来环境的需要。&ndash;&gt;-->
+
+
+<!--&lt;!&ndash;属性选择器&ndash;&gt;-->
+<!--&lt;!&ndash;E[title] 选中页面的E元素，并且E存在 title 属性即可。&ndash;&gt;-->
+<!--&lt;!&ndash;E[title="abc"]选中页面的E元素，并且E需要带有title属性，且属性值完全等于abc。&ndash;&gt;-->
+<!--&lt;!&ndash;E[attr~=val] 选择具有 att 属性且属性值为：用空格分隔的字词列表，其中一个等于 val 的E元素。&ndash;&gt;-->
+<!--&lt;!&ndash;E[attr|=val] 表示要么是一个单独的属性值，要么这个属性值是以“-”分隔的。&ndash;&gt;-->
+<!--&lt;!&ndash;E[title^="abc"] 选中页面的E元素，并且E需要带有 title 属性,属性值以 abc 开头。&ndash;&gt;-->
+<!--&lt;!&ndash;E[title$="abc"] 选中页面的E元素，并且E需要带有 title 属性,属性值以 abc 结尾。&ndash;&gt;-->
+<!--&lt;!&ndash;E[title*="abc"] 选中页面的E元素，并且E需要带有 title 属性,属性值任意位置包含abc。&ndash;&gt;-->
+
+
+
+<!--<div class="wrapper">-->
+<!--    <header>CSS3-属性选择器</header>-->
+<!--    <section>-->
+<!--        <header>简介</header>-->
+<!--        <div class="wrap-box">-->
+<!--            <form action="">-->
+
+<!--                <ul>-->
+<!--                    <li>-->
+<!--                        姓名: <input type="text">-->
+<!--                    </li>-->
+<!--                    <li>-->
+<!--                        密码: <input type="password">-->
+<!--                    </li>-->
+
+<!--                    <li>-->
+<!--                        性别: <input type="radio">男-->
+<!--                        <input type="radio"> 女-->
+<!--                    </li>-->
+<!--                    <li>-->
+<!--                        兴趣: <input type="checkbox" name="" id="">写代码-->
+<!--                    </li>-->
+<!--                    <li>-->
+<!--                        <input type="submit" value="提交">-->
+<!--                    </li>-->
+<!--                </ul>-->
+<!--            </form>-->
+<!--        </div>-->
+<!--    </section>-->
+<!--    <section class="attr1">-->
+<!--        <header>E[attr]</header>-->
+<!--        <div class="wrap-box">-->
+<!--            <a href="./a.rmvb" class="download download-movie">下载</a>-->
+<!--            <a href="./b.rmvb" class="download download-movie">下载</a>-->
+<!--            <a href="./a.mp3" class="download download-music">下载</a>-->
+<!--        </div>-->
+<!--    </section>-->
+<!--    <section class="attr2">-->
+<!--        <header>E[attr~=attr]</header>-->
+<!--        <div class="wrap-box">-->
+<!--            <a href="./a.rmvb" class="download download-movie">下载</a>-->
+<!--            <a href="./b.rmvb" class="download download-movie">下载</a>-->
+<!--            <a href="./a.mp3" class="download download-music">下载</a>-->
+<!--        </div>-->
+<!--    </section>-->
+<!--    <section class="attr3">-->
+<!--        <header>E[attr|=attr]</header>-->
+<!--        <div class="wrap-box">-->
+<!--            <a href="./a.rmvb" class="download">下载</a>-->
+<!--            <a href="./b.rmvb" class="download-movie">下载</a>-->
+<!--            <a href="./a.mp3" class="download-music">下载</a>-->
+<!--        </div>-->
+<!--    </section>-->
+<!--    <section class="attr4">-->
+<!--        <header>E[attr*=val]</header>-->
+<!--        <div class="wrap-box">-->
+<!--            <a href="./a.rmvb" class="download">下载</a>-->
+<!--            <a href="./b.rmvb" class="moviedownload">下载</a>-->
+<!--            <a href="./a.mp3" class="downloadmusic">下载</a>-->
+<!--        </div>-->
+<!--    </section>-->
+<!--    <section class="attr5">-->
+<!--        <header>E[attr^=val]</header>-->
+<!--        <div class="wrap-box">-->
+<!--            <a href="./a.rmvb" class="download">下载</a>-->
+<!--            <a href="./b.rmvb" class="moviedownload">下载</a>-->
+<!--            <a href="./a.mp3" class="downloadmusic">下载</a>-->
+<!--        </div>-->
+<!--    </section>-->
+<!--    <section class="attr6">-->
+<!--        <header>E[attr$=val]</header>-->
+<!--        <div class="wrap-box">-->
+<!--            <a href="./a.rmvb" class="download">下载</a>-->
+<!--            <a href="./b.rmvb" class="moviedownload">下载</a>-->
+<!--            <a href="./a.mp3" class="downloadmusic">下载</a>-->
+<!--        </div>-->
+<!--    </section>-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
+
+
+
+<!--结构伪类选择器-->
+<!--E:first-child 匹配父元素的第一个子元素E。-->
+<!--E:last-child 匹配父元素的最后一个子元素E。-->
+<!--E:nth-child(n) 匹配父元素的第n个子元素E。注意，盒子的编号是从1开始算起，不是从0开始算起。-->
+<!--E:nth-child(odd) 匹配奇数-->
+<!--E:nth-child(even) 匹配偶数-->
+<!--E:nth-last-child(n) 匹配父元素的倒数第n个子元素E。-->
+
+
+
+
+<!--伪元素选择器-->
+<!--E::before 设置在 元素E 前面（依据对象树的逻辑结构）的内容，配合content属性一起使用。-->
+<!--E::after 设置在 元素E 后面（依据对象树的逻辑结构）的内容，配合content属性一起使用。-->
+
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+
+        /*::before 和::after 是通过 css 模拟出的html标签的效果*/
+        /*通过伪元素选择器，就可以添加出类似于span标签的效果（记得要结合 content 属性使用）。*/
+        /*通过这两个属性添加的伪元素，是行内元素，需要转换成块元素才能设置宽高。*/
+
+        /*E::first-letter 设置元素 E 里面的第一个字符的样式。*/
+        /*E::first-line 设置元素 E 里面的第一行的样式。*/
+        /*E::selection 设置元素 E 里面被鼠标选中的区域的样式（一般设置颜色和背景色）。*/
+
+        span::before{
+            content:"smyhvae";
+            color:red;
+            background-color: pink;
+            width: 50px;
+            height: 50px;
+            display: inline;
+        }
+
+        span::after{
+            content:"永不止步";
+            color:yellowgreen;
+        }
+
+        /*给原本的span标签设置一个默认的属性*/
+        span{
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+
+<span>生命壹号</span>
+</body>
+</html>

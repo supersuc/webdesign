@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户数据操作</title>
+    <link rel="stylesheet" href="css/users.css">
+</head>
+<body>
+<h3>添加用户</h3>
+<p><a href="/add">添加用户</a></p>
+<hr>
+<h3>表格操作</h3>
+<form action="/search" method="post">
+    姓名：<input type="text" name="username" id="username"/>
+    性别：<select name="sex" id="sex">
+        <option value="">--请选择--</option>
+        <option value="男">男</option>
+        <option value="女">女</option>
+    </select>
+    <input type="submit" value="查询">
+</form>
+<hr>
+<table id="msg">
+    <tr>
+        <th>编号</th>
+        <th>姓名</th>
+        <th>年龄</th>
+        <th colspan="2">操作</th>
+    </tr>
+    <% for(var i = 0; i < listArr.length; i++) {%>
+        <tr>
+            <td><%= listArr[i].uid %></td>
+            <td><%= listArr[i].uname %></td>
+            <td><%= listArr[i].sex %></td>
+            <td><a href="/del?id=<%= listArr[i].uid %>">删除</a></td>
+            <td><a href="/toUpdate?id=<%= listArr[i].uid %>">修改</a></td>
+        </tr>
+    <% } %>
+</table>
+</body>
+</html>

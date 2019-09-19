@@ -1,0 +1,787 @@
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head lang="en">-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title></title>-->
+<!--    <style>-->
+<!--        div {-->
+<!--            width: 100px;-->
+<!--            height: 100px;-->
+<!--            background-color: pink;-->
+<!--            position: absolute;-->
+<!--            left: 0;-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+
+<!--&lt;!&ndash;Math.ceil() 向上取整&ndash;&gt;-->
+<!--&lt;!&ndash;Math.floor() 向下取整&ndash;&gt;-->
+<!--&lt;!&ndash;Math.round(); 四舍五入&ndash;&gt;-->
+
+<!--<button>运动到200</button>-->
+<!--<button>运动到400</button>-->
+<!--<div></div>-->
+
+<!--<script>-->
+
+<!--    var btn = document.getElementsByTagName("button");-->
+<!--    var div = document.getElementsByTagName("div")[0];-->
+
+<!--    btn[0].onclick = function () {-->
+<!--        animate(div, 200);-->
+<!--    }-->
+
+<!--    btn[1].onclick = function () {-->
+<!--        animate(div, 400);-->
+<!--    }-->
+
+<!--    //缓动动画封装-->
+<!--    function animate(ele, target) {-->
+<!--        //要用定时器，先清定时器-->
+<!--        //一个萝卜一个坑儿，一个元素对应一个定时器-->
+<!--        clearInterval(ele.timer);-->
+<!--        //定义定时器-->
+<!--        ele.timer = setInterval(function () {-->
+<!--            //获取步长-->
+<!--            //步长应该是越来越小的，缓动的算法。-->
+<!--            var step = (target - ele.offsetLeft) / 10;-->
+<!--            //对步长进行二次加工(大于0向上取整,小于0向下取整)-->
+<!--            //达到的效果是：最后10像素的时候都是1像素1像素的向目标位置移动，就能够到达指定位置。-->
+<!--            step = step > 0 ? Math.ceil(step) : Math.floor(step);-->
+<!--            //动画原理： 目标位置 = 当前位置 + 步长-->
+<!--            ele.style.left = ele.offsetLeft + step + "px";-->
+<!--            console.log(step);-->
+<!--            //检测缓动动画有没有停止-->
+<!--            console.log("smyhvae");-->
+<!--            if (Math.abs(target - ele.offsetLeft) <= Math.abs(step)) {-->
+<!--                //处理小数赋值-->
+<!--                ele.style.left = target + "px";-->
+<!--                clearInterval(ele.timer);-->
+<!--            }-->
+<!--        }, 30);-->
+<!--    }-->
+
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->
+
+<!--<html>-->
+<!--<head lang="en">-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title></title>-->
+<!--    <style>-->
+<!--        body {-->
+<!--            height: 5000px;-->
+<!--            width: 5000px;-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+
+<!--<script>-->
+
+<!--    //需求：封装一个兼容的scroll().返回值是json，用scroll().top获取scrollTop，用scroll().left获取scrollLeft-->
+
+<!--    window.onscroll = function () {-->
+<!--//        var json = scroll();-->
+<!--//        json.top;-->
+<!--        console.log(scroll().top);-->
+<!--        console.log(scroll().left);-->
+<!--    }-->
+
+<!--    //函数封装（简单封装，实际工作使用）-->
+<!--    function scroll() {-->
+<!--        return { //此函数的返回值是json-->
+<!--            "top": window.pageYOffset || document.body.scrollTop || document.documentElement.scrollTop,-->
+<!--            "left": window.pageXOffset || document.body.scrollLeft || document.documentElement.scrollLeft-->
+<!--        }-->
+<!--    }-->
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->
+
+
+<!--<!doctype html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport"-->
+<!--          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">-->
+<!--    <meta http-equiv="X-UA-Compatible" content="ie=edge">-->
+<!--    <title>Document</title>-->
+<!--</head>-->
+<!--<body>-->
+
+<!--&lt;!&ndash;获取html文档节点的方式&ndash;&gt;-->
+<!--&lt;!&ndash;document.title 文档标题；&ndash;&gt;-->
+<!--&lt;!&ndash;document.head 文档的头标签&ndash;&gt;-->
+<!--&lt;!&ndash;document.body 文档的body标签；&ndash;&gt;-->
+<!--&lt;!&ndash;document.documentElement （这个很重要）。document.documentElement访问的，并不是通过 document.html 去访问的。&ndash;&gt;-->
+
+<!--</body>-->
+<!--</html>-->
+
+
+
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head lang="en">-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title></title>-->
+<!--    <style>-->
+<!--        * {-->
+<!--            margin: 0;-->
+<!--            padding: 0-->
+<!--        }-->
+
+<!--        img {-->
+<!--            vertical-align: top;-->
+<!--        }-->
+<!--        #top{-->
+<!--            width: auto;-->
+<!--            text-align: center;-->
+<!--            margin: 10px auto;-->
+<!--        }-->
+
+<!--        .main {-->
+<!--            width: auto;-->
+<!--            text-align: center;-->
+<!--            margin: 10px auto;-->
+<!--        }-->
+
+<!--        #Q-nav1 {-->
+<!--            overflow: hidden;-->
+<!--            width: auto;-->
+<!--            text-align: center;-->
+<!--            margin: 10px auto;-->
+<!--        }-->
+
+<!--        .fixed {-->
+<!--            position: fixed;-->
+<!--            top: 0;-->
+<!--            left: 22%;-->
+<!--        }-->
+<!--    </style>-->
+
+<!--    &lt;!&ndash;引入工具js&ndash;&gt;-->
+<!--    <script src="tools.js"></script>-->
+<!--    <script>-->
+<!--        window.onload = function () {-->
+<!--            //需求1：当我们滚动界面的时候，被卷曲的头部如果超过第二个盒子距离顶部的位置，那么直接给第二个盒子加类名.fixed-->
+<!--            //需求2：当我们滚动界面的时候，被卷曲的头部如果小于第二个盒子距离顶部的位置，那么直接给第二个盒子取消类名.fixed-->
+
+<!--            //1.老三步。-->
+<!--            var topDiv = document.getElementById("top");-->
+<!--            var height = topDiv.offsetHeight;-->
+<!--            var middle = document.getElementById("Q-nav1");-->
+<!--            var main = document.getElementById("main");-->
+
+<!--            window.onscroll = function () {-->
+<!--                //2.判断 ，被卷曲的头部的大小-->
+<!--                if (scroll().top > height) {-->
+<!--                    //3.满足条件添加类，否则删除类-->
+<!--                    middle.className += " fixed";-->
+<!--                    //第二个盒子也要占位置，为了避免重叠，我们给第三个盒子一个上padding的空间，把这个空间留给第二个盒子-->
+<!--                    main.style.paddingTop = middle.offsetHeight + "px";-->
+<!--                } else {-->
+<!--                    middle.className = "";-->
+<!--                    //清零-->
+<!--                    main.style.paddingTop = 0;-->
+<!--                }-->
+<!--            }-->
+
+<!--        }-->
+<!--    </script>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div class="top" id="top">-->
+<!--    <img src="3.png" alt=""/>-->
+<!--</div>-->
+<!--<div id="Q-nav1">-->
+<!--    <img src="4.png" alt=""/>-->
+<!--</div>-->
+<!--<div class="main" id="main">-->
+<!--    <img src="6.png" alt=""/>-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
+
+
+
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head lang="en">-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title></title>-->
+<!--    <style>-->
+<!--        img {-->
+<!--            position: fixed;-->
+<!--            bottom: 100px;-->
+<!--            right: 50px;-->
+<!--            cursor: pointer;-->
+<!--            display: none;-->
+<!--            border: 1px solid #000;-->
+<!--        }-->
+
+<!--        div {-->
+<!--            width: 1210px;-->
+<!--            margin: 100px auto;-->
+<!--            text-align: center;-->
+<!--            font: 500 26px/35px "simsun";-->
+<!--            color: red;-->
+<!--        }-->
+<!--    </style>-->
+<!--    <script src="tools.js"></script>-->
+<!--    <script>-->
+<!--        window.onload = function () {-->
+<!--            //需求：被卷去的头部超过100显示小火箭，然后点击小火箭屏幕缓慢移动到最顶端。-->
+<!--            //难点：我们以前是移动盒子，现在是移动屏幕，我们没有学过如何移动屏幕。-->
+<!--            //      技术点：window.scrollTo(x,y);浏览器显示区域跳转到指定的坐标-->
+<!--            //步骤：-->
+<!--            //1.老三步-->
+<!--            var img = document.getElementsByTagName("img")[0];-->
+<!--            window.onscroll = function () {-->
+<!--                //被卷去的距离大于200显示小火箭，否则隐藏-->
+<!--                //2.显示隐藏小火箭-->
+<!--                if (scroll().top > 1000) {-->
+<!--                    img.style.display = "block";-->
+<!--                } else {-->
+<!--                    img.style.display = "none";-->
+<!--                }-->
+<!--                //每次移动滚动条的时候都给leader赋值，模拟leader获取距离顶部的距离-->
+<!--                leader = scroll().top;-->
+<!--            }-->
+<!--            //3.缓动跳转到页面最顶端（利用我们的缓动动画）-->
+<!--            var timer = null;-->
+<!--            var target = 0; //目标位置-->
+<!--            var leader = 0; //显示区域自身的位置-->
+<!--            img.onclick = function () {-->
+<!--                //技术点：window.scrollTo(0,0);-->
+<!--                //要用定时器，先清定时器-->
+<!--                clearInterval(timer);-->
+<!--                timer = setInterval(function () {-->
+<!--                    //获取步长-->
+<!--                    var step = (target - leader) / 10;-->
+<!--                    //二次处理步长-->
+<!--                    step = step > 0 ? Math.ceil(step) : Math.floor(step);-->
+<!--                    leader = leader + step; //往上移动的过程中，step是负数。当前位置减去步长，就等于下一步的位置。-->
+<!--                    //显示区域移动-->
+<!--                    window.scrollTo(0, leader);-->
+<!--                    //清除定时器-->
+<!--                    if (leader === 0) {-->
+<!--                        clearInterval(timer);-->
+<!--                    }-->
+<!--                }, 25);-->
+<!--            }-->
+<!--        }-->
+<!--    </script>-->
+<!--</head>-->
+<!--<body>-->
+<!--<img src="7.png"/>-->
+<!--<div>-->
+<!--    我是最顶端.....<br>-->
+<!--    生命壹号，永不止步.....<br>-->
+<!--    生命壹号，永不止步.....<br>-->
+<!--    生命壹号，永不止步.....<br>-->
+<!--    生命壹号，永不止步.....<br>-->
+<!--    生命壹号，永不止步.....<br>-->
+<!--    生命壹号，永不止步.....<br>-->
+<!--    生命壹号，永不止步.....<br>-->
+<!--    生命壹号，永不止步.....<br>-->
+<!--    生命壹号，永不止步.....<br>-->
+<!--    生命壹号，永不止步.....<br>-->
+<!--    生命壹号，永不止步.....<br>-->
+<!--    生命壹号，永不止步.....<br>-->
+<!--    生命壹号，永不止步.....<br>-->
+<!--    生命壹号，永不止步.....<br>-->
+<!--    生命壹号，永不止步.....<br>-->
+<!--    生命壹号，永不止步.....<br>-->
+<!--    生命壹号，永不止步.....<br>-->
+<!--    生命壹号，永不止步.....<br>-->
+<!--    生命壹号，永不止步.....<br>-->
+<!--    生命壹号，永不止步.....<br>-->
+<!--    生命壹号，永不止步.....<br>-->
+<!--    生命壹号，永不止步.....<br>-->
+<!--    生命壹号，永不止步.....<br>-->
+<!--    生命壹号，永不止步.....<br>-->
+<!--    生命壹号，永不止步.....<br>-->
+<!--    生命壹号，永不止步.....<br>-->
+<!--    生命壹号，永不止步.....<br>-->
+<!--    生命壹号，永不止步.....<br>-->
+<!--    生命壹号，永不止步.....<br>-->
+<!--    生命壹号，永不止步.....<br>-->
+<!--    生命壹号，永不止步.....<br>-->
+<!--    生命壹号，永不止步.....<br>-->
+<!--    生命壹号，永不止步.....<br>-->
+<!--    生命壹号，永不止步.....<br>-->
+<!--    生命壹号，永不止步.....<br>-->
+<!--    生命壹号，永不止步.....<br>-->
+<!--    生命壹号，永不止步.....<br>-->
+<!--    生命壹号，永不止步.....<br>-->
+<!--    生命壹号，永不止步.....<br>-->
+<!--    生命壹号，永不止步.....<br>-->
+<!--    生命壹号，永不止步.....<br>-->
+<!--    生命壹号，永不止步.....<br>-->
+<!--    生命壹号，永不止步.....<br>-->
+<!--    生命壹号，永不止步.....<br>-->
+<!--    生命壹号，永不止步.....<br>-->
+<!--    生命壹号，永不止步.....<br>-->
+<!--    生命壹号，永不止步.....<br>-->
+<!--    生命壹号，永不止步.....<br>-->
+<!--    生命壹号，永不止步.....<br>-->
+<!--    生命壹号，永不止步.....<br>-->
+<!--    生命壹号，永不止步.....<br>-->
+<!--    生命壹号，永不止步.....<br>-->
+<!--    生命壹号，永不止步.....<br>-->
+<!--    生命壹号，永不止步.....<br>-->
+<!--    生命壹号，永不止步.....<br>-->
+<!--    生命壹号，永不止步.....<br>-->
+<!--    生命壹号，永不止步.....<br>-->
+<!--    生命壹号，永不止步.....<br>-->
+<!--    生命壹号，永不止步.....<br>-->
+<!--    生命壹号，永不止步.....<br>-->
+<!--    生命壹号，永不止步.....<br>-->
+<!--    生命壹号，永不止步.....<br>-->
+<!--    生命壹号，永不止步.....<br>-->
+<!--    生命壹号，永不止步.....<br>-->
+<!--    生命壹号，永不止步.....<br>-->
+<!--    生命壹号，永不止步.....<br>-->
+<!--    生命壹号，永不止步.....<br>-->
+<!--    生命壹号，永不止步.....<br>-->
+<!--    生命壹号，永不止步.....<br>-->
+<!--    生命壹号，永不止步.....<br>-->
+<!--    生命壹号，永不止步.....<br>-->
+<!--    生命壹号，永不止步.....<br>-->
+
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
+
+
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head lang="en">-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title></title>-->
+<!--    <style>-->
+<!--        div {-->
+<!--            position: absolute;-->
+<!--            top: 40px;-->
+<!--            left: 10px;-->
+<!--            width: 100px;-->
+<!--            height: 100px;-->
+<!--            background-color: pink;-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+
+<!--<button>运动到json中设置的位置</button>-->
+<!--<div></div>-->
+
+<!--<script>-->
+
+<!--    var btnArr = document.getElementsByTagName("button");-->
+<!--    var div = document.getElementsByTagName("div")[0];-->
+
+<!--    btnArr[0].onclick = function () {-->
+<!--        var json = {"left": 100, "top": 200, "width": 300, "height": 300};-->
+<!--        animate(div, json);-->
+<!--    }-->
+
+<!--    //参数变为3个-->
+<!--    function animate(ele, json) {-->
+<!--        //先清定时器-->
+<!--        clearInterval(ele.timer);-->
+<!--        ele.timer = setInterval(function () {-->
+<!--            //遍历属性和值，分别单独处理json-->
+<!--            //attr == key(键)    target == json[key](值)-->
+<!--            for (var key in json) {-->
+<!--                //四部-->
+<!--                var current = parseInt(getStyle(ele, key)) || 0;-->
+<!--                //1.获取步长-->
+<!--                var step = (json[key] - current) / 10;-->
+<!--                //2.二次加工步长-->
+<!--                step = step > 0 ? Math.ceil(step) : Math.floor(step);-->
+<!--                current = current + step;-->
+<!--                //3.赋值-->
+<!--                ele.style[key] = current + "px";-->
+<!--                console.log(1);-->
+<!--                //4.清除定时器-->
+<!--//                    if(Math.abs(json[key]-current)<=Math.abs(step)){-->
+<!--//                        ele.style[key] = json[key] + "px";-->
+<!--//                        clearInterval(ele.timer);-->
+<!--//                    }-->
+<!--            }-->
+<!--        }, 25);-->
+<!--    }-->
+
+<!--    //兼容方法获取元素样式-->
+<!--    function getStyle(ele, attr) {-->
+<!--        if (window.getComputedStyle) {-->
+<!--            return window.getComputedStyle(ele, null)[attr];-->
+<!--        }-->
+<!--        return ele.currentStyle[attr];-->
+<!--    }-->
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->
+
+
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head lang="en">-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title></title>-->
+<!--    <style>-->
+<!--        div {-->
+<!--            position: absolute;-->
+<!--            top: 40px;-->
+<!--            left: 10px;-->
+<!--            width: 100px;-->
+<!--            height: 100px;-->
+<!--            background-color: pink;-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+
+<!--<button>运动到json中设置的位置</button>-->
+<!--<div></div>-->
+
+<!--<script>-->
+
+<!--    var btnArr = document.getElementsByTagName("button");-->
+<!--    var div = document.getElementsByTagName("div")[0];-->
+
+<!--    btnArr[0].onclick = function () {-->
+<!--        var json = {"left": 100, "top": 200, "width": 300, "height": 300};-->
+<!--        animate(div, json);-->
+<!--    }-->
+
+<!--    //参数变为3个-->
+<!--    function animate(ele, json) {-->
+<!--        //先清定时器-->
+<!--        clearInterval(ele.timer);-->
+<!--        ele.timer = setInterval(function () {-->
+<!--            //开闭原则-->
+<!--            var bool = true;-->
+
+<!--            //遍历属性和值，分别单独处理json-->
+<!--            //attr == key(键)    target == json[key](值)-->
+<!--            for (var key in json) {-->
+<!--                //四部-->
+<!--                var current = parseInt(getStyle(ele, key)) || 0;-->
+<!--                //1.获取步长-->
+<!--                var step = (json[key] - current) / 10;-->
+<!--                //2.二次加工步长-->
+<!--                step = step > 0 ? Math.ceil(step) : Math.floor(step);-->
+<!--                current = current + step;-->
+<!--                //3.赋值-->
+<!--                ele.style[key] = current + "px";-->
+<!--                //4.清除定时器-->
+<!--                //判断: 目标值和当前值的差大于步长，就不能跳出循环-->
+<!--                //不考虑小数的情况：目标位置和当前位置不相等，就不能清除清除定时器。-->
+<!--                if (json[key] !== current) {-->
+<!--                    bool = false;-->
+<!--                }-->
+<!--            }-->
+
+<!--            console.log(1);-->
+<!--            //只有所有的属性都到了指定位置，bool值才为true；-->
+<!--            if (bool) {-->
+<!--                clearInterval(ele.timer);-->
+<!--            }-->
+<!--        }, 25);-->
+<!--    }-->
+
+<!--    //兼容方法获取元素样式-->
+<!--    function getStyle(ele, attr) {-->
+<!--        if (window.getComputedStyle) {-->
+<!--            return window.getComputedStyle(ele, null)[attr];-->
+<!--        }-->
+<!--        return ele.currentStyle[attr];-->
+<!--    }-->
+
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->
+
+
+
+<!--3、进一步深入：如果有要同时执行讴多个动画时，就要用到回调函数（重要）：-->
+
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head lang="en">-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title></title>-->
+<!--    <style>-->
+<!--        div {-->
+<!--            position: absolute;-->
+<!--            top: 40px;-->
+<!--            left: 10px;-->
+<!--            width: 100px;-->
+<!--            height: 100px;-->
+<!--            background-color: pink;-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+
+<!--<button>运动到 json 设置的位置</button>-->
+<!--<div></div>-->
+
+<!--<script>-->
+
+<!--    var btnArr = document.getElementsByTagName("button");-->
+<!--    var div = document.getElementsByTagName("div")[0];-->
+
+<!--    btnArr[0].onclick = function () {-->
+<!--        var json1 = {"left": 100, "top": 200, "width": 300, "height": 300};-->
+<!--        var json2 = {"left": 300, "top": 10, "width": 100, "height": 100};-->
+
+<!--        animate(div, json1, function () { //第三个参数是回调，可以保证json1的动画执行结束后，再执行json2的动画-->
+<!--            animate(div, json2);-->
+<!--        })-->
+<!--    }-->
+
+<!--    //带有回调的动画封装-->
+<!--    function animate(ele, json, fn) {-->
+<!--        //先清定时器-->
+<!--        clearInterval(ele.timer);-->
+<!--        ele.timer = setInterval(function () {-->
+<!--            //开闭原则-->
+<!--            var bool = true;-->
+
+
+<!--            //遍历属性和值，分别单独处理json-->
+<!--            //attr == key(键)    target == json[key](值)-->
+<!--            for (var key in json) {-->
+<!--                //四部-->
+<!--                var current = parseInt(getStyle(ele, key)) || 0;-->
+<!--                //1.获取步长-->
+<!--                var step = (json[key] - current) / 10;-->
+<!--                //2.二次加工步长-->
+<!--                step = step > 0 ? Math.ceil(step) : Math.floor(step);-->
+<!--                current = current + step;-->
+<!--                //3.赋值-->
+<!--                ele.style[key] = current + "px";-->
+<!--                //4.清除定时器-->
+<!--                //判断: 目标值和当前值的差大于步长，就不能跳出循环-->
+<!--                //不考虑小数的情况：目标位置和当前位置不相等，就不能清除清除定时器。-->
+<!--                if (json[key] !== current) {-->
+<!--                    bool = false;-->
+<!--                }-->
+<!--            }-->
+
+<!--            console.log(1);-->
+<!--            //只有所有的属性都到了指定位置，bool值才不会变成false；-->
+<!--            if (bool) {-->
+<!--                clearInterval(ele.timer); //定时器结束，代表第一个函数fn1()执行完毕了，接下来可以执行回调函数fn2()了。-->
+<!--                //只有传递了回调函数，才能执行-->
+<!--                if (fn) {  //【重要】第一个函数执行完毕了，定时器也清除了。现在，如果有人送了fn()这个回调函数过来，那就执行fn()-->
+<!--                    fn();  // 函数名+()：执行该函数-->
+<!--                }-->
+<!--            }-->
+<!--        }, 25);-->
+<!--    }-->
+
+<!--    //兼容方法获取元素样式-->
+<!--    function getStyle(ele, attr) {-->
+<!--        if (window.getComputedStyle) {-->
+<!--            return window.getComputedStyle(ele, null)[attr];-->
+<!--        }-->
+<!--        return ele.currentStyle[attr];-->
+<!--    }-->
+
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->
+
+
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .box {
+            width: 322px;
+            position: fixed;
+            bottom: 0;
+            right: 0;
+        }
+
+        span {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 30px;
+            height: 20px;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            //需求：下面的盒子高先变为0，然后上面的大盒子的宽再变为0.
+            var guanbi = document.getElementById("guanbi");
+            var box = guanbi.parentNode;
+            var b = document.getElementById("b");
+
+            guanbi.onclick = function () {
+                //下面的盒子高度变为0，然后大盒子的宽在变为0.
+                animate(b, {"height": 0}, function () {
+                    animate(box, {"width": 0});
+                    guanbi.innerHTML = "";
+                });
+            }
+        }
+
+
+        //封装好的动画函数
+        function animate(ele, json, fn) {
+            //先清定时器
+            clearInterval(ele.timer);
+            ele.timer = setInterval(function () {
+                //开闭原则
+                var bool = true;
+
+
+                //遍历属性和值，分别单独处理json
+                //attr == key(键)    target == json[key](值)
+                for (var key in json) {
+                    //四部
+                    var current = parseInt(getStyle(ele, key)) || 0;
+                    //1.获取步长
+                    var step = (json[key] - current) / 10;
+                    //2.二次加工步长
+                    step = step > 0 ? Math.ceil(step) : Math.floor(step);
+                    current = current + step;
+                    //3.赋值
+                    ele.style[key] = current + "px";
+                    //4.清除定时器
+                    //判断: 目标值和当前值的差大于步长，就不能跳出循环
+                    //不考虑小数的情况：目标位置和当前位置不相等，就不能清除清除定时器。
+                    if (json[key] !== current) {
+                        bool = false;
+                    }
+                }
+
+                console.log(1);
+                //只有所有的属性都到了指定位置，bool值才不会变成false；
+                if (bool) {
+                    clearInterval(ele.timer);
+                    //所有程序执行完毕了，现在可以执行回调函数了
+                    //只有传递了回调函数，才能执行
+                    if (fn) {
+                        fn();
+                    }
+                }
+            }, 1);
+        }
+
+        /**
+         * 获取元素样式兼容写法
+         * @param ele
+         * @param attr
+         * @returns {*}
+         */
+        function getStyle(ele, attr) {
+            if (window.getComputedStyle) {
+                return window.getComputedStyle(ele, null)[attr];
+            }
+            return ele.currentStyle[attr];
+        }
+
+    </script>
+</head>
+<body>
+<div class="box">
+    <span id="guanbi">×</span>
+    <div class="hd" id="t">
+        <img src="1.jpg" alt=""/>
+    </div>
+    <div class="bd" id="b">
+        <img src="#" alt=""/>
+    </div>
+</div>
+
+<!--对 opacity和 z-index 属性进行单独改进-->
+<!--我们以上的代码中，如果要进行动画参数的设置，是直接把参数放到json里面去的。例如：-->
+<!--var json1 = {"left": 100, "top": 200, "width": 300, "height": 300};-->
+<!--var json2 = {"left": 300, "top": 10, "width": 100, "height": 100};-->
+<!--可是，下面这两个属性，却不能这样放到json里，会出现兼容性的问题：-->
+<!--opacity: 0.5;  //透明度-->
+<!--z-index: 1;-->
+
+
+<!--scrollHeight有一个特点：如果文字超出了盒子，高度为内容的高（包括超出的内容）；不超出，则是盒子本身高度。-->
+
+<!--函数封装-->
+<!--function client() {-->
+<!--if (window.innerHeight !== undefined) {-->
+<!--//ie9及其以上的版本的写法-->
+<!--return {-->
+<!--"width": window.innerWidth,-->
+<!--"height": window.innerHeight-->
+<!--}-->
+<!--} else if (document.compatMode === "CSS1Compat") {-->
+<!--//标准模式的写法（有DTD时）-->
+<!--return {-->
+<!--"width": document.documentElement.clientWidth,-->
+<!--"height": document.documentElement.clientHeight-->
+<!--}-->
+<!--} else {-->
+<!--//没有DTD时的写法-->
+<!--return {-->
+<!--"width": document.body.clientWidth,-->
+<!--"height": document.body.clientHeight-->
+<!--}-->
+<!--}-->
+<!--}-->
+<!--</body>-->
+<!--</html>-->
+
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<script src="tools.js"></script>
+<script>
+    //需求：浏览器每次更改大小，判断是否符合某一标准然后给背景上色。
+    //  // >960红色，大于640小于960蓝色，小于640绿色。
+
+    window.onresize = fn;  //页面大小发生变化时，执行该函数。
+    //页面加载的时候直接执行一次函数，确定浏览器可视区域的宽，给背景上色
+    fn();
+
+    //封装成函数，然后指定的时候去调用和绑定函数名
+    function fn() {
+        if (client().width > 960) {
+            document.body.style.backgroundColor = "red";
+        } else if (client().width > 640) {
+            document.body.style.backgroundColor = "blue";
+        } else {
+            document.body.style.backgroundColor = "green";
+        }
+    }
+</script>
+<!--window.onscroll 屏幕滑动-->
+<!--window.onresize 浏览器大小变化-->
+<!--window.onload	页面加载完毕-->
+<!--div.onmousemove 鼠标在盒子上移动（注意：不是盒子移动）-->
+
+
+<!--断点调试-->
+
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>跑马灯</title>
+    <style>
+        #cir{
+            width: 300px;
+            height: 100px;
+            border: 1px solid #eee;
+            margin: 10px auto;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+<div id="cir">
+    <p>{{msg}}</p>
+    <input type="button" value="跑马灯走起" v-on:click = "startmethod">
+    <input type="button" value="跑马灯关闭" v-on:click = "stopmethod">
+</div>
+<script src="node_modules/vue/dist/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el: "#cir",
+        data:{
+            msg:"蒋婷是一个大傻逼，也是一个小可爱！",
+            intervalId:null
+        },
+        methods:{
+            startmethod: function () {
+                if (this.intervalId !=null) return;
+                this.intervalId = setInterval(()=>{
+                    var start = this.msg.substring(0,1);
+                    var end = this.msg.substring(1);
+
+                    this.msg = end + start;
+                    console.log(this.msg);
+                    },400);
+            },
+            stopmethod: function () {
+                clearInterval(this.intervalId);
+                this.intervalId = null;
+            }
+        }
+    })
+</script>
+</body>
+</html>

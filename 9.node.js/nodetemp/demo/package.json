@@ -1,0 +1,9 @@
+{
+  "name": "demo",
+  "version": "1.0.0",
+  "dependencies": {},
+  "devDependencies": {
+    "express": "^3.21.2",
+    "mysql": "^2.17.1"
+  }
+}

@@ -1,0 +1,386 @@
+<!--&lt;!&ndash;&lt;!&ndash;<!DOCTYPE html>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;<html lang="en">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;<head>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;    <meta charset="UTF-8">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;    <title>Title</title>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;    <style>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;        div {&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            width: 300px;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            height: 300px;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            display: none;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            background-color: pink;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;        }&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;    </style>&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;&lt;!&ndash;    <script src="jquery.min.js"></script>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;    <script>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;        $(function () {&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;&lt;!&ndash;            //点击按钮后产生动画&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            $("button:eq(0)").click(function () {&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;&lt;!&ndash;                //滑入动画： slideDown(毫秒值，回调函数[显示完毕执行什么]);&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                $("div").slideDown(2000, function () {&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                    alert("动画执行完毕！");&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                });&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            })&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;&lt;!&ndash;            //滑出动画&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            $("button:eq(1)").click(function () {&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;&lt;!&ndash;                //滑出动画：slideUp(毫秒值，回调函数[显示完毕后执行什么]);&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                $("div").slideUp(2000, function () {&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                    alert("动画执行完毕！");&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                });&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            })&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;&lt;!&ndash;            $("button:eq(2)").click(function () {&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                //滑入滑出切换（同样有四种用法）&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                $("div").slideToggle(1000);&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            })&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;&lt;!&ndash;            $("button:eq(3)").click(function () {&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                $("div").show("fast",function () {&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                    alert("动画显示成功!");&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                })&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            })&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            $("button:eq(4)").click(function () {&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                $("div").hide(400,function () {&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                    alert("动画隐藏成功");&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                })&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            })&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            $("button:eq(5)").click(function () {&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                $("div").toggle(600);&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            })&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;        })&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;    </script>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;</head>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;<body>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;动画的显示与隐藏&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;$(selector).show/hide();&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;$(selector).show/hide(1000);&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;$(selector).show/hide("slow");&ndash;&gt;slow是600ms,normal是400ms,fast是200ms&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;$(selector).show/hide(1000, function(){});&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;$(selector).toggle();&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;显示与隐藏来回切换,先显示再隐藏&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;动画的滑入和滑出&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;&lt;!&ndash;$(selector).slideDown/slideup/slide/toggle(speed, 回调函数);&ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;&lt;!&ndash;<button>滑入</button>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;<button>滑出</button>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;<button>切换</button>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;<button>显示</button>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;<button>隐藏</button>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;<button>显示/隐藏</button>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;<div></div>&ndash;&gt;&ndash;&gt;-->
+
+
+
+<!--&lt;!&ndash;&lt;!&ndash;</body>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;</html>&ndash;&gt;&ndash;&gt;-->
+
+
+<!--&lt;!&ndash;&lt;!&ndash;淡入淡出&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;<!DOCTYPE html>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;<html>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;<head lang="en">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;    <meta charset="UTF-8">&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;    <title></title>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;    <style>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;        div {&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            width: 300px;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            height: 300px;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            display: none;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            /*opacity: 1;*/&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            background-color: pink;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;        }&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;    </style>&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;&lt;!&ndash;    <script src="jquery.min.js"></script>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;    <script>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;        $(function () {&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            //点击按钮后产生动画&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            $("button:eq(0)").click(function () {&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;//                //淡入动画用法1:   fadeIn();   不加参数&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                $("div").fadeIn();&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;&lt;!&ndash;//                //淡入动画用法2:   fadeIn(2000);   毫秒值&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;//                $("div").fadeIn(2000);&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;//                //通过控制  透明度和display&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;&lt;!&ndash;                //淡入动画用法3:   fadeIn(字符串);   slow慢：600ms   normal正常:400ms   fast快：200ms&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;//                $("div").fadeIn("slow");&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;//                $("div").fadeIn("fast");&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;//                $("div").fadeIn("normal");&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;&lt;!&ndash;                //淡入动画用法4:   fadeIn(毫秒值，回调函数[显示完毕执行什么]);&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;//                $("div").fadeIn(5000,function () {&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;//                    alert("动画执行完毕！");&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;//                });&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            })&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;&lt;!&ndash;            //滑出动画&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            $("button:eq(1)").click(function () {&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;//                //滑出动画用法1:   fadeOut();   不加参数&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;//                $("div").fadeOut();&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;&lt;!&ndash;//                //滑出动画用法2:   fadeOut(2000);   毫秒值&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;//                $("div").fadeOut(2000);  //通过这个方法实现的：display: none;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;//                //通过控制  透明度和display&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;&lt;!&ndash;                //滑出动画用法3:   fadeOut(字符串);   slow慢：600ms   normal正常:400ms   fast快：200ms&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;               $("div").fadeOut("slow");&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;//                $("div").fadeOut("fast");&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;//                $("div").fadeOut("normal");&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;&lt;!&ndash;                //滑出动画用法1:   fadeOut(毫秒值，回调函数[显示完毕执行什么]);&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;//                $("div").fadeOut(2000,function () {&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;//                    alert("动画执行完毕！");&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;//                });&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            })&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;&lt;!&ndash;            $("button:eq(2)").click(function () {&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                //滑入滑出切换&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                //同样有四种用法&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                $("div").fadeToggle(1000);&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            })&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;&lt;!&ndash;            $("button:eq(3)").click(function () {&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                //改透明度&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                //同样有四种用法&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                $("div").fadeTo(1000, 0.5, function () {&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                    alert(1);&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                });&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;            })&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;        })&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;    </script>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;</head>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;<body>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;<button>淡入</button>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;<button>淡出</button>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;<button>切换</button>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;<button>改透明度为0.5</button>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;<div></div>&ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;&lt;!&ndash;</body>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;</html>&ndash;&gt;&ndash;&gt;-->
+
+
+
+<!--&lt;!&ndash;&lt;!&ndash;自定义动画&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;$(selector).animate({params}, speed, callback);&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;<!DOCTYPE html>&ndash;&gt;-->
+<!--&lt;!&ndash;<html>&ndash;&gt;-->
+<!--&lt;!&ndash;<head lang="en">&ndash;&gt;-->
+<!--&lt;!&ndash;    <meta charset="UTF-8">&ndash;&gt;-->
+<!--&lt;!&ndash;    <title></title>&ndash;&gt;-->
+<!--&lt;!&ndash;    <style>&ndash;&gt;-->
+<!--&lt;!&ndash;        div {&ndash;&gt;-->
+<!--&lt;!&ndash;            position: absolute;&ndash;&gt;-->
+<!--&lt;!&ndash;            left: 20px;&ndash;&gt;-->
+<!--&lt;!&ndash;            top: 30px;&ndash;&gt;-->
+<!--&lt;!&ndash;            width: 100px;&ndash;&gt;-->
+<!--&lt;!&ndash;            height: 100px;&ndash;&gt;-->
+<!--&lt;!&ndash;            background-color: pink;&ndash;&gt;-->
+<!--&lt;!&ndash;            margin: 10px auto;&ndash;&gt;-->
+<!--&lt;!&ndash;        }&ndash;&gt;-->
+<!--&lt;!&ndash;    </style>&ndash;&gt;-->
+<!--&lt;!&ndash;    <script src="jquery.min.js"></script>&ndash;&gt;-->
+<!--&lt;!&ndash;    <script>&ndash;&gt;-->
+<!--&lt;!&ndash;        jQuery(function () {&ndash;&gt;-->
+<!--&lt;!&ndash;            $("button").click(function () {&ndash;&gt;-->
+<!--&lt;!&ndash;                var json = {"width": 500, "height": 500, "left": 300, "top": 300, "border-radius": 100};&ndash;&gt;-->
+<!--&lt;!&ndash;                var json2 = {"width": 100, "height": 100, "left": 100, "top": 100, "border-radius": 100, "background-color": "red"};&ndash;&gt;-->
+
+<!--&lt;!&ndash;                //自定义动画&ndash;&gt;-->
+<!--&lt;!&ndash;                $("div").animate(json, 1000, function () {&ndash;&gt;-->
+<!--&lt;!&ndash;                    $("div").animate(json2, 1000, function () {&ndash;&gt;-->
+<!--&lt;!&ndash;                        alert("动画执行完毕！");&ndash;&gt;-->
+<!--&lt;!&ndash;                    });&ndash;&gt;-->
+<!--&lt;!&ndash;                });&ndash;&gt;-->
+
+<!--&lt;!&ndash;            })&ndash;&gt;-->
+<!--&lt;!&ndash;        })&ndash;&gt;-->
+<!--&lt;!&ndash;    </script>&ndash;&gt;-->
+<!--&lt;!&ndash;</head>&ndash;&gt;-->
+<!--&lt;!&ndash;<body>&ndash;&gt;-->
+<!--&lt;!&ndash;<button>自定义动画</button>&ndash;&gt;-->
+<!--&lt;!&ndash;<div></div>&ndash;&gt;-->
+<!--&lt;!&ndash;</body>&ndash;&gt;-->
+<!--&lt;!&ndash;</html>&ndash;&gt;-->
+
+
+
+<!--&lt;!&ndash;停止动画&ndash;&gt;-->
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head lang="en">-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title></title>-->
+<!--    <style type="text/css">-->
+<!--        * {-->
+<!--            margin: 0;-->
+<!--            padding: 0;-->
+<!--        }-->
+
+<!--        ul {-->
+<!--            list-style: none;-->
+<!--        }-->
+
+<!--        .wrap {-->
+<!--            width: 330px;-->
+<!--            height: 30px;-->
+<!--            margin: 100px auto 0;-->
+<!--            padding-left: 10px;-->
+<!--            background-color: pink;-->
+<!--        }-->
+
+<!--        .wrap li {-->
+<!--            background-color: green;-->
+<!--        }-->
+
+<!--        .wrap > ul > li {-->
+<!--            float: left;-->
+<!--            margin-right: 10px;-->
+<!--            position: relative;-->
+<!--        }-->
+
+<!--        .wrap a {-->
+<!--            display: block;-->
+<!--            height: 30px;-->
+<!--            width: 100px;-->
+<!--            text-decoration: none;-->
+<!--            color: #000;-->
+<!--            line-height: 30px;-->
+<!--            text-align: center;-->
+<!--        }-->
+
+<!--        .wrap li ul {-->
+<!--            position: absolute;-->
+<!--            top: 30px;-->
+<!--            display: none;-->
+<!--        }-->
+<!--    </style>-->
+<!--    <script src="jquery.min.js"></script>-->
+<!--    <script>-->
+<!--        //入口函数-->
+<!--        $(document).ready(function () {-->
+<!--            //需求：鼠标放入一级li中，让他里面的ul显示。移开隐藏。-->
+<!--            var jqli = $(".wrap>ul>li");-->
+
+<!--            //绑定事件-->
+<!--            jqli.mouseenter(function () {-->
+<!--                $(this).children("ul").stop().slideDown(1000);-->
+<!--            });-->
+
+<!--            //绑定事件(移开隐藏)-->
+<!--            jqli.mouseleave(function () {-->
+<!--                $(this).children("ul").stop().slideUp(1000);-->
+<!--            });-->
+<!--        });-->
+<!--    </script>-->
+
+<!--</head>-->
+<!--<body>-->
+<!--<div class="wrap">-->
+<!--    <ul>-->
+<!--        <li>-->
+<!--            <a href="javascript:void(0);">一级菜单1</a>-->
+<!--            <ul>-->
+<!--                <li><a href="javascript:void(0);">二级菜单1</a></li>-->
+<!--                <li><a href="javascript:void(0);">二级菜单2</a></li>-->
+<!--                <li><a href="javascript:void(0);">二级菜单3</a></li>-->
+<!--            </ul>-->
+<!--        </li>-->
+<!--        <li>-->
+<!--            <a href="javascript:void(0);">一级菜单1</a>-->
+<!--            <ul>-->
+<!--                <li><a href="javascript:void(0);">二级菜单1</a></li>-->
+<!--                <li><a href="javascript:void(0);">二级菜单2</a></li>-->
+<!--                <li><a href="javascript:void(0);">二级菜单3</a></li>-->
+<!--            </ul>-->
+<!--        </li>-->
+<!--        <li>-->
+<!--            <a href="javascript:void(0);">一级菜单1</a>-->
+<!--            <ul>-->
+<!--                <li><a href="javascript:void(0);">二级菜单1</a></li>-->
+<!--                <li><a href="javascript:void(0);">二级菜单2</a></li>-->
+<!--                <li><a href="javascript:void(0);">二级菜单3</a></li>-->
+<!--            </ul>-->
+<!--        </li>-->
+<!--    </ul>-->
+<!--</div>-->
+<!--&lt;!&ndash;$(selector).stop(true, false);&ndash;&gt;-->
+<!--&lt;!&ndash;第一个参数：&ndash;&gt;-->
+<!--&lt;!&ndash;true：后续动画不执行。&ndash;&gt;-->
+<!--&lt;!&ndash;false：后续动画会执行。&ndash;&gt;-->
+<!--&lt;!&ndash;第二个参数：&ndash;&gt;-->
+<!--&lt;!&ndash;true：立即执行完成当前动画。&ndash;&gt;-->
+<!--&lt;!&ndash;false：立即停止当前动画。&ndash;&gt;-->
+<!--&lt;!&ndash;PS：参数如果都不写，默认两个都是false。实际工作中，直接写stop()用的多。&ndash;&gt;-->
+
+<!--</body>-->
+<!--</html>-->
+
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        .ad {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            width: 300px;
+            height: 300px;
+            background-image: url("timg.jpg");
+            display: none;
+        }
+
+        .ad span {
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 40px;
+            height: 18px;
+            cursor: pointer;
+        }
+    </style>
+    <script src="jquery.min.js"></script>
+    <script>
+        $(function () {
+            //需求：然广告ad部分，先滑入，在滑出，在淡入。然后绑定事件，点击span弹出
+            //步骤：
+            $(".ad").slideDown(1000).fadeIn(1000).children("span").click(function () {
+                $(this).parent().fadeOut(1000);
+            });
+
+
+            //第二种写法
+//            $(".ad").slideDown(1000, function () {
+//                $(".ad").slideUp(1000, function () {
+//                    $(".ad").fadeIn(1000, function () {
+//                        $(".ad").children("span").click(function () {
+//                            $(this).parent().fadeOut(1000, function () {
+//                                alert("执行完毕！");
+//                            });
+//                        });
+//                    });
+//                });
+//            })
+        })
+    </script>
+</head>
+
+<body>
+
+<div class="ani">我是内容</div>
+<div class="ad">
+    <span>×</span>
+</div>
+
+</body>
+</html>

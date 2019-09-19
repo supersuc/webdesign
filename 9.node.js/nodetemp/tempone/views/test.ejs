@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/testejs.css">
+<!-- 注意路径的选择，因为有最开始的静态文件配置，所以呈现这样的路径-->
+</head>
+<body>
+        <table>
+            <thead>
+                <tr>
+                    <td>姓名</td>
+                    <td>密码</td>
+                    <td>性别</td>
+                    <td colspan="2">操作</td>
+                </tr>
+            </thead>
+  <%for(var i=0;i<listArr.length;i++){%>
+            <div>
+                <tbody>
+                    <tr>
+                        <td><%=listArr[i].uname%></td>
+                        <td><%=listArr[i].upassword%></td>
+                        <td><%=listArr[i].sex%></td>
+                        <td>删除</td>
+                        <td>修改</td>
+                    </tr>
+                </tbody>
+            </div>
+<%}%>
+        </table>
+</body>
+</html>

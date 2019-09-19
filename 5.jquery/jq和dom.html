@@ -1,0 +1,654 @@
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head lang="en">-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title></title>-->
+<!--    <script src="jquery.min.js"></script>-->
+<!--    <script>-->
+<!--        //入口函数-->
+<!--        jQuery(function () {-->
+<!--            var jqLi = $("li");-->
+<!--            for (var i = 0; i < jqLi.length; i++) {-->
+<!--                if (i % 2 === 0) {-->
+<!--                    //jquery对象，转换成了js对象-->
+<!--                    jqLi[i].style.backgroundColor = "pink";-->
+<!--                } else {-->
+<!--                    jqLi[i].style.backgroundColor = "yellow";-->
+<!--                }-->
+<!--            }-->
+<!--        });-->
+<!--    </script>-->
+<!--</head>-->
+<!--<body>-->
+<!--&lt;!&ndash;//转换。&ndash;&gt;-->
+<!--&lt;!&ndash;jqBox1 = $(myBox);&ndash;&gt;-->
+<!--&lt;!&ndash;jqBox2 = $(boxArr);&ndash;&gt;-->
+<!--&lt;!&ndash;jqBox3 = $(divArr);&ndash;&gt;-->
+<!--&lt;!&ndash;//jquery对象转换成 DOM 对象之后&ndash;&gt;-->
+<!--&lt;!&ndash;jqBox3[0].style.backgroundColor = "black";&ndash;&gt;-->
+<!--&lt;!&ndash;jqBox3.get(4).style.backgroundColor = "pink";&ndash;&gt;-->
+<!--<ul>-->
+<!--    <li>生命壹号，永不止步</li>-->
+<!--    <li>生命壹号，永不止步</li>-->
+<!--    <li>生命壹号，永不止步</li>-->
+<!--    <li>生命壹号，永不止步</li>-->
+<!--    <li>生命壹号，永不止步</li>-->
+<!--    <li>生命壹号，永不止步</li>-->
+<!--    <li>生命壹号，永不止步</li>-->
+<!--</ul>-->
+<!--</body>-->
+<!--</html>-->
+
+
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head lang="en">-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title></title>-->
+<!--    <script src="jquery.min.js"></script>-->
+<!--    <script>-->
+<!--        //入口函数-->
+<!--        jQuery(document).ready(function () {-->
+
+<!--            //三种方式获取jquery对象-->
+<!--            var jqBox1 = $("#box");-->
+<!--            var jqBox2 = $(".box");-->
+<!--            var jqBox3 = $("div");-->
+
+<!--            //操作标签选择器-->
+<!--            jqBox3.css("width", 100);-->
+<!--            jqBox3.css("height", 100);-->
+<!--            jqBox3.css("margin", 10);-->
+<!--            jqBox3.css("background", "pink");-->
+
+<!--            //操作类选择器(隐式迭代，不用一个一个设置)-->
+<!--            jqBox2.css("background", "red");-->
+
+<!--            //操作id选择器-->
+<!--            jqBox1.css("background", "yellow");-->
+
+<!--        });-->
+<!--    </script>-->
+<!--</head>-->
+<!--<body>-->
+
+<!--<div></div>-->
+<!--<div class="box"></div>-->
+<!--<div id="box"></div>-->
+<!--<div class="box"></div>-->
+<!--<div></div>-->
+
+<!--</body>-->
+<!--</html>-->
+
+
+
+
+<!--层级选择器的区别-->
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head lang="en">-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title></title>-->
+<!--    <script src="jquery.min.js"></script>-->
+<!--    <script>-->
+<!--        $(function () {-->
+<!--            //获取ul中的li设置为粉色-->
+<!--            //后代：儿孙重孙曾孙玄孙....-->
+<!--            var jqLi = $("ul li");-->
+<!--            jqLi.css("margin", 5);-->
+<!--            jqLi.css("background", "pink");-->
+
+<!--            //子代：亲儿子-->
+<!--            var jqOtherLi = $("ul>li");-->
+<!--            jqOtherLi.css("background", "red");-->
+<!--        });-->
+<!--    </script>-->
+<!--</head>-->
+<!--<body>-->
+<!--<ul>-->
+<!--    <li>111</li>-->
+<!--    <li>222</li>-->
+<!--    <li>333</li>-->
+<!--    <ol>-->
+<!--        <li>aaa</li>-->
+<!--        <li>bbb</li>-->
+<!--        <li>ccc</li>-->
+<!--    </ol>-->
+<!--</ul>-->
+<!--</body>-->
+<!--</html>-->
+
+
+
+<!--基本过滤选择器-->
+<!--<!doctype html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport"-->
+<!--          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">-->
+<!--    <meta http-equiv="X-UA-Compatible" content="ie=edge">-->
+<!--    <title>Document</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<ul>-->
+<!--    <li></li>-->
+<!--    <li></li>-->
+<!--    <li></li>-->
+<!--    <li></li>-->
+<!--    <li></li>-->
+<!--    <li></li>-->
+<!--</ul>-->
+<!--<script src="jquery.min.js"></script>-->
+<!--<script>-->
+<!--    $(document).ready(function () {-->
+<!--        $("li:odd").css("background","red");-->
+<!--        $("li:even").css("background","blue");-->
+<!--        $("li:eq(0)").css("font-size","10px");-->
+<!--        $("li:gt(1)").css("background","#fff");-->
+<!--        $("li:lt(5)").css("background","#bbb");-->
+<!--        $("li:last").css("background","yellow");-->
+
+<!--        // // :eq(index)-->
+<!--        // $("ul li:eq(3)").css("font-size", "30px");  //设置第四个li的字体-->
+<!--        // // :lt(index)-->
+<!--        // $("li:lt(6)").css("font-size", "30px");-->
+<!--        // // :gt(index)-->
+<!--        // $(".ulList1 li:gt(7)").css("font-size", "40px");-->
+<!--        // // :first-->
+<!--        // $(".ulList li:first").css("font-size", "40px");-->
+<!--        // // :last-->
+<!--        // $("li:last").css("font-size", "40px");-->
+<!--    })-->
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->
+
+
+<!--属性选择器和筛选选择器-->
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head lang="en">-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title></title>-->
+<!--    <script src="jquery.min.js"></script>-->
+<!--    <script>-->
+<!--        jQuery(function () {-->
+<!--            var jqul = $("ul");-->
+
+<!--            //find(selector); 从jquery对象的后代中查找-->
+<!--            //必须制定参数，如果不指定获取不到元素。length === 0-->
+<!--            jqul.find("li").css("background", "pink");-->
+<!--            console.log(jqul.find());-->
+
+<!--            //chidlren(selector); 从jquery对象的子代中查找-->
+<!--            //不写参数代表获取所有子元素。-->
+<!--            jqul.children("li").css("background", "green");-->
+
+<!--            //eq(索引值); 从jquery对象的子代中查找该索引值的元素-->
+<!--            //要写该数组中的第几个。-->
+<!--            jqul.children().eq(0).css("background", "red");-->
+
+<!--            //next(); 该元素的下一个兄弟元素-->
+<!--            jqul.children().eq(0).next().css("background", "yellow");-->
+
+<!--            //siblings(selector); 该元素的所有兄弟元素-->
+<!--            jqul.children().eq(0).next().siblings().css("border", "1px solid blue");-->
+
+<!--            //parent(); 该元素的父元素（和定位没有关系）-->
+<!--            console.log(jqul.children().eq(0).parent());-->
+<!--        });-->
+<!--    </script>-->
+<!--</head>-->
+<!--<body>-->
+
+<!--<ul>-->
+<!--    <li>生命壹号，永不止步</li>-->
+<!--    <li class="box">生命壹号，永不止步</li>-->
+<!--    <span>生命壹号，永不止步</span>-->
+<!--    <li class="box">生命壹号，永不止步</li>-->
+<!--    <i>生命壹号，永不止步</i>-->
+<!--    <li>生命壹号，永不止步</li>-->
+<!--    <a id="box" href="#">生命壹号，永不止步</a>-->
+<!--    <ol>-->
+<!--        <li>我是ol中的li</li>-->
+<!--        <li>我是ol中的li</li>-->
+<!--        <li>我是ol中的li</li>-->
+<!--        <li>我是ol中的li</li>-->
+<!--    </ol>-->
+<!--</ul>-->
+
+<!--</body>-->
+<!--</html>-->
+
+
+
+
+<!--下拉菜单-->
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head lang="en">-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title></title>-->
+<!--    <style type="text/css">-->
+<!--        * {-->
+<!--            margin: 0;-->
+<!--            padding: 0;-->
+<!--        }-->
+
+<!--        ul {-->
+<!--            list-style: none;-->
+<!--        }-->
+
+<!--        .wrap {-->
+<!--            width: 330px;-->
+<!--            height: 30px;-->
+<!--            margin: 100px auto 0;-->
+<!--            padding-left: 10px;-->
+<!--            background-color: pink;-->
+<!--        }-->
+
+<!--        .wrap li {-->
+<!--            background-color: yellowgreen;-->
+<!--        }-->
+
+<!--        .wrap > ul > li {-->
+<!--            float: left;-->
+<!--            margin-right: 10px;-->
+<!--            position: relative;-->
+<!--        }-->
+
+<!--        .wrap a {-->
+<!--            display: block;-->
+<!--            height: 30px;-->
+<!--            width: 100px;-->
+<!--            text-decoration: none;-->
+<!--            color: #000;-->
+<!--            line-height: 30px;-->
+<!--            text-align: center;-->
+<!--        }-->
+
+<!--        .wrap li ul {-->
+<!--            position: absolute;-->
+<!--            top: 30px;-->
+<!--            display: none;-->
+<!--        }-->
+<!--    </style>-->
+<!--    <script src="jquery.min.js"></script>-->
+<!--    <script>-->
+<!--        //入口函数-->
+<!--        $(document).ready(function () {-->
+<!--            //需求：鼠标放入一级li中，让他里面的ul显示。移开隐藏。-->
+<!--            var jqli = $(".wrap>ul>li");-->
+
+<!--            //绑定事件-->
+<!--            jqli.mouseenter(function () {-->
+<!--                //这个位置用到了this.-->
+<!--                // console.log(this);  //打印结果是js中的dom对象。注意：jquery对象绑定的事件中，this指js中的dom对象。【重要】-->
+
+<!--                //让this中的ul显示出来。-->
+<!--//                原生 js 的做法是：this.children[1].style.display = "block";-->
+<!--                //把js的dom对象包装为jquery对象，然后用jquery方法操作-->
+<!--                $(this).children("ul").show();-->
+<!--            });-->
+
+<!--            //绑定事件：鼠标移开时，隐藏下拉菜单-->
+<!--            jqli.mouseleave(function () {-->
+<!--                $(this).children("ul").hide();-->
+<!--            });-->
+<!--        });-->
+<!--    </script>-->
+
+<!--</head>-->
+<!--<body>-->
+<!--<div class="wrap">-->
+<!--    <ul>-->
+<!--        <li>-->
+<!--            <a href="javascript:void(0);">一级菜单1</a>-->
+<!--            <ul>-->
+<!--                <li><a href="javascript:void(0);">二级菜单1</a></li>-->
+<!--                <li><a href="javascript:void(0);">二级菜单2</a></li>-->
+<!--                <li><a href="javascript:void(0);">二级菜单3</a></li>-->
+<!--            </ul>-->
+<!--        </li>-->
+<!--        <li>-->
+<!--            <a href="javascript:void(0);">一级菜单1</a>-->
+<!--            <ul>-->
+<!--                <li><a href="javascript:void(0);">二级菜单1</a></li>-->
+<!--                <li><a href="javascript:void(0);">二级菜单2</a></li>-->
+<!--                <li><a href="javascript:void(0);">二级菜单3</a></li>-->
+<!--            </ul>-->
+<!--        </li>-->
+<!--        <li>-->
+<!--            <a href="javascript:void(0);">一级菜单1</a>-->
+<!--            <ul>-->
+<!--                <li><a href="javascript:void(0);">二级菜单1</a></li>-->
+<!--                <li><a href="javascript:void(0);">二级菜单2</a></li>-->
+<!--                <li><a href="javascript:void(0);">二级菜单3</a></li>-->
+<!--            </ul>-->
+<!--        </li>-->
+<!--    </ul>-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
+
+
+
+<!--隔行变色-->
+
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head lang="en">-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title></title>-->
+<!--    <script src="jquery.min.js"></script>-->
+<!--    <script>-->
+<!--        $(function () {-->
+
+<!--            //需求；隔行变色；鼠标悬停时，还要变色。-->
+<!--            var jqli1 = $("li:odd");-->
+<!--            var jqli2 = $("li:even");-->
+<!--            jqli1.css("background", "#cccccc");-->
+<!--            jqli2.css("background", "white");-->
+
+<!--            //鼠标悬停时变色-->
+<!--            var color = "";-->
+<!--            $("li").mouseenter(function () {-->
+<!--                color = $(this).css("background");  //先把之前的颜色保存下来，鼠标离开时还原-->
+<!--                $(this).css("background", "green");-->
+<!--            });-->
+<!--            //鼠标离开时，恢复为原来的颜色-->
+<!--            $("li").mouseleave(function () {-->
+<!--                $(this).css("background", color);-->
+<!--            });-->
+<!--        });-->
+<!--    </script>-->
+<!--</head>-->
+<!--<body>-->
+
+<!--<ul>-->
+<!--    <li>生命壹号，永不止步</li>-->
+<!--    <li>生命壹号，永不止步</li>-->
+<!--    <li>生命壹号，永不止步</li>-->
+<!--    <li>生命壹号，永不止步</li>-->
+<!--    <li>生命壹号，永不止步</li>-->
+<!--    <li>生命壹号，永不止步</li>-->
+<!--</ul>-->
+
+<!--</body>-->
+<!--</html>-->
+
+
+<!--突出显示-->
+<!--<!doctype html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport"-->
+<!--          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">-->
+<!--    <meta http-equiv="X-UA-Compatible" content="ie=edge">-->
+<!--    <title>Document</title>-->
+<!--    <style>-->
+<!--        *{-->
+<!--            padding: 0;-->
+<!--            margin: 0;-->
+<!--        }-->
+<!--        body{-->
+<!--            background-color: #fff;-->
+<!--        }-->
+<!--        .imglist{-->
+<!--            width: 630px;-->
+<!--            height: 394px;-->
+<!--            margin: 100px auto 0;-->
+<!--            padding: 10px 0 0 10px;-->
+<!--            background-color: #eee;-->
+<!--            overflow: hidden;-->
+<!--            border: 2px solid #000;-->
+<!--        }-->
+<!--        .imglist li{-->
+<!--            float: left;-->
+<!--            margin: 0 10px 10px 0;-->
+<!--        }-->
+<!--        .imglist ul{-->
+<!--            list-style: none;-->
+<!--        }-->
+<!--        .imglist img{-->
+<!--            display: block;-->
+<!--            border: 0;-->
+<!--            width: 200px;-->
+<!--            height: 186px;-->
+<!--        }-->
+<!--    </style>-->
+<!--    <script src="jquery.min.js"></script>-->
+<!--    <script>-->
+<!--        $(window).ready(function () {-->
+<!--            $(".imglist").find("li").mouseenter(function () {-->
+<!--                $(this).css("opacity",1).siblings("li").css("opacity",0.4);-->
+<!--            });-->
+<!--            $(".imglist").mouseleave(function () {-->
+<!--                // $(".imglist li").css("opacity",1);-->
+<!--                $(this).children().children("li").css("opacity",1);-->
+<!--            });-->
+<!--        })-->
+
+
+<!--    </script>-->
+
+<!--</head>-->
+<!--<body>-->
+
+<!--<div class="imglist">-->
+<!--    <ul>-->
+<!--        <li><a href="#"><img src="timg.jpg" alt=""></a></li>-->
+<!--        <li><a href="#"><img src="timg%20(1).jpg" alt=""></a></li>-->
+<!--        <li><a href="#"><img src="timg.jpg" alt=""></a></li>-->
+<!--        <li><a href="#"><img src="timg%20(1).jpg" alt=""></a></li>-->
+<!--        <li><a href="#"><img src="timg.jpg" alt=""></a></li>-->
+<!--        <li><a href="#"><img src="timg%20(1).jpg" alt=""></a></li>-->
+<!--    </ul>-->
+<!--</div>-->
+
+
+<!--</body>-->
+<!--</html>-->
+
+<!--手风琴-->
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head lang="en">-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title></title>-->
+<!--    <style type="text/css">-->
+<!--        * {padding: 0;margin: 0;}-->
+<!--        ul { list-style-type: none;}-->
+
+<!--        .parentWrap {-->
+<!--            width: 200px;-->
+<!--            text-align:center;-->
+
+<!--        }-->
+
+<!--        .menuGroup {-->
+<!--            border:1px solid #999;-->
+<!--            background-color:#e0ecff;-->
+<!--        }-->
+
+<!--        .groupTitle {-->
+<!--            display:block;-->
+<!--            height:20px;-->
+<!--            line-height:20px;-->
+<!--            font-size: 16px;-->
+<!--            border-bottom:1px solid #ccc;-->
+<!--            cursor:pointer;-->
+<!--        }-->
+
+<!--        .menuGroup > div {-->
+<!--            height: 200px;-->
+<!--            background-color:#fff;-->
+<!--            display:none;-->
+<!--        }-->
+
+<!--    </style>-->
+<!--    <script src="jquery.min.js"></script>-->
+<!--    <script>-->
+<!--        $(function () {-->
+<!--            //需求：鼠标点击span，让他下面的div显示出来。让其他的div隐藏。-->
+<!--            $(".parentWrap span").click(function () {-->
+<!--//                $(this).next().show();-->
+<!--//                //让其他的隐藏-->
+<!--//                //点击的span的父亲li，的所有的兄弟元素li，的孩子元素div全部隐藏。-->
+<!--//                $(this).parent("li").siblings("li").children("div").hide();-->
+<!--                //连式编程-->
+<!--                $(this).next().show().parent("li").siblings("li").find("div").hide();-->
+<!--            });-->
+<!--        })-->
+<!--    </script>-->
+<!--</head>-->
+<!--<body>-->
+<!--<ul class="parentWrap">-->
+<!--    <li class="menuGroup">-->
+<!--        <span class="groupTitle">标题1</span>-->
+<!--        <div>我是弹出来的div1</div>-->
+<!--    </li>-->
+<!--    <li class="menuGroup">-->
+<!--        <span class="groupTitle">标题2</span>-->
+<!--        <div>我是弹出来的div2</div>-->
+<!--    </li>-->
+<!--    <li class="menuGroup">-->
+<!--        <span class="groupTitle">标题3</span>-->
+<!--        <div>我是弹出来的div3</div>-->
+<!--    </li>-->
+<!--    <li class="menuGroup">-->
+<!--        <span class="groupTitle">标题4</span>-->
+<!--        <div>我是弹出来的div4</div>-->
+<!--    </li>-->
+<!--</ul>-->
+<!--</body>-->
+<!--</html>-->
+
+
+<!--广告代码-->
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            font-size: 12px;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .wrapper {
+            width: 298px;
+            height: 248px;
+            margin: 100px auto 0;
+            border: 1px solid pink;
+            overflow: hidden;
+        }
+
+        #left, #center, #right {
+            float: left;
+        }
+
+        #left li, #right li {
+            background-color: #eee;
+        }
+
+        #left li a, #right li a {
+            display: block;
+            width: 48px;
+            height: 27px;
+            border-bottom: 1px solid pink;
+            line-height: 27px;
+            text-align: center;
+            color: black;
+        }
+
+        #left li a:hover, #right li a:hover {
+            background-color: red;
+        }
+
+        #center {
+            border-left: 1px solid pink;
+            border-right: 1px solid pink;
+        }
+    </style>
+    <script src="jquery.min.js"></script>
+    <script>
+        jQuery(function () {
+            //需求：鼠标放入两侧的li中，让中间的ul中对应索引值的li显示出来，其他的隐藏。（右侧的li要+9）
+            //左侧先绑。获取绑mouseenter
+            $("#left li").mouseenter(function () {
+                //显示对应索引值的中间的li
+                //alert($(this).index());  获取索引值
+                $("#center li").eq($(this).index()).show().siblings("li").hide();
+            });
+
+            //右侧
+            $("#right li").mouseenter(function () {
+                //显示对应索引值的中间的li
+                //alert($(this).index());  获取索引值
+                $("#center li:eq(" + ($(this).index() + 9) + ")").show().siblings("li").hide();
+            });
+        });
+    </script>
+</head>
+<body>
+<div class="wrapper">
+
+    <ul id="left">
+        <li><a href="#">女靴</a></li>
+        <li><a href="#">雪地靴</a></li>
+        <li><a href="#">冬裙</a></li>
+        <li><a href="#">呢大衣</a></li>
+        <li><a href="#">毛衣</a></li>
+        <li><a href="#">棉服</a></li>
+        <li><a href="#">女裤</a></li>
+        <li><a href="#">羽绒服</a></li>
+        <li><a href="#">牛仔裤</a></li>
+    </ul>
+    <ul id="center">
+        <li><a href="#"><img src="timg.jpg" width="200" height="250"/></a></li>
+        <li><a href="#"><img src="timg%20(1).jpg" width="200" height="250"/></a></li>
+        <li><a href="#"><img src="timg.jpg" width="200" height="250"/></a></li>
+        <li><a href="#"><img src="timg%20(1).jpg" width="200" height="250"/></a></li>
+        <li><a href="#"><img src="timg.jpg" width="200" height="250"/></a></li>
+        <li><a href="#"><img src="timg%20(1).jpg" width="200" height="250"/></a></li>
+        <li><a href="#"><img src="timg.jpg" width="200" height="250"/></a></li>
+        <li><a href="#"><img src="timg%20(1).jpg" width="200" height="250"/></a></li>
+        <li><a href="#"><img src="timg.jpg" width="200" height="250"/></a></li>
+        <li><a href="#"><img src="timg%20(1).jpg" width="200" height="250"/></a></li>
+        <li><a href="#"><img src="timg.jpg" width="200" height="250"/></a></li>
+        <li><a href="#"><img src="timg%20(1).jpg" width="200" height="250"/></a></li>
+        <li><a href="#"><img src="timg.jpg" width="200" height="250"/></a></li>
+        <li><a href="#"><img src="timg%20(1).jpg" width="200" height="250"/></a></li>
+        <li><a href="#"><img src="timg.jpg" width="200" height="250"/></a></li>
+        <li><a href="#"><img src="timg%20(1).jpg" width="200" height="250"/></a></li>
+        <li><a href="#"><img src="timg.jpg" width="200" height="250"/></a></li>
+        <li><a href="#"><img src="timg%20(1).jpg" width="200" height="250"/></a></li>
+    </ul>
+    <ul id="right">
+        <li><a href="#">女包</a></li>
+        <li><a href="#">男包</a></li>
+        <li><a href="#">登山鞋</a></li>
+        <li><a href="#">皮带</a></li>
+        <li><a href="#">围巾</a></li>
+        <li><a href="#">皮衣</a></li>
+        <li><a href="#">男毛衣</a></li>
+        <li><a href="#">男棉服</a></li>
+        <li><a href="#">男靴</a></li>
+    </ul>
+</div>
+</body>
+</html>

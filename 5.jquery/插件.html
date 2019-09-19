@@ -1,0 +1,91 @@
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head lang="en">-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title></title>-->
+<!--    <style>-->
+<!--        div {-->
+<!--            width: 100px;-->
+<!--            height: 100px;-->
+<!--            background-color: blue;-->
+<!--        }-->
+<!--    </style>-->
+<!--    <script data-lazy-src="jquery.min.js"></script>-->
+<!--    <script data-lazy-src="jquery.color.js"></script>-->
+<!--    <script>-->
+<!--        $(function () {-->
+<!--            //点击按钮，改变盒子的宽度和背景色-->
+<!--            $("button").on("click", function () {-->
+<!--                $("div").animate({"width": 200, "background-color": "red"}, 2000, function () {-->
+<!--                    alert("动画结束");-->
+<!--                });-->
+<!--            });-->
+<!--        })-->
+<!--    </script>-->
+<!--</head>-->
+<!--<body>-->
+<!--<button>变色</button>-->
+<!--<div></div>-->
+<!--</body>-->
+<!--</html>-->
+
+
+
+
+<!--jq懒加载-->
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        img{
+            display: block;
+            margin: 10px 0 10px 10px;
+            border: 1px solid #eee;
+            width: 300px;
+            height: 300px;
+        }
+    </style>
+</head>
+<body>
+<img data-lazy-src="timg.jpg" alt="">
+<img data-lazy-src="timg%20(1).jpg" alt="">
+<img data-lazy-src="timg.jpg" alt="">
+<img data-lazy-src="timg%20(1).jpg" alt="">
+<img data-lazy-src="timg.jpg" alt="">
+<img data-lazy-src="timg%20(1).jpg" alt="">
+<img data-lazy-src="timg.jpg" alt="">
+<img data-lazy-src="timg%20(1).jpg" alt="">
+<img data-lazy-src="timg.jpg" alt="">
+<img data-lazy-src="timg%20(1).jpg" alt="">
+<img data-lazy-src="timg.jpg" alt="">
+<img data-lazy-src="timg%20(1).jpg" alt="">
+<img data-lazy-src="timg.jpg" alt="">
+<img data-lazy-src="timg%20(1).jpg" alt="">
+<img data-lazy-src="timg.jpg" alt="">
+<img data-lazy-src="timg%20(1).jpg" alt="">
+
+<script src="jquery.min.js"></script>
+<script src="EasyLazyload.min.js"></script>
+<script>
+    lazyLoadInit({
+        coverColor:"white",
+        coverDiv:"",
+        offsetBottom:0,
+        offsetTopm:0,
+        showTime:1100,
+        onLoadBackEnd:function(i,e){
+            console.log("onLoadBackEnd:"+i);
+        }
+        ,onLoadBackStart:function(i,e){
+            console.log("onLoadBackStart:"+i);
+        }
+    });
+
+</script>
+</body>
+</html>

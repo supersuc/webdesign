@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>使用jq发送ajax请求</title>
+</head>
+<body>
+<h2>测试jq发送ajax请求</h2>
+<button id="btn1">点击发送jq的ajax-get请求</button>
+<button id="btn2">点击发送jq的ajax-post请求</button>
+<script type="text/javascript" src="./js/jquery.min.js"></script>
+<script type="text/javascript">
+   let btn1 = $("#btn1")
+   let btn2 = $("#btn2")
+
+    btn1.click(function () {
+        $.ajax("http://localhost:3000/test_get",{
+            method:"GET",
+            data:{name:'kobe',age:18},
+            success:function (result) {
+                console.log(result)
+            },
+            error:function (err) {
+                console.log(err)
+            }
+        })
+    })
+   // 简写jq
+   // btn1.click(function () {
+   //     $.get("http://localhost:3000/test_get",{name:"kobe",age:18},(data)=>{
+   //         console.log(data)
+   //     })
+   // })
+   btn2.click(function () {
+       $.post("http://localhost:3000/test_post",{name:"kobe",age:18},(data)=>{
+           console.log(data)
+       })
+   })
+
+
+</script>
+</body>
+</html>

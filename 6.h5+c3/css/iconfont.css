@@ -1,0 +1,21 @@
+@font-face {font-family: "iconfont";
+  src: url('../unicode/iconfont.eot?t=1563355397397'); /* IE9 */
+  src: url('../unicode/iconfont.eot?t=1563355397397#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAAOoAAsAAAAAB6QAAANaAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCCcAqDMIMMATYCJAMICwYABCAFhG0HMBuyBsgOJU2XkMBggABCBN/v97rnPggwu8QBasCiJVQVuiogVElWWGDhKwzLjP//22Z9wmo6LhkRPYkLDQwDtH1p1kSu7lczOZr8ce/0r8TnA8ptjqWfuoC6eGuAYy1KJC6QwDwF2QVrPeIwgVqD4gnbJVVNMErOGhWIh6rSD6NyGnlLfqgWypqFuTiDQnV6gS4DOA2/H/8hNUaRFBmraO92sRnyfkXbSeL0/9Pd9BHgjmeCsIwM80BOHNVadohxZJ6oVosMMwrWlR/8iv5f8Tmr/eMRRMnKrQf9NOecuC7vVHMTyKHOU7wnClJfGzZtIcBbMPV8sGjXjJ0Lt0/fYRJOAna2BAvP7t5tWeflXXP7dtP0O9VNqz3XLPJu9dxyxLRom/edO82LzkU1m9PXebVcuxemr8YLj0ZGrvVoSsNdwr17ra3sXlN8F+L+1Z6BFWsxfns4fCRuddrm21WeHaunY09UHSmY0m1+TbTJUTTqTtRdD/jU6P4m6m1k/s3d4VUfurVpOccpevRTC2YJa9DZnWhaYcGY/4HXfeQ0HGLLurHme3/N65Dg6vW9Evj10JaklNGpY2M8yyfl0uFXU587+R7l7nn5ddG1MXMmtkxAj/eunIXswruxXl0TxJeLkRo4SUyfJ1Lfx0vJMPHW+z4dnU9EN9BN/x5deIAuJqHrDkttmeN+j35K80tz9Gj0a0yGk8xEd8lPIgDrAJXLzJb1/LPfGP7xammv8/LX6roc/GzGReiqXOYwG6i+M2vwh7hgWa7zLW3KVW6tLTm905EJtWpRwTpaPSW1dYDUFKpFLg1JlQHIVBtHc8o8FOosQqnaGtSaU7q8ThtGFHkNZs2hIDTbB0mjj5BpdgXNKU+g0OkLlJpDhFon0bZhnclQ8Raj/ZyaycAEokpWi+zoOY7yG6gyRu9nWX5IbaHMrvpJSmJyMV5KLZSNMcU+VknlXCYysxqkhDqO6rqV2Jh1iEo8cZBzW25Sklz3okTJagC2haH6cZQZMWACQiWxspD92hwufb4BpRhD14+1kGqsLSjGTu2eSJEoGUBLJRaIdC3P2I2lSMVxMkLGWBmIEspE6XbEirDV9xtCSbhEgwQhm1xJTCUZlSTOLzOebh3UspQp7F6Z8jlVx6sWAAAA') format('woff2'),
+  url('../unicode/iconfont.woff?t=1563355397397') format('woff'),
+  url('../unicode/iconfont.ttf?t=1563355397397') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+  url('../unicode/iconfont.svg?t=1563355397397#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-weixin:before {
+  content: "\e628";
+}
+

@@ -1,0 +1,271 @@
+<!--排它思想-->
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Title</title>-->
+<!--    <style>-->
+<!--        button{-->
+<!--            margin-left: 10px;-->
+<!--            width: 100px;-->
+<!--            height: 40px;-->
+<!--            cursor: pointer;-->
+<!--        }-->
+<!--        .current{-->
+<!--            background-color: red;-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<button>按钮1</button>-->
+<!--<button>按钮2</button>-->
+<!--<button>按钮3</button>-->
+<!--<button>按钮4</button>-->
+
+<!--<script>-->
+<!--    window.onload = function () {-->
+<!--        var btnArr = document.getElementsByTagName("button");-->
+<!--        for (i=0;i<btnArr.length;i++){-->
+<!--               btnArr[i].onmouseover = function () {-->
+<!--                   for (j=0;j<btnArr.length;j++){-->
+<!--                       btnArr[j].className = "";-->
+<!--                   }-->
+<!--                   this.className = "current";-->
+<!--               }-->
+<!--        }-->
+<!--        for (i=0;i<btnArr.length;i++){-->
+<!--            btnArr[i].onmouseout = function () {-->
+<!--                this.className = "";-->
+<!--            }-->
+<!--        } -->
+<!--    }-->
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->
+
+
+<!--tab切换效果-->
+<!--<!doctype html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport"-->
+<!--          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">-->
+<!--    <meta http-equiv="X-UA-Compatible" content="ie=edge">-->
+<!--    <title>Document</title>-->
+<!--</head>-->
+<!--<style>-->
+<!--    *{-->
+<!--        margin: 0;-->
+<!--        padding: 0;-->
+<!--    }-->
+<!--    .box{-->
+<!--        width: 400px;-->
+<!--        height: 210px;-->
+<!--        border: 1px solid #ccc;-->
+<!--        margin: 50px auto;-->
+<!--        overflow: hidden;-->
+<!--    }-->
+<!--    ul{-->
+<!--        width: 500px;-->
+<!--        height: 50px;-->
+<!--        list-style: none;-->
+<!--        margin-left: -1px;-->
+<!--    }-->
+<!--    li{-->
+<!--        float:left;-->
+<!--        width: 101px;-->
+<!--        height: 50px;-->
+<!--        text-align: center;-->
+<!--        font: 600 18px/50px "simsun";-->
+<!--        background-color: pink;-->
+<!--        cursor: pointer;-->
+<!--    }-->
+<!--    span{-->
+<!--        width: 400px;-->
+<!--        height: 160px;-->
+<!--        background-color: yellow;-->
+<!--        font: 700 100px/160px "simsun";-->
+<!--        text-align: center;-->
+<!--        display: none;-->
+<!--    }-->
+<!--    .show{-->
+<!--        display: block;-->
+<!--    }-->
+<!--    .current{-->
+<!--        background-color: yellow;-->
+<!--    }-->
+<!--</style>-->
+<!--<body>-->
+<!--<div class="box">-->
+<!--    <ul>-->
+<!--        <li class="current">手机</li>-->
+<!--        <li>耳机</li>-->
+<!--        <li>相机</li>-->
+<!--        <li>电视</li>-->
+<!--    </ul>-->
+<!--    <span class="show">手机</span>-->
+<!--    <span>耳机</span>-->
+<!--    <span>相机</span>-->
+<!--    <span>电视</span>-->
+<!--</div>-->
+
+<!--<script>-->
+<!--    window.onload = function () {-->
+<!--        var aLiarr = document.getElementsByTagName("li");-->
+<!--        var aSpanarr = document.getElementsByTagName("span");-->
+<!--        for (i=0;i<aLiarr.length;i++){-->
+<!--            aLiarr[i].index = i;-->
+<!--            aLiarr[i].onmouseover = function () {-->
+<!--                for (j=0;j<aLiarr.length;j++){-->
+<!--                    aLiarr[j].className = "";-->
+<!--                    aSpanarr[j].className = "";-->
+<!--                }-->
+<!--                this.className = "current";-->
+<!--                aSpanarr[this.index].className = "show";-->
+<!--            }-->
+<!--        }-->
+<!--    }-->
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->
+
+<!--封装函数，实现抽象性概念-->
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head lang="en">-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title></title>-->
+<!--    <style>-->
+<!--        * {-->
+<!--            padding: 0;-->
+<!--            margin: 0;-->
+<!--        }-->
+
+<!--        .box {-->
+<!--            width: 500px;-->
+<!--            height: 200px;-->
+<!--            border: 1px solid #ccc;-->
+<!--            margin: 50px auto;-->
+<!--            overflow: hidden;-->
+<!--        }-->
+
+<!--        ul {-->
+<!--            width: 600px;-->
+<!--            height: 40px;-->
+<!--            margin-left: -1px;-->
+<!--            list-style: none;-->
+<!--        }-->
+
+<!--        li {-->
+<!--            float: left;-->
+<!--            width: 101px;-->
+<!--            height: 40px;-->
+<!--            text-align: center;-->
+<!--            font: 600 18px/40px "simsun";-->
+<!--            background-color: pink;-->
+<!--            cursor: pointer;-->
+<!--        }-->
+
+<!--        span {-->
+<!--            display: none;-->
+<!--            width: 500px;-->
+<!--            height: 160px;-->
+<!--            background-color: yellow;-->
+<!--            text-align: center;-->
+<!--            font: 700 100px/160px "simsun";-->
+<!--        }-->
+
+<!--        .show {-->
+<!--            display: block;-->
+<!--        }-->
+
+<!--        .current {-->
+<!--            background-color: yellow;-->
+<!--        }-->
+<!--    </style>-->
+
+<!--    <script>-->
+<!--        window.onload = function () {-->
+<!--            //需求：鼠标放到上面的li上，li本身变色(添加类)，下方对应的span也显示出来(添加类);-->
+<!--            //思路：1.点亮上面的盒子。   2.利用索引值显示下面的对应的盒子。-->
+
+<!--            //1、获取所有的box-->
+<!--            var boxArr = document.getElementsByClassName("box");-->
+
+<!--            //让每一个box都调用函数-->
+<!--            for (var i = 0; i < boxArr.length; i++) {-->
+<!--                fn(boxArr[i]);-->
+<!--            }-->
+<!--// 通过element来传递元素属性,而不是document,这样就可以避免多个tab的实现-->
+<!--            function fn(element) {-->
+<!--                var liArr = element.getElementsByTagName("li");   //注意，是element获取事件源，不是document获取事件源-->
+<!--                var spanArr = element.getElementsByTagName("span");-->
+<!--                //2.绑定事件（循环绑定）-->
+<!--                for (var i = 0; i < liArr.length; i++) {-->
+<!--                    //绑定索引值（新增一个自定义属性：index属性）-->
+<!--                    liArr[i].index = i;-->
+<!--                    liArr[i].onmouseover = function () {-->
+<!--                        //3.书写事件驱动程序（排他思想）-->
+<!--                        //1.点亮上面的盒子。   2.利用索引值显示下面的盒子。(排他思想)-->
+<!--                        for (var j = 0; j < liArr.length; j++) {-->
+<!--                            liArr[j].className = "";-->
+<!--                            spanArr[j].className = "";-->
+<!--                        }-->
+<!--                        this.className = "current";-->
+<!--                        spanArr[this.index].className = "show"; //【重要】核心代码-->
+<!--                    }-->
+<!--                }-->
+<!--            }-->
+<!--        }-->
+<!--    </script>-->
+<!--</head>-->
+<!--<body>-->
+
+<!--<div class="box">-->
+<!--    <ul>-->
+<!--        <li class="current">鞋子</li>-->
+<!--        <li>袜子</li>-->
+<!--        <li>帽子</li>-->
+<!--        <li>裤子</li>-->
+<!--        <li>裙子</li>-->
+<!--    </ul>-->
+<!--    <span class="show">鞋子</span>-->
+<!--    <span>袜子</span>-->
+<!--    <span>帽子</span>-->
+<!--    <span>裤子</span>-->
+<!--    <span>裙子</span>-->
+<!--</div>-->
+
+<!--<div class="box">-->
+<!--    <ul>-->
+<!--        <li class="current">鞋子</li>-->
+<!--        <li>袜子</li>-->
+<!--        <li>帽子</li>-->
+<!--        <li>裤子</li>-->
+<!--        <li>裙子</li>-->
+<!--    </ul>-->
+<!--    <span class="show">鞋子</span>-->
+<!--    <span>袜子</span>-->
+<!--    <span>帽子</span>-->
+<!--    <span>裤子</span>-->
+<!--    <span>裙子</span>-->
+<!--</div>-->
+
+<!--<div class="box">-->
+<!--    <ul>-->
+<!--        <li class="current">鞋子</li>-->
+<!--        <li>袜子</li>-->
+<!--        <li>帽子</li>-->
+<!--        <li>裤子</li>-->
+<!--        <li>裙子</li>-->
+<!--    </ul>-->
+<!--    <span class="show">鞋子</span>-->
+<!--    <span>袜子</span>-->
+<!--    <span>帽子</span>-->
+<!--    <span>裤子</span>-->
+<!--    <span>裙子</span>-->
+<!--</div>-->
+
+<!--</body>-->
+<!--</html>-->

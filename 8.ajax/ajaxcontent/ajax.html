@@ -1,0 +1,116 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Ajax的post和get</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<h1>ajax的get请求</h1>-->
+<!--<input type="button" value="ajax-get请求" id="btn-get">-->
+
+<!--<script type="text/javascript">-->
+<!--    document.querySelector("#btn-get").onclick = function () {-->
+<!--        // Ajax的五个步骤-->
+<!--        // 1.创建异步对象-->
+<!--        var ajaxobj = new XMLHttpRequest();-->
+
+<!--        // 2.设置请求参数(method,url,是否异步)-->
+<!--        ajaxobj.open('get','4.php',true);-->
+
+<!--        // 3.发送请求-->
+<!--        ajaxobj.send();-->
+
+<!--        // 4.注册事件-->
+<!--        ajaxobj.onreadystatechange = function () {-->
+<!--            if (ajaxobj.readyState == 4 && ajaxobj.status == 200){-->
+<!--                console.log("数据返回成功!");-->
+<!--         // 5.成功获取数据并利用-->
+<!--                console.log(ajaxobj.responseText);-->
+<!--                document.querySelector("h1").innerHTML = ajaxobj.responseText;-->
+
+<!--            }-->
+<!--        }-->
+<!--    }-->
+
+
+
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<h1>Ajax 发送 get 请求</h1>
+<input type="button" value="发送put_ajax请求" id='btnAjax'>
+<script type="text/javascript">
+
+    document.querySelector("#btnAjax").onclick = function(){
+        // 异步对象
+        var xhr = new XMLHttpRequest();
+
+        // 设置属性
+        xhr.open('post', '4.php');
+
+        // 如果想要使用post提交数据,必须添加此行
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+        // 将数据通过send方法传递
+        xhr.send('name=fox&age=18');
+        // 里面为参数的传递
+
+
+        // 发送并接受返回值
+        xhr.onreadystatechange = function () {
+            // 这步为判断服务器是否正确响应
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                <!-- alert(xhr.responseText); -->
+                document.querySelector("h1").innerHTML = xhr.responseText;
+            }
+        }
+    }
+
+</script>
+</body>
+</html>
+
+
+
+json
+js中
+JSON.parse()：将JSON字符串转化为 js 对象
+var jsObj = JSON.parse(ajax.responseText);
+
+JSON.stringify()：将 JS 对象转化为JSON字符串
+var Obj = {
+name: "fox",
+age: 18,
+skill: "撩妹"
+};
+console.log(Obj);
+// 将 js 对象格式化为 JSON 字符串
+var jsonStr = JSON.stringify(Obj);
+
+php中
+json_decode()**方法：将json字符串转化为变量。
+json_encode()**方法：将变量转化为json字符串。
+<?php
+    header("Content-Type:text/html;charset=utf-8");
+    // json字符串
+    $jsonStr = '{"name":"itcast","age":54,"skill":"歌神"}';
+    // 字符串转化为 php对象
+      print_r(json_decode($jsonStr));
+
+      echo "<br>";
+// php数组
+$arrayName = array('name' =>'littleFox' ,'age' => 13 );
+// php对象 转化为 json字符串
+print_r(json_encode($arrayName));
+?>

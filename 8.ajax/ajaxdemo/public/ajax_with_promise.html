@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>promise_ajax封装</title>
+</head>
+<body>
+    <h2>该页面使用promise封装了ajax</h2>
+    <button id="btn1">点我使用封装发送GET请求</button>
+    <button id="btn2">点我使用封装发POST请求</button>
+    <script type="text/javascript">
+
+        let btn1 = document.getElementById("btn1")
+        let btn2 = document.getElementById("btn2")
+        btn1.onclick = function(){
+            sendAjax("http://localhost:3000/test_get","GET",{m:1,n:2}).then((data)=>{
+                console.log(data);
+            }).catch((err)=>{
+                console.log(err);
+            })
+        }
+        btn2.onclick = function(){
+            sendAjax("http://localhost:3000/test_post","POST",{m:3}).then((data)=>{
+                console.log(data);
+            }).catch((err)=>{
+                console.log(err);
+            })
+        }
+        // ;(async ()=>{
+        //     //将异步的流程以同步的编码的形式展现出来，避免了回调函数的层层嵌套，俗称回调地狱
+        //     let {data} = await sendAjax("http://localhost:3000/test_post","POST",{m:3})
+        //     let {data2} = await sendAjax("http://localhost:3000/test_post","POST",{data})
+        //     let {data3} = await sendAjax("http://localhost:3000/test_post","POST",{data2})
+        // })()
+
+// data={},表示数据可以为空
+        function sendAjax(url,method,data) {
+            return new Promise((resolve, reject) => {
+                // 1创建xhr对象
+                let xhr = new XMLHttpRequest()
+                //绑定监听
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState !== 4){
+                        return
+                    }
+                    if (xhr.readyState === 4 && (xhr.status>=200 && xhr.status<=299)){
+                        const responseObj = {
+                            data:xhr.response,
+                            status:xhr.status,
+                            statusText:xhr.statusText
+                        }
+                        resolve(responseObj)
+                    }else {
+                        reject(new Error("请求出错了"))
+                    }
+                }
+                //设置请求方式，地址，携带的参数
+                 let dataKeys = Object.keys(data)
+                //将传递过来的数据对象加工成urlencoded形式的编码
+                let str = dataKeys.reduce(function (pre,now) {
+                    return pre+=`${now}=${data[now]}&`
+                },"")
+                // console.log(str)
+                //判断method
+                if (method.toLowerCase()==="get") {
+                    url+=`?${str}`
+                    xhr.open(method,url)
+                    xhr.send()
+                }else if(method.toLowerCase()==="post"){
+                    xhr.open(method,url)
+                    xhr.setRequestHeader("content-type","application/x-www-form-urlencoded")
+                    xhr.send(str)
+                }
+            })
+        }
+
+
+    </script>
+
+</body>
+</html>

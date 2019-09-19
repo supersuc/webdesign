@@ -1,0 +1,549 @@
+<!--常见的插件-->
+<!--Webpack：代码模块化构建打包工具。-->
+<!--Gulp：基于流的自动化构建工具。-->
+<!--Grunt ：JS 世界的构建工具。-->
+<!--Babel：使用最新的 规范来编写 js。-->
+<!--Vue：构建数据驱动的Web界面的渐进式框架-->
+<!--Express：基于 Node.js 平台，快速、开放、极简的 Web 开发框架。-->
+<!--以上这些包，都可以通过 NPM 这个包管理工具来安装。-->
+
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Title</title>-->
+<!--    <style>-->
+<!--        [v-cloak]{-->
+<!--            display: none;-->
+<!--        }-->
+<!--    </style>-->
+<!--    &lt;!&ndash;1、导入Vue的包&ndash;&gt;-->
+<!--    <script src="node_modules/vue/dist/vue.js"></script>-->
+<!--</head>-->
+<!--<body>-->
+<!--&lt;!&ndash;这个div区域就是MVVM中的 View&ndash;&gt;-->
+<!--<div id="div1">-->
+<!--&lt;!&ndash;    v-cloak保持和元素实例的关联，直到结束编译后自动消失&ndash;&gt;-->
+<!--&lt;!&ndash;    <span v-cloak>{{name}}</span>&ndash;&gt;-->
+<!--&lt;!&ndash;    v-text将值赋值给指定元素&ndash;&gt;-->
+<!--&lt;!&ndash;    区别-->
+<!--<00t;!&ndash; 插值表达式 &ndash;&gt;&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;    <p>content:++++++{{name}}&#45;&#45;&#45;&#45;&#45;&#45;</p>&ndash;&gt;-->
+
+<!--&lt;!&ndash;    &lt;!&ndash; v-text &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;    <p v-text="name">&#45;&#45;&#45;&#45;&#45;&#45;++++++</p>&ndash;&gt;-->
+<!--&lt;!&ndash;    <span v-text="name"></span>&ndash;&gt;-->
+<!--    <p>{{name}}</p>-->
+<!--    <p v-text="name"></p>-->
+<!--    <p v-html="name"></p>-->
+<!--&lt;!&ndash;    v-text是纯文本，而v-html会被解析成html元素。&ndash;&gt;-->
+<!--</div>-->
+<!--</body>-->
+
+<!--<script>-->
+<!--    // 2、创建一个Vue的实例-->
+<!--    //new出来的对象就是MVVM中的 View Module（调度者）-->
+<!--    var myVue = new Vue({-->
+<!--        el: '#div1', //当前vue对象将接管上面的div1区域-->
+<!--        data: {//data就是MVVM中的 module-->
+<!--            name: '<h1>smyhvae</h1>'-->
+<!--        }-->
+<!--    });-->
+<!--</script>-->
+<!--</html>-->
+<!--插值表达式 {{}}-->
+<!--<span>Message: {{ msg }}</span>-->
+<!--{{ number + 1 }}-->
+<!--{{ ok ? 'YES' : 'NO' }}-->
+<!--{{ name == 'smyhvae' ? 'true' : 'false' }}-->
+<!--{{ message.split('').reverse().join('') }}-->
+<!--v-text-->
+<!--v-cloak-->
+<!--v-html-->
+<!--{{}}}-->
+
+<!--v-bind：属性绑定机制-->
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">-->
+
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Title</title>-->
+<!--    <style>-->
+<!--    </style>-->
+<!--</head>-->
+
+<!--<body>-->
+<!--<div id="div1">-->
+<!--    &lt;!&ndash; value里的值只是简单的字符串 &ndash;&gt;-->
+<!--    <input type="text" value="name">-->
+<!--    &lt;!&ndash; 加上 v-bind 之后，value里的值是 Vue 里的变量 &ndash;&gt;-->
+<!--    <input type="text" v-bind:value="name">-->
+<!--    &lt;!&ndash; 超链接后面的path是 Vue 里面的变量 &ndash;&gt;-->
+<!--    <a v-bind="{href:'http://www.baidu.com/'+path}">超链接</a>-->
+
+<!--</div>-->
+<!--</body>-->
+
+<!--<script src="node_modules/vue/dist/vue.js"></script>-->
+<!--<script>-->
+<!--    new Vue({-->
+<!--        el: '#div1',-->
+<!--        data: {-->
+<!--            name: 'smyhvae',-->
+<!--            path: `vue.html`-->
+<!--        }-->
+<!--    });-->
+<!--</script>-->
+<!--</html>-->
+
+<!--v-on：事件绑定机制-->
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">-->
+
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Title</title>-->
+<!--    &lt;!&ndash;vue的版本：2.5.15&ndash;&gt;-->
+<!--    <script src="node_modules/vue/dist/vue.js"></script>-->
+<!--</head>-->
+
+<!--<body>-->
+<!--&lt;!&ndash;这个div区域就是MVVM中的 View&ndash;&gt;-->
+<!--<div id="div1">-->
+<!--    &lt;!&ndash; 给button节点绑定按钮的点击事件 &ndash;&gt;-->
+<!--    {{name}}-->
+<!--&lt;!&ndash;    <button v-on:click="change">改变name的值</button>&ndash;&gt;-->
+<!--    <button @click="change">改变name的值</button>-->
+<!--</div>-->
+
+
+<!--</body>-->
+
+<!--<script>-->
+<!--    //new出来的对象就是MVVM中的 View Module-->
+<!--    var myVue = new Vue({-->
+<!--        el: '#div1', //当前vue对象将接管上面的div区域-->
+<!--        data: { //data就是MVVM中的 module-->
+<!--            name: 'smyhvae'-->
+<!--        },-->
+
+<!--        //注意，下方这个 `methods` 是Vue中定义方法的关键字，不能改-->
+<!--        //这个 methods 属性中定义了当前Vue实例所有可用的方法-->
+<!--        methods: {-->
+<!--            change: function() { //上面的button按钮的点击事件-->
+<!--                this.name += '1';-->
+<!--            }-->
+<!--        }-->
+<!--    });-->
+<!--</script>-->
+<!--v-on 提供了click 事件，也提供了一些其他的事件。-->
+
+<!--v-on:click-->
+
+<!--v-on:keydown-->
+
+<!--v-on:keyup-->
+
+<!--v-on:mousedown-->
+
+<!--v-on:mouseover-->
+
+<!--v-on:submit-->
+
+<!--</html>-->
+
+
+
+<!--v-model双向数据绑定（只能用于表单元素）-->
+<!--v-bind：只能实现数据的单向绑定，从 M 自动绑定到 V。-->
+<!--v-model：只有v-model才能实现双向数据绑定。注意，v-model 后面不需要跟冒号，-->
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Document</title>-->
+<!--    <script src="node_modules/vue/dist/vue.js"></script>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div id="app">-->
+
+<!--    <form action="#">-->
+<!--        &lt;!&ndash; 将 input 标签中的value值双向绑定到 Vue实例中的data。注意，v-model 后面不需要跟冒号 &ndash;&gt;-->
+<!--        <input type="text" id="username" v-model="myAccount.username">-->
+<!--        <input type="password" id="pwd" v-model="myAccount.userpwd">-->
+
+<!--        <input type="submit" v-on:click="submit1" value="注册">-->
+
+<!--    </form>-->
+<!--</div>-->
+<!--</body>-->
+
+<!--<script>-->
+<!--    var vm = new Vue({-->
+<!--        el: '#app',-->
+<!--        //上面的标签中采用v-model进行双向数据绑定，数据会自动更新到data里面来-->
+<!--        data: {-->
+<!--            name: 'smyhvae',-->
+<!--            myAccount: {username: '', userpwd: ''}-->
+<!--        },-->
+<!--        //在methods里绑定各种方法，根据业务需要进行操作-->
+<!--        methods: {-->
+<!--            submit1: function () {-->
+<!--                alert(this.myAccount.username + "  pwd=" + this.myAccount.userpwd);-->
+<!--                -->
+<!--            }-->
+<!--        }-->
+<!--    });-->
+<!--</script>-->
+
+<!--</html>-->
+
+
+<!--<!doctype html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport"-->
+<!--          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">-->
+<!--    <meta http-equiv="X-UA-Compatible" content="ie=edge">-->
+<!--    <title>Document</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div id="aDiv">-->
+<!--    <input type="text" v-model="a" placeholder="请输入">-->
+<!--    <select v-model="b" >-->
+<!--        <option value="请选择">请选择</option>-->
+<!--        <option value="+">+</option>-->
+<!--        <option value="-">-</option>-->
+<!--        <option value="*">*</option>-->
+<!--        <option value="/">/</option>-->
+<!--    </select>-->
+<!--    <input type="text" v-model="c" placeholder="请输入">-->
+<!--    <input type="button" value="=" @click="calc">-->
+<!--    <input type="text" v-model="result">-->
+<!--</div>-->
+<!--<script src="node_modules/vue/dist/vue.js"></script>-->
+<!--<script>-->
+<!--    var vm = new Vue({-->
+<!--        el:"#aDiv",-->
+<!--        data:{-->
+<!--            a:"",-->
+<!--            c:"",-->
+<!--            result:"",-->
+<!--            b:"请选择"-->
+<!--        },-->
+<!--        methods:{-->
+<!--            calc(){-->
+<!--                // switch (this.b) {-->
+<!--                //     case "+":-->
+<!--                //         this.result = parseInt(this.a) + parseInt(this.c);-->
+<!--                //         break;-->
+<!--                //     case "-":-->
+<!--                //         this.result = parseInt(this.a) - parseInt(this.c);-->
+<!--                //         break;-->
+<!--                //     case "*":-->
+<!--                //         this.result = parseInt(this.a) * parseInt(this.c);-->
+<!--                //         break;-->
+<!--                //     case "/":-->
+<!--                //         this.result = parseInt(this.a) / parseInt(this.c);-->
+<!--                //         break;-->
+<!--                //-->
+<!--                // }-->
+<!--                var codeStr = 'parseInt(this.a) ' + this.b + ' parseInt(this.c)';-->
+<!--                    this.result = eval(codeStr);-->
+<!--            }-->
+<!--        }-->
+<!--    });-->
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->
+
+<!--Vue中通过属性绑定为元素设置class 类样式-->
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <meta http-equiv="X-UA-Compatible" content="ie=edge">-->
+<!--    <title>Document</title>-->
+<!--    <script src="node_modules/vue/dist/vue.js"></script>-->
+<!--    <style>-->
+<!--        .my-red {-->
+<!--            color: red;-->
+<!--        }-->
+<!--        .red{-->
+<!--            color: blue;-->
+<!--        }-->
+
+<!--        .my-thin {-->
+<!--            /* 设置字体的粗细 */-->
+<!--            font-weight: 200;-->
+<!--        }-->
+
+<!--        .my-italic {-->
+<!--            font-style: italic;-->
+<!--        }-->
+
+<!--        .my-active {-->
+<!--            /* 设置字符之间的间距 */-->
+<!--            letter-spacing: 0.5em;-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+
+<!--<body>-->
+<!--<div id="app">-->
+
+<!--    &lt;!&ndash; 普通写法 &ndash;&gt;-->
+<!--&lt;!&ndash;    <h1 class="my-red my-thin">我是生命壹号，smyhvae</h1>&ndash;&gt;-->
+
+<!--&lt;!&ndash;    通过属性绑定，设置类样式&ndash;&gt;-->
+<!--    &lt;!&ndash; vue的写法1：数组的形式 &ndash;&gt;-->
+<!--&lt;!&ndash;    <h1 :class="['my-red','my-italic','my-active', 'my-thin']">我是smyhvae，生命壹号</h1>&ndash;&gt;-->
+
+<!--    &lt;!&ndash; vue的写法2：在数组中使用三元表达式。注意格式不要写错&ndash;&gt;-->
+<!--    &lt;!&ndash; 通过data中布尔值 flag 来判断：如果 flag 为 true，就给 h1 标签添加`my-active`样式；否则，就不设置样式。 &ndash;&gt;-->
+<!--&lt;!&ndash;    <h1 :class="[flag? 'my-active':'']">我是smyhvae，生命壹号</h1>&ndash;&gt;-->
+
+<!--    &lt;!&ndash; vue的写法3：在数组中使用对象来代替三元表达式。{obj}&ndash;&gt;-->
+<!--&lt;!&ndash;    <h1 :class="[ {'my-active':flag} ]">我是smyhvae，生命壹号</h1>&ndash;&gt;-->
+
+<!--    &lt;!&ndash; vue的写法4：直接使用对象&ndash;&gt;-->
+<!--    &lt;!&ndash; 在为 class 使用 v-bind 绑定 对象的时候，对象的属性是类名。由于 对象的属性名可带引号，也可不带引号，所以 这里我没写引号；  属性的值 是一个标识符 &ndash;&gt;-->
+<!--    <h1 :class="classobj">我是smyhvae，生命壹号</h1>-->
+
+<!--</div>-->
+
+<!--<script>-->
+
+<!--    var vm = new Vue({-->
+<!--        el: '#app',-->
+<!--        data:{-->
+<!--            // flag:true,-->
+<!--            classobj:{red:true ,italic:false}-->
+<!--        }-->
+<!--    });-->
+
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->
+
+<!--Vue中通过属性绑定为元素设置 style 行内样式-->
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <meta http-equiv="X-UA-Compatible" content="ie=edge">-->
+<!--    <title>Document</title>-->
+<!--    <script src="node_modules/vue/dist/vue.js"></script>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div id="app">-->
+<!--    &lt;!&ndash; vue的写法1：直接加 &ndash;&gt;-->
+<!--    <h1 :style="{color: 'red', 'font-size': '20px'}">我是生命壹号，smyhvae</h1>-->
+
+<!--&lt;!&ndash;    vue的写法2,将样式对象，定义到 data 中，并直接引用到 :style 中&ndash;&gt;-->
+<!--    <h1 :style="styleObj">我是生命壹号，smyhvae</h1>-->
+
+<!--&lt;!&ndash;   vue的写法3, 在 :style 中通过数组，引用多个 data 上的样式对象。&ndash;&gt;-->
+<!--    <h1 :style="[ styleObj1, styleObj2 ]">我是生命壹号，smyhvae</h1>-->
+
+<!--</div>-->
+
+<!--<script>-->
+
+<!--    var vm = new Vue({-->
+<!--        el: '#app',-->
+<!--        data:{-->
+<!--            styleObj:{color: 'red', 'font-size': '30px'},-->
+<!--            styleObj1:{color: 'blue', 'font-size': '30px'},-->
+<!--            styleObj2:{'font-style': 'italic'}-->
+<!--        }-->
+<!--    });-->
+
+<!--</script>-->
+<!--</body>-->
+
+<!--</html>-->
+
+
+
+<!--v-for-->
+<!--v-for：for循环的四种使用方式-->
+<!--<!doctype html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport"-->
+<!--          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">-->
+<!--    <meta http-equiv="X-UA-Compatible" content="ie=edge">-->
+<!--    <title>Document</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div id="app">-->
+<!--    <ul>-->
+<!--&lt;!&ndash;第一种 普通数组的遍历&ndash;&gt;-->
+<!--        <li v-for="item in arr">{{item}}</li>-->
+<!--&lt;!&ndash;第二种 对象数组的遍历&ndash;&gt;-->
+<!--        <li v-for="(item,index) in arr">值：{{item}} -&#45;&#45; 索引：{{index}}</li>-->
+<!--        <li v-for="(item, index) in dataList">姓名：{{item.name}} -&#45;&#45; 年龄：{{item.age}} -&#45;&#45; 索引：{{index}}</li>-->
+<!--&lt;!&ndash;第三种  对象的遍历&ndash;&gt;-->
+<!--        &lt;!&ndash; 括号里如果写两个参数：则第一个参数代表value，第二个参数代表key &ndash;&gt;-->
+<!--        <li v-for="(value,key) in obj1">值：{{value}} -&#45;&#45; 键：{{key}} </li>-->
+<!--        <h3>-&#45;&#45;分隔线-&#45;&#45;</h3>-->
+<!--        &lt;!&ndash; 括号里如果写三个参数：则第一个参数代表value，第二个参数代表key，第三个参数代表index &ndash;&gt;-->
+<!--        <li v-for="(value,key,index) in obj1">值：{{value}} -&#45;&#45; 键：{{key}} -&#45;&#45; index：{{index}} </li>-->
+<!--&lt;!&ndash;第四种  数字的遍历&ndash;&gt;-->
+<!--        &lt;!&ndash; 注意：如果使用 v-for 遍历数字的话，前面的 myCount 值从 1 开始算起 &ndash;&gt;-->
+<!--        <li v-for="myCount in 10">这是第 {{myCount}}次循环</li>-->
+<!--    </ul>-->
+<!--</div>-->
+<!--<script src="node_modules/vue/dist/vue.js"></script>-->
+<!--<script>-->
+<!--    var vm = new Vue({-->
+<!--        el:"#app",-->
+<!--        data:{-->
+<!--            arr:[1,2,3,4,5,6,7],-->
+<!--            dataList:[-->
+<!--                { name: 'smyh', age: '26' },-->
+<!--                { name: 'vae', age: '32' },-->
+<!--                { name: 'xiaoming', age: '20' }-->
+<!--            ],-->
+<!--            obj1:{-->
+<!--                name: '苏超',-->
+<!--                age: '26',-->
+<!--                gender: '男'-->
+<!--            }-->
+<!--        }-->
+<!--    });-->
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->
+<!--v-for中key的使用注意事项-->
+<!--注意：在 Vue 2.2.0+ 版本里，当在组件中使用 v-for 时，key 属性是必须要加上的。-->
+
+<!--这样做是因为：每次 for 循环的时候，通过指定 key 来标示当前循环这一项的唯一身份。-->
+
+<!--当 Vue.js 用 v-for 正在更新已渲染过的元素列表时，它默认用 “就地复用” 策略。-->
+<!--如果数据项的顺序被改变，Vue将不是移动 DOM 元素来匹配数据项的顺序，-->
+<!--而是简单复用此处每个元素，并且确保它在特定索引下显示已被渲染过的每个元素。-->
+
+<!--为了给 Vue 一个提示，以便它能跟踪每个节点的身份，从而重用和重新排序现有元素，-->
+<!--你需要为每项提供一个唯一 key 属性。-->
+<!--key的类型只能是：string/number，而且要通过 v-bind 来指定。-->
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">-->
+
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <meta http-equiv="X-UA-Compatible" content="ie=edge">-->
+<!--    <title>Document</title>-->
+<!--    <script src="node_modules/vue/dist/vue.js"></script>-->
+<!--</head>-->
+
+<!--<body>-->
+<!--<div id="app">-->
+
+<!--    <div>-->
+<!--        <label>Id:-->
+<!--            <input type="text" v-model="id">-->
+<!--        </label>-->
+
+<!--        <label>Name:-->
+<!--            <input type="text" v-model="name">-->
+<!--        </label>-->
+
+<!--        <input type="button" value="添加" @click="add">-->
+<!--    </div>-->
+
+<!--    &lt;!&ndash; 注意： v-for 循环的时候，key 属性只能使用 number获取string &ndash;&gt;-->
+<!--    &lt;!&ndash; 注意： key 在使用的时候，必须使用 v-bind 属性绑定的形式，指定 key 的值 &ndash;&gt;-->
+<!--    &lt;!&ndash; 在组件中，使用v-for循环的时候，或者在一些特殊情况中，如果 v-for 有问题，必须 在使用 v-for 的同时，指定 唯一的 字符串/数字 类型 :key 值 &ndash;&gt;-->
+<!--    <p v-for="item in list" v-bind:key="item.id">-->
+<!--        <input type="checkbox">{{item.id}} -&#45;&#45; {{item.name}}-->
+<!--    </p>-->
+<!--</div>-->
+
+<!--<script>-->
+<!--    // 创建 Vue 实例，得到 ViewModel-->
+<!--    var vm = new Vue({-->
+<!--        el: '#app',-->
+<!--        data: {-->
+<!--            id: '',-->
+<!--            name: '',-->
+<!--            list: [-->
+<!--                { id: 1, name: 'smyh' },-->
+<!--                { id: 2, name: 'vae' },-->
+<!--                { id: 3, name: 'smyhvae' },-->
+<!--                { id: 4, name: 'xiaoming' },-->
+<!--                { id: 5, name: 'xiaohong' }-->
+<!--            ]-->
+<!--        },-->
+<!--        methods: {-->
+<!--            add() { // 添加方法-->
+<!--                this.list.unshift({ id: this.id, name: this.name })-->
+<!--            }-->
+<!--        }-->
+<!--    });-->
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->
+
+
+<!--v-if-->
+<!--v-if：设置元素的显示和隐藏（添加/删除DOM元素）-->
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+<div id="app">
+    <button v-on:click="toggle">显示/隐藏</button>
+    <div v-if="isShow">我是盒子</div>
+<!--    <div v-show="isShow">我是盒子</div>-->
+</div>
+</body>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            isShow: true
+        },
+        methods: {
+            toggle: function() {
+                this.isShow = !this.isShow;
+            }
+        }
+    });
+</script>
+</html>
+
+区别:
+v-if：每次都会重新添加/删除DOM元素
+
+v-show：每次不会重新进行DOM的添加/删除操作，
+只是在这个元素上添加/移除style="display:none"属性，表示节点的显示和隐藏。
+
+
+v-if：有较高的切换性能消耗。这个很好理解，毕竟每次都要进行dom的添加／删除操作。
+
+v-show：有较高的初始渲染消耗。也就是说，即使一开始v-show="false"，该节点也会被创建，只是隐藏起来了。而v-if="false"的节点，根本就不会被创建。
+
+总结：
+
+如果元素涉及到频繁的切换，最好不要使用 v-if, 而是推荐使用 v-show
+
+如果元素可能永远也不会被显示出来被用户看到，则推荐使用 v-if

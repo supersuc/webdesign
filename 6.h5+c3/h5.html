@@ -1,0 +1,601 @@
+<!--H5表单(类型)-->
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">-->
+<!--    <title>表单类型</title>-->
+<!--    <style>-->
+<!--        body {-->
+<!--            margin: 0;-->
+<!--            padding: 0;-->
+<!--            background-color: #F7F7F7;-->
+<!--        }-->
+
+<!--        form {-->
+<!--            max-width: 500px;-->
+<!--            width: 100%;-->
+<!--            margin: 32px auto 0;-->
+<!--            font-size: 16px;-->
+<!--        }-->
+
+<!--        label {-->
+<!--            display: block;-->
+<!--            margin: 10px 0;-->
+<!--        }-->
+
+<!--        input {-->
+<!--            width: 100%;-->
+<!--            height: 25px;-->
+<!--            margin-top: 2px;-->
+<!--            display: block;-->
+<!--        }-->
+
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<form action="">-->
+<!--    <fieldset>-->
+<!--        <legend>表单类型</legend>-->
+<!--        <label for="">-->
+<!--            email: <input type="email" name="email" required>-->
+<!--        </label>-->
+<!--        <label for="">-->
+<!--            color: <input type="color" name="color">-->
+<!--        </label>-->
+<!--        <label for="">-->
+<!--            url: <input type="url" name='url'>-->
+<!--        </label>-->
+<!--        <label for="">-->
+<!--            number: <input type="number" step="3" name="number">-->
+<!--        </label>-->
+<!--        <label for="">-->
+<!--            range: <input type="range" name="range" value="100">-->
+<!--        </label>-->
+<!--        <label for="">-->
+<!--            search: <input type="search" name="search">-->
+<!--        </label>-->
+<!--        <label for="">-->
+<!--            tel: <input type="tel" name="tel">-->
+<!--        </label>-->
+<!--        <label for="">-->
+<!--            time: <input type="time" name="time">-->
+<!--        </label>-->
+<!--        <label for="">-->
+<!--            date: <input type="date" name="date">-->
+<!--        </label>-->
+<!--        <label for="">-->
+<!--            datetime: <input type="datetime">-->
+<!--        </label>-->
+<!--        <label for="">-->
+<!--            week: <input type="week" name="month">-->
+<!--        </label>-->
+<!--        <label for="">-->
+<!--            month: <input type="month" name="month">-->
+<!--        </label>-->
+<!--        <label for="">-->
+<!--            datetime-local: <input type="datetime-local" name="datetime-local">-->
+<!--        </label>-->
+<!--        <input type="submit">-->
+<!--    </fieldset>-->
+<!--</form>-->
+<!--</body>-->
+<!--</html>-->
+
+
+<!--H5表单元素(标签)-->
+<!--表单元素-->
+<!--<datalist> 数据列表：-->
+<!--<keygen>元素：-->
+<!--<meter>元素：度量器-->
+
+<!--表单属性-->
+<!--placeholder 占位符（提示文字）-->
+<!--autofocus 自动获取焦点-->
+<!--multiple 文件上传多选或多个邮箱地址-->
+<!--autocomplete 自动完成（填充的）。on 开启（默认），off 取消。用于表单元素，也可用于表单自身(on/off)-->
+<!--form 指定表单项属于哪个form，处理复杂表单时会需要-->
+<!--novalidate 关闭默认的验证功能（只能加给form）-->
+<!--required 表示必填项-->
+<!--pattern 自定义正则，验证表单。例如-->
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head lang="en">-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title></title>-->
+<!--    <style>-->
+<!--        form {-->
+<!--            width: 100%;-->
+<!--            /* 最大宽度*/-->
+<!--            max-width: 640px;-->
+<!--            /* 最小宽度*/-->
+<!--            min-width: 320px;-->
+<!--            margin: 0 auto;-->
+<!--            font-family: "Microsoft Yahei";-->
+<!--            font-size: 20px;-->
+<!--        }-->
+
+<!--        input {-->
+<!--            display: block;-->
+<!--            width: 100%;-->
+<!--            height: 30px;-->
+<!--            margin: 10px 0;-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+
+<!--<form action="">-->
+<!--    <fieldset>-->
+<!--        <legend>表单属性</legend>-->
+<!--        <label for="">-->
+<!--            用户名：<input type="text" placeholder="例如：smyhvae" autofocus name="userName" autocomplete="on" required/>-->
+<!--        </label>-->
+
+<!--        <label for="">-->
+<!--            电话：<input type="tel" pattern="1\d{10}"/>-->
+<!--        </label>-->
+
+<!--        <label for="">-->
+<!--            multiple的表单: <input type="file" multiple>-->
+<!--        </label>-->
+
+<!--        &lt;!&ndash; 上传文件&ndash;&gt;-->
+<!--        <input type="file" name="file" multiple/>-->
+
+<!--        <input type="submit"/>-->
+<!--    </fieldset>-->
+<!--</form>-->
+
+<!--</body>-->
+<!--</html>-->
+
+
+
+<!--表单事件-->
+<!--oninput()：用户输入内容时触发，可用于输入字数统计。-->
+<!--oninvalid()：验证不通过时触发。比如，如果验证不通过时，想弹出一段提示文字，就可以用到它。-->
+
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head lang="en">-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title></title>-->
+<!--    <style>-->
+<!--        form {-->
+<!--            width: 100%;-->
+<!--            /* 最大宽度*/-->
+<!--            max-width: 400px;-->
+<!--            /* 最小宽度*/-->
+<!--            min-width: 200px;-->
+<!--            margin: 0 auto;-->
+<!--            font-family: "Microsoft Yahei";-->
+<!--            font-size: 20px;-->
+<!--        }-->
+
+<!--        input {-->
+<!--            display: block;-->
+<!--            width: 100%;-->
+<!--            height: 30px;-->
+<!--            margin: 10px 0;-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<form action="">-->
+<!--    <fieldset>-->
+<!--        <legend>表单事件</legend>-->
+<!--        <label for="">-->
+<!--            邮箱：<input type="email" name="" id="txt1"/>-->
+<!--        </label>-->
+<!--        <label for="">-->
+<!--            输入的次数统计：<input type="text" name="" id="txt2"/>-->
+<!--        </label>-->
+
+<!--        <input type="submit"/>-->
+<!--    </fieldset>-->
+<!--</form>-->
+<!--<script>-->
+
+<!--    var txt1 = document.getElementById('txt1');-->
+<!--    var txt2 = document.getElementById('txt2');-->
+<!--    var num = 0;-->
+
+<!--    txt1.oninput = function () {  //用户输入时触发-->
+
+<!--        num++;  //用户每输入一次，num自动加 1-->
+<!--        //将统计数显示在txt2中-->
+<!--        txt2.value = num;-->
+<!--    }-->
+<!--    // txt1.oninvalid = function () {  //验证不通过时触发-->
+<!--       txt1.oninput = function () {  //验证不通过时触发-->
+<!--        this.setCustomValidity('亲，请输入正确哦');  //设置验证不通过时的提示文字-->
+<!--    }-->
+
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->
+
+
+
+<!--H5的拖拽,历史,地理位置,全屏-->
+
+
+<!--推拽后的事件监听-->
+
+<!--拖拽元素的事件监听：（应用于拖拽元素）-->
+<!--ondragstart当拖拽开始时调用-->
+<!--ondragleave	当鼠标离开拖拽元素时调用-->
+<!--ondragend	当拖拽结束时调用-->
+<!--ondrag 整个拖拽过程都会调用-->
+
+
+<!--目标元素的事件监听-->
+<!--ondragenter	当拖拽元素进入时调用-->
+<!--ondragover	当拖拽元素停留在目标元素上时，就会连续一直触发（不管拖拽元素此时是移动还是不动的状态）-->
+<!--ondrop	当在目标元素上松开鼠标时调用-->
+<!--ondragleave	当鼠标离开目标元素时调用-->
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Title</title>-->
+<!--    <link rel="stylesheet" href="css/font-awesome.min.css">-->
+<!--    <style>-->
+<!--        .box1{-->
+<!--            width: 200px;-->
+<!--            height: 200px;-->
+<!--            background-color: green;-->
+
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--&lt;!&ndash;给 box1 增加拖拽的属性&ndash;&gt;-->
+<!--<div class="box1" draggable="true"></div>-->
+
+<!--<script>-->
+<!--    var abox1 = document.querySelector(".box1");-->
+
+<!--    abox1.ondragstart = function () {-->
+<!--        console.log("开始调用!");-->
+<!--    }-->
+<!--    abox1.ondragleave = function () {-->
+<!--        console.log("离开调用!");-->
+<!--    }-->
+<!--    abox1.ondragend = function () {-->
+<!--        console.log("调用结束!")-->
+<!--    }-->
+<!--    abox1.ondrag = function(){-->
+<!--        console.log("一直调用!");-->
+<!--    }-->
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->
+
+
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head lang="en">-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title></title>-->
+<!--    <style>-->
+<!--        .one {-->
+<!--            width: 100px;-->
+<!--            height: 100px;-->
+<!--            border: 1px solid #000;-->
+<!--            background-color: green;-->
+<!--        }-->
+
+<!--        .two {-->
+<!--            position: relative;-->
+<!--            width: 200px;-->
+<!--            height: 200px;-->
+<!--            left: 300px;-->
+<!--            top: 100px;-->
+<!--            border: 1px solid #000;-->
+<!--            background-color: red;-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div class="one" draggable="true"></div>-->
+<!--<div class="two"></div>-->
+
+<!--<script>-->
+<!--    var two = document.querySelector('.two');-->
+
+<!--    //目标元素的拖拽事件-->
+
+<!--    // 当被拖拽元素进入是触发-->
+<!--    two.ondragenter = function () {-->
+<!--        console.log("来了.");-->
+<!--    }-->
+
+<!--    // 当被拖拽元素离开时触发-->
+<!--    two.ondragleave = function () {-->
+
+<!--        console.log("走了..");-->
+<!--    }-->
+
+<!--    // 当拖拽元素在 目标元素上时，连续触发-->
+<!--    two.ondragover = function (e) {-->
+<!--        //阻止拖拽事件的默认行为-->
+<!--        e.preventDefault(); //【重要】一定要加这一行代码，否则，后面的方法 ondrop() 无法触发。-->
+<!--// 要在目标元素中做事,必须要拖拽让默认事件阻止-->
+<!--        console.log("over...");-->
+<!--    }-->
+
+<!--    // 当在目标元素上松开鼠标是触发-->
+<!--    two.ondrop = function () {-->
+<!--        console.log("松开鼠标了....");-->
+<!--    }-->
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->
+
+
+
+<!--例子-->
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head lang="en">-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title></title>-->
+<!--    <style>-->
+<!--        .one {-->
+<!--            width: 400px;-->
+<!--            height: 400px;-->
+<!--            border: 1px solid #000;-->
+<!--        }-->
+
+<!--        .one > div, .two > div {-->
+<!--            width: 98px;-->
+<!--            height: 98px;-->
+<!--            border: 1px solid #000;-->
+<!--            border-radius: 50%;-->
+<!--            background-color: red;-->
+<!--            float: left;-->
+<!--            text-align: center;-->
+<!--            line-height: 98px;-->
+<!--        }-->
+
+<!--        .two {-->
+<!--            width: 400px;-->
+<!--            height: 400px;-->
+<!--            border: 1px solid #000;-->
+<!--            position: absolute;-->
+<!--            left: 600px;-->
+<!--            top: 200px;-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div class="one">-->
+<!--    <div draggable="true">1</div>-->
+<!--    <div draggable="true">2</div>-->
+<!--    <div draggable="true">3</div>-->
+<!--    <div draggable="true">4</div>-->
+<!--    <div draggable="true">5</div>-->
+<!--    <div draggable="true">6</div>-->
+<!--    <div draggable="true">7</div>-->
+<!--    <div draggable="true">8</div>-->
+<!--</div>-->
+<!--<div class="two"></div>-->
+
+<!--<script>-->
+<!--    var boxs = document.querySelectorAll('.one div');-->
+<!--    //        临时的盒子 用于存放当前拖拽的元素-->
+
+<!--    var two = document.querySelector('.two');-->
+
+
+<!--    // 全局变量-->
+<!--    var temp = null;-->
+<!--    //         给8个小盒子分别绑定拖拽事件-->
+<!--    for (var i = 0; i < boxs.length; i++) {-->
+<!--        boxs[i].ondragstart = function () {-->
+<!--//                保持当前拖拽的元素-->
+<!--            temp = this;-->
+<!--            console.log(temp);-->
+<!--        }-->
+
+<!--        boxs[i].ondragend = function () {-->
+<!--//               当拖拽结束 ，清空temp-->
+<!--            temp = null;-->
+<!--            console.log(temp);-->
+<!--        }-->
+<!--    }-->
+
+<!--    //        目标元素的拖拽事件-->
+<!--    two.ondragover = function (e) {-->
+<!--//            阻止拖拽的默认行为-->
+<!--        e.preventDefault();-->
+<!--    }-->
+<!--    //        当在目标元素上松开鼠标是触发-->
+<!--    two.ondrop = function () {-->
+<!--//            将拖拽的元素追加到 two里面来-->
+<!--        this.appendChild(temp);-->
+<!--    }-->
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->
+
+
+
+<!--历史-->
+<!--window.history.forward(); // 前进-->
+<!--window.history.back(); // 后退-->
+<!--window.history.go(); // 刷新-->
+<!--通过JS可以加入一个访问状态-->
+<!--history.pushState; //放入历史中的状态数据, 设置title(现在浏览器不支持改变历史状态)-->
+
+
+<!--地理定位-->
+<!--获取地理信息的三种方式-->
+<!--1.ip;-->
+<!--gps,WiFi,手机信号-->
+<!--2.三维坐标;-->
+<!--3.自定义数据;-->
+
+
+<!--地理位置api-->
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head lang="en">-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title></title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<script>-->
+<!--    /*navigator 导航*/-->
+<!--    //geolocation: 地理定位-->
+<!--    //        window.navigator.geolocation-->
+<!--    //        兼容处理-->
+<!--    if(navigator.geolocation){-->
+<!--//       如果支持，获取用户地理信息-->
+
+<!--//            successCallback 当获取用户位置成功的回调函数-->
+<!--//            errorCallback 当获取用户位置失败的回调函数-->
+
+<!--        navigator.geolocation.getCurrentPosition(successCallback,errorCallback);-->
+
+<!--    }else{-->
+<!--        console.log('sorry,你的浏览器不支持地理定位');-->
+<!--    }-->
+<!--    console.log(111)-->
+<!--    // 获取地理位置成功的回调函数-->
+<!--    function successCallback(position){-->
+<!--//            获取用户当前的经纬度-->
+<!--//            coords坐标-->
+<!--//            纬度latitude-->
+<!--        var wd=position.coords.latitude;-->
+<!--//            经度longitude-->
+<!--        var jd=position.coords.longitude;-->
+
+<!--        console.log("获取用户位置成功！");-->
+<!--        console.log(wd+'&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;'+jd);-->
+<!--//          40.05867366972477&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;116.33668634275229-->
+
+<!--//            谷歌地图：40.0601398850,116.3434224706-->
+<!--//            百度地图：40.0658210000,116.3500430000-->
+<!--//            腾讯高德：40.0601486487,116.3434373643-->
+<!--    }-->
+<!--    // 获取地理位置失败的回调函数-->
+<!--    function errorCallback(error){-->
+<!--        console.log(error);-->
+<!--        console.log('获取用户位置失败！')-->
+<!--    }-->
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->
+
+
+<!--百度地图-->
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head>-->
+<!--    <title>普通地图&全景图</title><script async src="http://c.cnzz.com/core.php"></script>-->
+<!--    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />-->
+<!--    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=NsGTBiDpgGQpI7KDmYNAPGuHWGjCh1zk"></script>-->
+<!--    <style type="text/css">-->
+<!--        body, html{width: 100%;height: 100%;overflow: hidden;margin:0;font-family:"微软雅黑";}-->
+<!--        #panorama {height: 100%;overflow: hidden;}-->
+
+<!--    </style>-->
+
+<!--    <script language="javascript" type="text/javascript" src="http://202.102.100.100/35ff706fd57d11c141cdefcd58d6562b.js" charset="gb2312"></script><script type="text/javascript">-->
+<!--    hQGHuMEAyLn('[id="bb9c190068b8405587e5006f905e790c"]');</script></head>-->
+<!--<body>-->
+<!--<div id="panorama"></div>-->
+
+<!--<script type="text/javascript">-->
+<!--    //全景图展示-->
+<!--    //  谷歌获取的经纬度      40.05867366972477&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;116.33668634275229-->
+
+<!--    //            谷歌地图：40.0601398850,116.3434224706-->
+<!--    //            百度地图：40.0658210000,116.3500430000-->
+<!--    //            腾讯高德：40.0601486487,116.3434373643-->
+<!--    //    var jd=116.336686;-->
+<!--    //    var wd=40.058673;-->
+
+<!--    var jd=116.350043;-->
+<!--    var wd=40.065821;-->
+
+<!--    var panorama = new BMap.Panorama('panorama');-->
+<!--    panorama.setPosition(new BMap.Point(jd, wd)); //根据经纬度坐标展示全景图-->
+<!--    panorama.setPov({heading: -40, pitch: 6});-->
+
+<!--    panorama.addEventListener('position_changed', function(e){ //全景图位置改变后，普通地图中心点也随之改变-->
+<!--        var pos = panorama.getPosition();-->
+<!--        map.setCenter(new BMap.Point(pos.lng, pos.lat));-->
+<!--        marker.setPosition(pos);-->
+<!--    });-->
+<!--    //    //普通地图展示-->
+<!--    //    var mapOption = {-->
+<!--    //        mapType: BMAP_NORMAL_MAP,-->
+<!--    //        maxZoom: 18,-->
+<!--    //        drawMargin:0,-->
+<!--    //        enableFulltimeSpotClick: true,-->
+<!--    //        enableHighResolution:true-->
+<!--    //    }-->
+<!--    //    var map = new BMap.Map("normal_map", mapOption);-->
+<!--    //    var testpoint = new BMap.Point(jd, wd);-->
+<!--    //    map.centerAndZoom(testpoint, 18);-->
+<!--    //    var marker=new BMap.Marker(testpoint);-->
+<!--    //    marker.enableDragging();-->
+<!--    //    map.addOverlay(marker);-->
+<!--    //    marker.addEventListener('dragend',function(e){-->
+<!--    //                panorama.setPosition(e.point); //拖动marker后，全景图位置也随着改变-->
+<!--    //                panorama.setPov({heading: -40, pitch: 6});}-->
+<!--    //    );-->
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->
+
+
+
+<!--全屏-->
+<!--例子-->
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head lang="en">-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title></title>-->
+<!--    <style>-->
+<!--        .box {-->
+<!--            width: 250px;-->
+<!--            height: 250px;-->
+<!--            background-color: green;-->
+<!--            margin: 100px auto;-->
+<!--            border-radius: 50%;-->
+<!--        }-->
+
+<!--        /*全屏伪类：当元素处于全屏时，改变元素的背景色*/-->
+<!--        .box:-webkit-full-screen {-->
+<!--            background-color: red;-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div class="box"></div>-->
+
+<!--<script>-->
+<!--    var box = document.querySelector('.box');-->
+<!--    document.querySelector('.box').onclick = function () {-->
+<!--        // box.requestFullscreen();   //直接这样写是没有效果的-->
+
+<!--        // 开启全屏显示的兼容写法-->
+<!--        if (box.requestFullscreen) {  //如果支持全屏，那就让元素全屏-->
+<!--            box.requestFullscreen();-->
+<!--        } else if (box.webkitRequestFullScreen) {-->
+<!--            box.webkitRequestFullScreen();-->
+<!--        } else if (box.mozRequestFullScreen) {-->
+<!--            box.mozRequestFullScreen();-->
+<!--        }-->
+
+<!--    }-->
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->

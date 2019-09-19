@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport">
+    <title>Document</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: green;
+            margin: 10px;
+        }
+
+    </style>
+</head>
+<body>
+<script>
+    window.onload = function () {
+        var myDiv = document.getElementsByTagName('div');
+        for (var i = 0; i < myDiv.length; i++) {//var和let的区别
+            myDiv[i].onclick = function () {
+                console.log(this.id);
+                console.log(i);
+            }
+        }
+    }
+    // var和let区别
+    //实际就是let是块级作用域,var是变量作用域,作用的范围不同
+    // for(var i = 0;i<10;i++){
+    //     setTimeout(function(){
+    //         console.log(i)
+    //     },100)
+    // }  // 输出全是10
+    //
+    // for(let i = 0;i<10;i++){
+    //     setTimeout(function(){
+    //         console.log(i)
+    //     },100)
+    // }  // 0123456789;
+
+    //闭包
+   // 作用1. 使用函数内部的变量在函数执行完后, 仍然存活在内存中(延长了局部变量的生命周期)
+    // 作用2. 让函数外部可以操作(读写)到函数内部的数据(变量/函数)
+    //缺点：函数执行完后, 函数内的局部变量没有释放，占用内存时间会变长，容易造成内存泄露。
+    for(var i = 0;i<10;i++){
+    // (function(){
+    //     var j = i;
+    //     setTimeout(function(){
+    //         console.log(j);
+    //     },100)
+    // }())
+    // }  // 输出0123456789;
+
+    //this的特点
+    //函数赋值给变量时，this指向window
+    //以函数形式调用时，this永远都是window
+    //以方法的形式调用时，this是调用方法的对象
+
+    //▲如果不知道父函数的名字，在父函数里加一句_this = this，此时_this相当于父函数的名字。this的指向在函数定义时无法确认，只有函数执行时才能确定。
+</script>
+<section>
+    <div id="div0"> div0</div>
+    <div id="div1"> div1</div>
+    <div id="div2"> div2</div>
+    <div id="div3"> div3</div>
+    <div id="div4"> div4</div>
+</section>
+
+
+</body>
+</html>

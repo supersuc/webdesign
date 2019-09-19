@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //显示绑定
+    //第一个参数都是this要指向的对象（函数执行时，this将指向这个对象），后续参数用来传实参。
+    // function foo() {
+    //     console.log(this.a);
+    // }
+    //
+    // var obj = {
+    //     a: 2
+    // };
+    //
+    // // 将 this 指向 obj
+    // foo.apply(obj); //打印结果：2
+
+//   1、thisObj不传或者为null、undefined时，函数中的this会指向window对象（非严格模式）。
+//   2、传递一个别的函数名时，函数中的this将指向这个函数的引用。
+//   3、传递的值为数字、布尔值、字符串时，this会指向这些基本类型的包装对象Number、Boolean、String
+//   4、传递一个对象时，函数中的this则指向传递的这个对象。
+
+
+    var person1 = {
+        name: "小王",
+        gender: "男",
+        age: 24,
+        say: function (school, grade) {
+        alert(this.name + " , " + this.gender + " ,今年" + this.age + " ,在" + school + "上" + grade);
+    }
+    }
+    var person2 = {
+        name: "小红",
+        gender: "女",
+        age: 18
+    }
+    //call  共同点改变this的指向；实现继承。Father.call(this)
+    person1.say.call(person1, "小学", "5年级");
+    //apply
+    person1.say.apply(person2, ["实验小学", "六年级"]);
+    //bind
+    person1.say.bind(person1, "大学", "四年级")();//区别bind返回后还是一个函数，所以加上()调用
+
+</script>>
+</body>
+</html>
