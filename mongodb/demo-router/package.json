@@ -12,6 +12,6 @@
     "express": "^4.17.1"
   },
   "dependencies": {
-    "mongoose": "5.6.10"
+    "mongoose": "5.7.5"
   }
 }
